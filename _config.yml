@@ -9,13 +9,16 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : TBC
-tagline: 
+tagline: Tagline goes here
 author :
   name : Ben Ashford
   email : 
   github : benashford
-  twitter : benashford
-  feedburner : 
+  twitter :
+  feedburner :
+  linkedin: benashford
+  bio: Bio Goes Here
+  email_md5: 2dcffa256892867c82f5d0628a685bdb
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
