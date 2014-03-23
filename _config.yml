@@ -32,6 +32,12 @@ production_url : http://benashford.github.io
 
 markdown: kramdown
 
+kramdown:
+  use_coderay: true
+
+  coderay:
+    coderay_line_numbers: nil
+
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :
