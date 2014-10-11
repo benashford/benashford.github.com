@@ -41,7 +41,7 @@ lazysort.core> (time (do (doall (lazysort rand-nums)) nil))
 
 Yep, as expected, it's quite a bit slower.  So where, exactly, do the optimisations of lazy sequences manifest themselves?  One significant benefit is short-cutting.  Lazy evaluation can be stopped when no-further results are expected and/or needed, this could leave a significant amount of work undone.
 
-So going back to our vector of random numbers, what if we didn't care about the precise order of everything?  What if we only wanted the first ten items from the sorted sequence?
+So going back to our vector of random numbers, what if we didn't care about the precise order of everything?  What if we only wanted the first hundred items from the sorted sequence?
 
 Built-in ```sort```:
 
