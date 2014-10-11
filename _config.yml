@@ -8,8 +8,8 @@ pygments: true
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : TBC
-tagline: Tagline goes here
+title :
+tagline:
 author :
   name : Ben Ashford
   email :
@@ -17,7 +17,7 @@ author :
   twitter :
   feedburner :
   linkedin: benashford
-  bio: Bio Goes Here
+  bio:
   email_md5: 2dcffa256892867c82f5d0628a685bdb
 
 # The production_url is only used when full-domain names are needed

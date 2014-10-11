@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Under Construction
-tagline: Placeholder
+title: Index
+tagline: 
 ---
 {% include JB/setup %}
 
-## Nothing to see here
+## Welcome
 
-Placeholding page until something is ready...
+Just a few (well, one counts as 'a few' right?) articles on things I have found interesting.
 
 ## Posts
 
