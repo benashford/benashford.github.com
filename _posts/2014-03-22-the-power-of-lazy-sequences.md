@@ -69,6 +69,10 @@ In practice however, this earlier version was twice as slow when reading the fir
 
 You can see the earlier version if you examine the history of the gist.
 
+#### Update ####
+
+The timings above are from the first published version of this post.  There are newer benchmarks, more accurately taken, in my newer post [The folly of benchmarks](/blog/2014/12/07/the-folly-of-benchmarks).
+
 #### Footnotes ####
 
 [^1]: <a href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort">http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort</a>
