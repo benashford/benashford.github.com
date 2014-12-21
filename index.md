@@ -7,7 +7,7 @@ tagline:
 
 ## Welcome
 
-Just a few (well, one counts as 'a few' right?) articles on things I have found interesting.
+Just a few articles on things I have found interesting.
 
 ## Posts
 
