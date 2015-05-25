@@ -21,9 +21,9 @@ The cost of this has been the size of the library.  It is already significantly 
 
 ### The query DSL ###
 
-Many of the API end-points are relatively simple: a struct with a few optional values.  The single biggest area of complication has been the [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html); this consists of several dozen filters and queries, each of which with overlapping sets of slightly inconsistent options, many of which then go on to contain other filters and queries nested underneath.
+Many of the API end-points are relatively simple: a struct with a few optional values.  The single biggest area of complication has been the [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html); this consists of several dozen filters and queries, each of which has overlapping sets of slightly inconsistent options, many of which then go on to contain other filters and queries nested underneath.
 
-The first challenge was how to write all the structs and enums and builder-functions necessary to capture all of this.  That problem I solved by generating the majority of the code.  I might write more about this in a future blog post because the current implementation is a bit gnarly, I intend to refactor it now it's mostly finished and I have the benefit of hindsight.
+The first challenge was how to write all the structs and enums and builder-functions necessary to capture all of this.  That problem I solved by generating the majority of the code from templates.  I might write more about this in a future blog post, but the current implementation is a bit gnarly, I intend to refactor it now it's mostly finished and I have the benefit of hindsight.
 
 The second challenge is theoretically smaller, but also slightly trickier.  This challenge is how to structure the Rust implementation so that users of my library can use this code without friction, and maybe even enjoy it.
 
@@ -41,15 +41,15 @@ It was at this stage I thought: "hang on a moment, if I accepted Into<Miscellane
 
 ### The more complex examples ###
 
-ElasticSearch's Query DSL has a number of dynamic context-specific fields.  Values can be a single value or an array; the content could be a string, an integer, or even another map contain GeoJSON.  This is a text-book example of Duck Typing, and clients in dynamic languages can just ignore it, just write the code you want and ignore it.
+ElasticSearch's Query DSL has a number of dynamic context-specific fields.  Values can be a single value or an array; the content could be a string, an integer, or even another map containing GeoJSON.  This is a text-book example of Duck Typing, and clients in dynamic languages can just ignore it, just write the code you want and away you go.
 
 But my decision to go-with-the-flow regarding Rust, and therefore to make a type-safe client, meant I couldn't do that.  But the first version was quite unpleasently verbose.  To show the evolution of my approach, let's pick an example:
 
 #### Geo Bounding Box filter ####
 
-A [Geo Bounding Box filter](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/query-dsl-geo-bounding-box-filter.html) can be used to find documents which have a `geo_point` within the defined box.  Sounds simple?  It gets complex due to the number of options that a developer has to define the box: either the corners (top-left, and bottom-right) can be provided, or the four (top, left, bottom, right) values can be given independently, but if corners are used those points can be defined in terms of lat-lng pairs or can be geohashes.  I decided to support all of these options rather than force any consumers of `rs-es` to using a subset.
+A [Geo Bounding Box filter](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/query-dsl-geo-bounding-box-filter.html) can be used to find documents which have a `geo_point` within the defined box.  Sounds simple?  It gets complex due to the number of options that a developer can use to define the box: either the corners (top-left, and bottom-right) can be provided, or the four (top, left, bottom, right) values can be given independently, but if corners are used those points can be defined in terms of lat-lng pairs or can be geohashes.  I decided to support all of these options rather than force any consumers of `rs-es` to using a subset.
 
-There are certain options that can be ignore, however.  ElasticSearch allows lat-lng pairs to be defined in a number of ways, either JSON:
+There are certain options that can be ignored, however.  ElasticSearch allows lat-lng pairs to be defined in a number of ways, either JSON:
 
 <pre>
 "location": {
@@ -58,7 +58,7 @@ There are certain options that can be ignore, however.  ElasticSearch allows lat
 }
 </pre>
 
-or arrays: `[-10.5, 50.5]` (note the lng-lat ordering), or even strings: `"50.5, -10.5"` (not the lat-lng ordering).  All three are equivalent, so I can generate one and ignore the others.
+or arrays: `[-10.5, 50.5]` (note the lng-lat ordering), or even strings: `"50.5, -10.5"` (note the lat-lng ordering).  All three are equivalent, so I can generate one and ignore the others.
 
 So to begin with, I need a enum defining choices for `GeoBox`:
 
@@ -100,7 +100,7 @@ Not great compared to the JSON it produces, although arguably easier to understa
 
 ### So... traits? ###
 
-The solution to the verbosity problem was obvious after solving my `String` vs. `&str` problem.  I would define the `with_geo_box` function, and any other such function, to take anything that implements `Into<GeoBox>` rather than just `GeoBox`.  This means that the full verbose option still works, but allows various shortcuts.
+The solution to the verbosity problem was obvious after solving my `String` vs. `&str` problem.  I would define the `with_geo_box` function, and any other such function, to take anything that implements `Into<GeoBox>` rather than just `GeoBox`.  This means that the full verbose option still works if you want to write it in full, but this approach also allows various shortcuts.
 
 For example, the verbose example above could be written:
 
@@ -122,13 +122,15 @@ impl From<(f64, f64, f64, f64)> for GeoBox {
 
 and so on.
 
-Of course having to write five nearly identical lines for very similar functions has a high noise-to-signal ratio, but fortunately Rust has macros, the above then becomes:
+Of course having to write five nearly identical lines for very similar functions has a high noise-to-signal ratio, but fortunately Rust has macros, after defining a couple of macros the above then becomes a one-liner:
 
 <pre>
 from_exp!((f64, f64, f64, f64), GeoBox, from, GeoBox::Vertices(from.0, from.1, from.2, from.3));
 </pre>
 
 The code behind this is in the template that the code-generator uses to produce the full implementation of the Query DSL.  This can be [seen here](https://github.com/benashford/rs-es/blob/master/templates/query.rs.erb#L27).
+
+There is one final, but quite significant, advantage to the use of these conversion traits; the fact that any application could implement their own.  It would be quite likely that a hypothetical future application that needs a filter such as `geo_bounding_box` would already have defined something analogous to a `GeoBox`; rather than having to convert between the two at the point where a search happens, the `From<OtherType>` trait could be implemented for `GeoBox` allowing it to be dropped straight in.
 
 ### Conclusion ###
 
