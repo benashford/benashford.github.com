@@ -33,7 +33,7 @@ An example of the need to be friendly to potential users isn't even ElasticSearc
 
 [The Rust book recommends `&str`](https://doc.rust-lang.org/book/strings.html) on the grounds that it's the cheapest option as it doesn't force the user to allocate a `String` especially.  This makes a lot of sense, especially seeing as a `String` can be coerced to `&str` just by simply doing `&owned_string`.  But on the other hand, the Query DSL needs an owned `String` because that's what the Json library needs; and many users of my library will be dynamically creating strings especially anyway, so would almost certainly own them; moving those would make sense, otherwise the path would be `String` to `&str` to a brand new `String` identical to the first one.  However, I didn't want to enfore the use of `String` everywhere either, because a significant proportion of use-cases would have various strings (such as index names) as effective constants; forcing the user to allocate these strings everytime is just anti-social, if the library needs it the library should do it.  I didn't want ```"index_name".to_string()``` everywhere.
 
-The good thing about such fundamental questions is that there's a good chance someone else has already thought about them, and indeed [Rust has a solution built in](http://hermanradtke.com/2015/05/06/creating-a-rust-function-that-accepts-string-or-str.html), namely the `Into` trait.
+The good thing about such fundamental questions is that there's a good chance someone else has already thought about them, and indeed [Rust has a solution built in](http://hermanradtke.com/2015/05/06/creating-a-rust-function-that-accepts-string-or-str.html), namely the [`Into` trait](https://doc.rust-lang.org/std/convert/trait.Into.html)[^2].
 
 By defining my functions to accept `Into<String>` I could accept both `String` and `&str`.  If the user had an owned `String`, happy days, it'll be moved into place; if the user has a `&str`, then the library will allocate a `String` and carry on from there.  But the user-friendliness is preserved.  ```my_function("constant_string")``` and ```my_function(format!("dynamic_{}", val))``` both work.
 
@@ -138,3 +138,4 @@ There are still many challenges, as various parts of the ElasticSearch API are s
 
 ##### Footnotes #####
 [^1]: I've written 2.5 such clients in Clojure alone, the .5 is a half-finished implementation I'm intending on open-sourcing eventually.
+[^2]: And its related cousin, the [`From` trait](https://doc.rust-lang.org/std/convert/trait.From.html).
