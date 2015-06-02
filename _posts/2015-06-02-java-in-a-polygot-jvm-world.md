@@ -43,7 +43,7 @@ The initial decision was how to go about this.  There were three strands that we
 
 I chose Option 3.
 
-The single major difference between synchronous and asynchronous communication, is how you go about reading the responses.  Synchronously you would read from an `InputStream` until you have the data you are expecting (Redis is deterministic in this regard.); if the data is not yet available, the thread will block until it is.  Asynchronously, you will receieve a sequence of events, each of which contain an arbitrary amount of data; each event could contain multiple messages, but also an event may contain only part of a message; client code needs to combine multiple events to reconsititute a single message.
+The single major difference between synchronous and asynchronous communication, is how you go about reading the responses.  Synchronously you would read from an `InputStream` until you have the data you are expecting (Redis is deterministic in this regard); if the data is not yet available, the thread will block until it is.  Asynchronously, you will receieve a sequence of events, each of which contain an arbitrary amount of data; each event could contain multiple messages, but also an event may contain only part of a message; client code needs to combine multiple events to reconsititute a single message.
 
 #### The Redis protocol ####
 
@@ -111,7 +111,7 @@ The version of `redis-async` with JRESP is still in development.  I'm intending 
 
 ### Conclusion ###
 
-The conclusion, like all good conclusions, is retrospectively obvious: low-level logic is a good candidate for low-level languages.  Perhaps not so obvious, especially with the modern zeitgeist of developer productivity being linked to expressiveness, is that low-level programming languages is the best medium for expressing low-level logic.
+The conclusion, like all good conclusions, is retrospectively obvious: low-level logic is a good candidate for low-level languages.  Perhaps not so obvious, especially with the modern zeitgeist of developer productivity being linked to expressiveness, is that low-level programming languages are the best medium for expressing low-level logic.
 
 Java's role is essentially to be the C of the JVM.  For writing code that is low-level, needs to be performant and/or needs to be shared across multiple JVM languages; it would be relatively easy to create a Scala Redis client based on JRESP, and even a full Java client for that matter.
 
