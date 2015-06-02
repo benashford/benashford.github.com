@@ -47,7 +47,7 @@ The single major difference between synchronous and asynchronous communication, 
 
 #### The Redis protocol ####
 
-The [Redis protocol](http://redis.io/topics/protocol), known as RESP, is designed to be simple to implement, that must be true because that's what it says at the top of its own documentation.  It's made-up of a few simple types covering strings (byte-arrays), integers, arrays etc.  It has a few fun peculiarities, like the fact that numbers are transmitted a strings, but this was done to make it human readable.
+The [Redis protocol](http://redis.io/topics/protocol), known as RESP, is designed to be simple to implement, that must be true because that's what it says at the top of its own documentation.  It's made-up of a few simple types covering strings (byte-arrays), integers, arrays etc.  It has a few fun peculiarities, like the fact that numbers are transmitted as strings, but this was done to make it human readable.
 
 Communication both to and from a Redis server is a stream of RESP objects.  A Redis command is just a RESP array where the elements are the command plus any options, each encoded as RESP.  E.g. `SET KEY-NAME VALUE` is sent over the wire as `*3\r\n$3\r\nSET\r\n$8\r\nKEY-NAME\r\n$5\r\nVALUE\r\n`[^6][^7].  Responses are similarly encoded, but the exact response varies according to the command; you can be sure that one command results in one response...
 
