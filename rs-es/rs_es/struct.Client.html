@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Client` struct in crate `rs_es`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Client">
+
+    <title>rs_es::Client - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>rs_es</a></p><script>window.sidebarCurrent = {name: 'Client', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rs_es</a>::<wbr><a class='struct' href=''>Client</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-32760' href='../src/rs_es/lib.rs.html#103-106'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Client {
+    // some fields omitted
+}</pre><div class='docblock'><p>The core of the ElasticSearch client, owns a HTTP connection.</p>
+
+<p>Each instance of <code>Client</code> is reusable, but only one thread can use each one
+at once.  This will be enforced by the borrow-checker as most methods are
+defined on <code>&amp;mut self</code>.</p>
+
+<p>To create a <code>Client</code>, the hostname and port need to be specified.</p>
+
+<p>Each ElasticSearch API operation is defined as a method on <code>Client</code>.  Any
+compulsory parameters must be given as arguments to this method.  It returns
+an operation builder that can be used to add any optional parameters.</p>
+
+<p>Finally <code>send</code> is called to submit the operation:</p>
+
+<h1 id="examples" class='section-header'><a
+                           href="#examples">Examples</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>rs_es</span>::<span class='ident'>Client</span>;
+
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='ident'>Client</span>::<span class='ident'>new</span>(<span class='string'>&quot;localhost&quot;</span>, <span class='number'>9200</span>);
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>search_uri</span>()
+                   .<span class='ident'>with_indexes</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;index_name&quot;</span>])
+                   .<span class='ident'>with_query</span>(<span class='string'>&quot;field:value&quot;</span>)
+                   .<span class='ident'>send</span>();
+</pre>
+
+<p>See the specific operations and their builder objects for details.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../rs_es/struct.Client.html' title='rs_es::Client'>Client</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(host: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, port: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../rs_es/struct.Client.html' title='rs_es::Client'>Client</a></code></h4>
+<div class='docblock'><p>Create a new client</p>
+</div><h4 id='method.full_url' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.full_url' class='fnname'>full_url</a>(&amp;self, suffix: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Take a nearly complete ElasticSearch URL, and stick the host/port part
+on the front.</p>
+</div><h4 id='method.version' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.version' class='fnname'>version</a>(&amp;mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='enum' href='../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
+<div class='docblock'><p>Calls the base ES path, returning the version number</p>
+</div><h4 id='method.refresh' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.refresh' class='fnname'>refresh</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='struct' href='../rs_es/operations/struct.RefreshOperation.html' title='rs_es::operations::RefreshOperation'>RefreshOperation</a></code></h4>
+<div class='docblock'><p>Refresh</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/indices-refresh.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/indices-refresh.html</a></p>
+</div><h4 id='method.index' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.index' class='fnname'>index</a>&lt;'a, 'b, E: <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a>&gt;(&amp;'a mut self, index: &amp;'b <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, doc_type: &amp;'b <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../rs_es/operations/index/struct.IndexOperation.html' title='rs_es::operations::index::IndexOperation'>IndexOperation</a>&lt;'a, 'b, E&gt;</code></h4>
+<div class='docblock'><p>An index operation to index a document in the specified index.</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-index_.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-index_.html</a></p>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>&lt;'a&gt;(&amp;'a mut self, index: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, id: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../rs_es/operations/get/struct.GetOperation.html' title='rs_es::operations::get::GetOperation'>GetOperation</a></code></h4>
+<div class='docblock'><p>Implementation of the ES GET API</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-get.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-get.html</a></p>
+</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>&lt;'a&gt;(&amp;'a mut self, index: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, doc_type: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, id: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../rs_es/operations/delete/struct.DeleteOperation.html' title='rs_es::operations::delete::DeleteOperation'>DeleteOperation</a></code></h4>
+<div class='docblock'><p>Delete by ID</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-delete.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-delete.html</a></p>
+</div><h4 id='method.delete_by_query' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete_by_query' class='fnname'>delete_by_query</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='struct' href='../rs_es/operations/delete/struct.DeleteByQueryOperation.html' title='rs_es::operations::delete::DeleteByQueryOperation'>DeleteByQueryOperation</a></code></h4>
+<div class='docblock'><p>Delete by query</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-delete-by-query.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/docs-delete-by-query.html</a></p>
+
+<p>Warning: will be removed in ElasticSearch 2.0</p>
+</div><h4 id='method.bulk' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.bulk' class='fnname'>bulk</a>&lt;'a, 'b&gt;(&amp;'a mut self, actions: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'b [</a><a class='struct' href='../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='struct' href='../rs_es/operations/bulk/struct.BulkOperation.html' title='rs_es::operations::bulk::BulkOperation'>BulkOperation</a>&lt;'a, 'b&gt;</code></h4>
+<div class='docblock'><p>Bulk</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html</a></p>
+</div><h4 id='method.search_uri' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search_uri' class='fnname'>search_uri</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='struct' href='../rs_es/operations/search/struct.SearchURIOperation.html' title='rs_es::operations::search::SearchURIOperation'>SearchURIOperation</a></code></h4>
+<div class='docblock'><p>Search via the query parameter</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/search-uri-request.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/search-uri-request.html</a></p>
+</div><h4 id='method.search_query' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search_query' class='fnname'>search_query</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='struct' href='../rs_es/operations/search/struct.SearchQueryOperation.html' title='rs_es::operations::search::SearchQueryOperation'>SearchQueryOperation</a></code></h4>
+<div class='docblock'><p>Search via the query DSL</p>
+
+<p>See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/search-request-body.html">https://www.elastic.co/guide/en/elasticsearch/reference/1.x/search-request-body.html</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rs_es";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

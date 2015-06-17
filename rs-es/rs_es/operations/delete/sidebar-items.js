@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["DeleteByQueryIndexResult",""],["DeleteByQueryOperation",""],["DeleteByQueryResult","The result of a Delete-by-query request"],["DeleteOperation",""],["DeleteResult","Result of a DELETE operation"]]});

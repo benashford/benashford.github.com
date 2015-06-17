@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Action` struct in crate `rs_es`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Action">
+
+    <title>rs_es::operations::bulk::Action - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>bulk</a></p><script>window.sidebarCurrent = {name: 'Action', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>bulk</a>::<wbr><a class='struct' href=''>Action</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1015' href='../../../src/rs_es/operations/bulk.rs.html#113-126'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Action {
+    // some fields omitted
+}</pre><div class='docblock'><p>A bulk operation consists of one or more <code>Action</code>s.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a></code></h3><div class='impl-items'><h4 id='method.index' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.index' class='fnname'>index</a>&lt;E: <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a>&gt;(document: E) -&gt; <a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a></code></h4>
+<div class='docblock'><p>An index action.</p>
+
+<p>Takes the document to be indexed, other parameters can be set as
+optional on the <code>Action</code> struct returned.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>rs_es</span>::<span class='ident'>operations</span>::<span class='ident'>bulk</span>::<span class='ident'>Action</span>;
+
+<span class='kw'>let</span> <span class='ident'>delete_action</span> <span class='op'>=</span> <span class='ident'>Action</span>::<span class='ident'>delete</span>(<span class='string'>&quot;doc_id&quot;</span>);
+</pre>
+</div><h4 id='method.create' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.create' class='fnname'>create</a>&lt;E: <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a>&gt;(document: E) -&gt; <a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a></code></h4>
+<div class='docblock'><p>Create action</p>
+</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(id: S) -&gt; <a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a></code></h4>
+<h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(id: S, update: &amp;<a class='struct' href='../../../rs_es/operations/bulk/struct.ActionSource.html' title='rs_es::operations::bulk::ActionSource'>ActionSource</a>) -&gt; <a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a></code></h4>
+<h4 id='method.with_index' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_index' class='fnname'>with_index</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_doc_type' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_doc_type' class='fnname'>with_doc_type</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_id' class='fnname'>with_id</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_version' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_version' class='fnname'>with_version</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_version_type' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_version_type' class='fnname'>with_version_type</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;VersionType&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_routing' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_routing' class='fnname'>with_routing</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_parent' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_parent' class='fnname'>with_parent</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_timestamp' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_timestamp' class='fnname'>with_timestamp</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_ttl' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_ttl' class='fnname'>with_ttl</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/units/struct.Duration.html' title='rs_es::units::Duration'>Duration</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+<h4 id='method.with_retry_on_conflict' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_retry_on_conflict' class='fnname'>with_retry_on_conflict</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt;&gt;(self, val: T) -&gt; Self</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "rs_es";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>
