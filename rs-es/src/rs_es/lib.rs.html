@@ -752,7 +752,7 @@
         <span class='kw'>let</span> <span class='ident'>json</span> <span class='op'>=</span> <span class='ident'>result</span>.<span class='ident'>unwrap</span>();
         <span class='kw'>match</span> <span class='ident'>json</span>.<span class='ident'>find_path</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;version&quot;</span>, <span class='string'>&quot;number&quot;</span>]) {
             <span class='prelude-val'>Some</span>(<span class='ident'>version</span>) <span class='op'>=&gt;</span> <span class='kw'>match</span> <span class='ident'>version</span>.<span class='ident'>as_string</span>() {
-                <span class='prelude-val'>Some</span>(<span class='ident'>string</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='ident'>string</span>.<span class='ident'>to_string</span>()),
+                <span class='prelude-val'>Some</span>(<span class='ident'>string</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='ident'>string</span>.<span class='ident'>to_owned</span>()),
                 <span class='prelude-val'>None</span>         <span class='op'>=&gt;</span> <span class='prelude-val'>Err</span>(<span class='ident'>EsError</span>::<span class='ident'>EsError</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;Cannot find version number in: {:?}&quot;</span>,
                                                              <span class='ident'>json</span>)))
             },
@@ -857,7 +857,7 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>make_client</span>() <span class='op'>-&gt;</span> <span class='ident'>Client</span> {
         <span class='kw'>let</span> <span class='ident'>hostname</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>env</span>::<span class='ident'>var</span>(<span class='string'>&quot;ES_HOST&quot;</span>) {
             <span class='prelude-val'>Ok</span>(<span class='ident'>val</span>) <span class='op'>=&gt;</span> <span class='ident'>val</span>,
-            <span class='prelude-val'>Err</span>(_)  <span class='op'>=&gt;</span> <span class='string'>&quot;localhost&quot;</span>.<span class='ident'>to_string</span>()
+            <span class='prelude-val'>Err</span>(_)  <span class='op'>=&gt;</span> <span class='string'>&quot;localhost&quot;</span>.<span class='ident'>to_owned</span>()
         };
         <span class='ident'>Client</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>hostname</span>, <span class='number'>9200</span>)
     }
@@ -871,13 +871,13 @@
     <span class='kw'>impl</span> <span class='ident'>TestDocument</span> {
         <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>() <span class='op'>-&gt;</span> <span class='ident'>TestDocument</span> {
             <span class='ident'>TestDocument</span> {
-                <span class='ident'>str_field</span>: <span class='string'>&quot;I am a test&quot;</span>.<span class='ident'>to_string</span>(),
+                <span class='ident'>str_field</span>: <span class='string'>&quot;I am a test&quot;</span>.<span class='ident'>to_owned</span>(),
                 <span class='ident'>int_field</span>: <span class='number'>1</span>
             }
         }
 
         <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_str_field</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>s</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>TestDocument</span> {
-            <span class='self'>self</span>.<span class='ident'>str_field</span> <span class='op'>=</span> <span class='ident'>s</span>.<span class='ident'>to_string</span>();
+            <span class='self'>self</span>.<span class='ident'>str_field</span> <span class='op'>=</span> <span class='ident'>s</span>.<span class='ident'>to_owned</span>();
             <span class='self'>self</span>
         }
 
@@ -890,8 +890,8 @@
     <span class='kw'>impl</span> <span class='ident'>ToJson</span> <span class='kw'>for</span> <span class='ident'>TestDocument</span> {
         <span class='kw'>fn</span> <span class='ident'>to_json</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Json</span> {
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>();
-            <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;str_field&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>str_field</span>.<span class='ident'>to_json</span>());
-            <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;int_field&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>int_field</span>.<span class='ident'>to_json</span>());
+            <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;str_field&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>str_field</span>.<span class='ident'>to_json</span>());
+            <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;int_field&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>int_field</span>.<span class='ident'>to_json</span>());
             <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>d</span>)
         }
     }
@@ -927,7 +927,7 @@
             <span class='kw'>let</span> <span class='ident'>result_wrapped</span> <span class='op'>=</span> <span class='ident'>client</span>
                 .<span class='ident'>index</span>(<span class='ident'>index_name</span>, <span class='string'>&quot;test_type&quot;</span>)
                 .<span class='ident'>with_doc</span>(<span class='kw-2'>&amp;</span><span class='ident'>TestDocument</span>::<span class='ident'>new</span>().<span class='ident'>with_int_field</span>(<span class='number'>1</span>))
-                .<span class='ident'>with_ttl</span>(<span class='kw-2'>&amp;</span><span class='number'>927500</span>)
+                .<span class='ident'>with_ttl</span>(<span class='number'>927500</span>)
                 .<span class='ident'>send</span>();
             <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;TEST RESULT: {:?}&quot;</span>, <span class='ident'>result_wrapped</span>);
             <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>result_wrapped</span>.<span class='ident'>unwrap</span>();
@@ -945,7 +945,7 @@
                 .<span class='ident'>index</span>(<span class='ident'>index_name</span>, <span class='string'>&quot;test_type&quot;</span>)
                 .<span class='ident'>with_doc</span>(<span class='kw-2'>&amp;</span><span class='ident'>TestDocument</span>::<span class='ident'>new</span>().<span class='ident'>with_int_field</span>(<span class='number'>2</span>))
                 .<span class='ident'>with_id</span>(<span class='string'>&quot;TEST_INDEXING_2&quot;</span>)
-                .<span class='ident'>with_op_type</span>(<span class='kw-2'>&amp;</span><span class='ident'>OpType</span>::<span class='ident'>Create</span>)
+                .<span class='ident'>with_op_type</span>(<span class='ident'>OpType</span>::<span class='ident'>Create</span>)
                 .<span class='ident'>send</span>();
             <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>result_wrapped</span>.<span class='ident'>unwrap</span>();
 
@@ -1051,7 +1051,7 @@
         <span class='kw'>let</span> <span class='ident'>doc_a</span> <span class='op'>=</span> <span class='ident'>client</span>
             .<span class='ident'>search_uri</span>()
             .<span class='ident'>with_indexes</span>(<span class='kw-2'>&amp;</span>[<span class='ident'>index_name</span>])
-            .<span class='ident'>with_query</span>(<span class='string'>&quot;A123&quot;</span>.<span class='ident'>to_string</span>())
+            .<span class='ident'>with_query</span>(<span class='string'>&quot;A123&quot;</span>)
             .<span class='ident'>send</span>()
             .<span class='ident'>unwrap</span>();
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='ident'>doc_a</span>.<span class='ident'>hits</span>.<span class='ident'>total</span>);
@@ -1059,7 +1059,7 @@
         <span class='kw'>let</span> <span class='ident'>doc_1</span> <span class='op'>=</span> <span class='ident'>client</span>
             .<span class='ident'>search_uri</span>()
             .<span class='ident'>with_indexes</span>(<span class='kw-2'>&amp;</span>[<span class='ident'>index_name</span>])
-            .<span class='ident'>with_query</span>(<span class='string'>&quot;str_field:1ABC&quot;</span>.<span class='ident'>to_string</span>())
+            .<span class='ident'>with_query</span>(<span class='string'>&quot;str_field:1ABC&quot;</span>)
             .<span class='ident'>send</span>()
             .<span class='ident'>unwrap</span>();
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='ident'>doc_1</span>.<span class='ident'>hits</span>.<span class='ident'>total</span>);
@@ -1067,7 +1067,7 @@
         <span class='kw'>let</span> <span class='ident'>limited_fields</span> <span class='op'>=</span> <span class='ident'>client</span>
             .<span class='ident'>search_uri</span>()
             .<span class='ident'>with_indexes</span>(<span class='kw-2'>&amp;</span>[<span class='ident'>index_name</span>])
-            .<span class='ident'>with_query</span>(<span class='string'>&quot;str_field:B456&quot;</span>.<span class='ident'>to_string</span>())
+            .<span class='ident'>with_query</span>(<span class='string'>&quot;str_field:B456&quot;</span>)
             .<span class='ident'>with_fields</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;int_field&quot;</span>])
             .<span class='ident'>send</span>()
             .<span class='ident'>unwrap</span>();

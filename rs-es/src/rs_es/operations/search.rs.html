@@ -1043,6 +1043,17 @@
 <span id="1001">1001</span>
 <span id="1002">1002</span>
 <span id="1003">1003</span>
+<span id="1004">1004</span>
+<span id="1005">1005</span>
+<span id="1006">1006</span>
+<span id="1007">1007</span>
+<span id="1008">1008</span>
+<span id="1009">1009</span>
+<span id="1010">1010</span>
+<span id="1011">1011</span>
+<span id="1012">1012</span>
+<span id="1013">1013</span>
+<span id="1014">1014</span>
 </pre><pre class='rust '>
 <span class='comment'>/*
  * Copyright 2015 Ben Ashford
@@ -1074,23 +1085,17 @@
 <span class='kw'>use</span> ::<span class='ident'>query</span>::{<span class='ident'>Filter</span>, <span class='ident'>Query</span>};
 <span class='kw'>use</span> ::<span class='ident'>units</span>::{<span class='ident'>DistanceType</span>, <span class='ident'>DistanceUnit</span>, <span class='ident'>Duration</span>, <span class='ident'>JsonVal</span>, <span class='ident'>Location</span>, <span class='ident'>OneOrMany</span>};
 <span class='kw'>use</span> ::<span class='ident'>util</span>::<span class='ident'>StrJoin</span>;
-<span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>common</span>::<span class='ident'>Options</span>;
+<span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>common</span>::{<span class='ident'>Options</span>, <span class='ident'>OptionVal</span>};
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>decode_json</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>format_indexes_and_types</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>format_query_string</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>ShardCountResult</span>;
 
+<span class='doccomment'>/// Representing a search-by-uri option</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SearchURIOperation</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='lifetime'>&#39;b</span><span class='op'>&gt;</span> {
-    <span class='doccomment'>/// The HTTP client</span>
     <span class='ident'>client</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Client</span>,
-
-    <span class='doccomment'>/// The indexes to which this query applies</span>
     <span class='ident'>indexes</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> [<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='ident'>str</span>],
-
-    <span class='doccomment'>/// The types to which this query applies</span>
     <span class='ident'>doc_types</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> [<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='ident'>str</span>],
-
-    <span class='doccomment'>/// Optional options</span>
     <span class='ident'>options</span>: <span class='ident'>Options</span><span class='op'>&lt;</span><span class='lifetime'>&#39;b</span><span class='op'>&gt;</span>
 }
 
@@ -1109,7 +1114,7 @@
             <span class='kw-2'>&amp;</span><span class='ident'>SearchType</span>::<span class='ident'>DFSQueryAndFetch</span>  <span class='op'>=&gt;</span> <span class='string'>&quot;dfs_query_and_fetch&quot;</span>,
             <span class='kw-2'>&amp;</span><span class='ident'>SearchType</span>::<span class='ident'>QueryThenFetch</span>    <span class='op'>=&gt;</span> <span class='string'>&quot;query_then_fetch&quot;</span>,
             <span class='kw-2'>&amp;</span><span class='ident'>SearchType</span>::<span class='ident'>QueryAndFetch</span>     <span class='op'>=&gt;</span> <span class='string'>&quot;query_and_fetch&quot;</span>
-        }.<span class='ident'>to_string</span>()
+        }.<span class='ident'>to_owned</span>()
     }
 }
 
@@ -1122,9 +1127,9 @@
 <span class='kw'>impl</span> <span class='ident'>ToString</span> <span class='kw'>for</span> <span class='ident'>Order</span> {
     <span class='kw'>fn</span> <span class='ident'>to_string</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
         <span class='kw'>match</span> <span class='self'>self</span> {
-            <span class='kw-2'>&amp;</span><span class='ident'>Order</span>::<span class='ident'>Asc</span> <span class='op'>=&gt;</span> <span class='string'>&quot;asc&quot;</span>.<span class='ident'>to_string</span>(),
-            <span class='kw-2'>&amp;</span><span class='ident'>Order</span>::<span class='ident'>Desc</span> <span class='op'>=&gt;</span> <span class='string'>&quot;desc&quot;</span>.<span class='ident'>to_string</span>()
-        }
+            <span class='kw-2'>&amp;</span><span class='ident'>Order</span>::<span class='ident'>Asc</span> <span class='op'>=&gt;</span> <span class='string'>&quot;asc&quot;</span>,
+            <span class='kw-2'>&amp;</span><span class='ident'>Order</span>::<span class='ident'>Desc</span> <span class='op'>=&gt;</span> <span class='string'>&quot;desc&quot;</span>
+        }.<span class='ident'>to_owned</span>()
     }
 }
 
@@ -1134,6 +1139,7 @@
     }
 }
 
+<span class='doccomment'>/// The (Sort mode option)[https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_sort_mode_option].</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Mode</span> {
     <span class='ident'>Min</span>,
     <span class='ident'>Max</span>,
@@ -1148,10 +1154,11 @@
             <span class='kw-2'>&amp;</span><span class='ident'>Mode</span>::<span class='ident'>Max</span> <span class='op'>=&gt;</span> <span class='string'>&quot;max&quot;</span>,
             <span class='kw-2'>&amp;</span><span class='ident'>Mode</span>::<span class='ident'>Sum</span> <span class='op'>=&gt;</span> <span class='string'>&quot;sum&quot;</span>,
             <span class='kw-2'>&amp;</span><span class='ident'>Mode</span>::<span class='ident'>Avg</span> <span class='op'>=&gt;</span> <span class='string'>&quot;avg&quot;</span>
-        }.<span class='ident'>to_string</span>())
+        }.<span class='ident'>to_owned</span>())
     }
 }
 
+<span class='doccomment'>/// Options for handling (missing values)[https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_missing_values]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Missing</span> {
     <span class='ident'>First</span>,
     <span class='ident'>Last</span>,
@@ -1161,13 +1168,15 @@
 <span class='kw'>impl</span> <span class='ident'>ToJson</span> <span class='kw'>for</span> <span class='ident'>Missing</span> {
     <span class='kw'>fn</span> <span class='ident'>to_json</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Json</span> {
         <span class='ident'>Json</span>::<span class='ident'>String</span>(<span class='kw'>match</span> <span class='self'>self</span> {
-            <span class='kw-2'>&amp;</span><span class='ident'>Missing</span>::<span class='ident'>First</span>         <span class='op'>=&gt;</span> <span class='string'>&quot;_first&quot;</span>.<span class='ident'>to_string</span>(),
-            <span class='kw-2'>&amp;</span><span class='ident'>Missing</span>::<span class='ident'>Last</span>          <span class='op'>=&gt;</span> <span class='string'>&quot;_last&quot;</span>.<span class='ident'>to_string</span>(),
+            <span class='kw-2'>&amp;</span><span class='ident'>Missing</span>::<span class='ident'>First</span>         <span class='op'>=&gt;</span> <span class='string'>&quot;_first&quot;</span>.<span class='ident'>to_owned</span>(),
+            <span class='kw-2'>&amp;</span><span class='ident'>Missing</span>::<span class='ident'>Last</span>          <span class='op'>=&gt;</span> <span class='string'>&quot;_last&quot;</span>.<span class='ident'>to_owned</span>(),
             <span class='kw-2'>&amp;</span><span class='ident'>Missing</span>::<span class='ident'>Custom</span>(<span class='kw-2'>ref</span> <span class='ident'>s</span>) <span class='op'>=&gt;</span> <span class='ident'>s</span>.<span class='ident'>clone</span>()
         })
     }
 }
 
+<span class='doccomment'>/// Convert anything that can be converted into a `String` into a</span>
+<span class='doccomment'>/// `Missing::Custom` value</span>
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>S</span>: <span class='ident'>Into</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;&gt;</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>S</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>Missing</span> {
     <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>from</span>: <span class='ident'>S</span>) <span class='op'>-&gt;</span> <span class='ident'>Missing</span> {
         <span class='ident'>Missing</span>::<span class='ident'>Custom</span>(<span class='ident'>from</span>.<span class='ident'>into</span>())
@@ -1187,6 +1196,7 @@
 }
 
 <span class='kw'>impl</span> <span class='ident'>SortField</span> {
+    <span class='doccomment'>/// Create a `SortField` for a given `field` and `order`</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span><span class='op'>&lt;</span><span class='ident'>S</span>: <span class='ident'>Into</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;&gt;</span>(<span class='ident'>field</span>: <span class='ident'>S</span>, <span class='ident'>order</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Order</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>SortField</span> {
         <span class='ident'>SortField</span> {
             <span class='ident'>field</span>:         <span class='ident'>field</span>.<span class='ident'>into</span>(),
@@ -1217,6 +1227,8 @@
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>order</span> {
             <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='ident'>order</span>) <span class='op'>=&gt;</span> {
                 <span class='ident'>s</span>.<span class='ident'>push_str</span>(<span class='string'>&quot;:&quot;</span>);
+                <span class='comment'>// TODO - find less clumsy way of implementing the following</span>
+                <span class='comment'>// line</span>
                 <span class='ident'>s</span>.<span class='ident'>push_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>order</span>.<span class='ident'>to_string</span>());
             },
             <span class='prelude-val'>None</span>            <span class='op'>=&gt;</span> ()
@@ -1298,7 +1310,7 @@
         <span class='macro'>optional_add</span><span class='macro'>!</span>(<span class='ident'>inner</span>, <span class='self'>self</span>.<span class='ident'>mode</span>, <span class='string'>&quot;mode&quot;</span>);
         <span class='macro'>optional_add</span><span class='macro'>!</span>(<span class='ident'>inner</span>, <span class='self'>self</span>.<span class='ident'>distance_type</span>, <span class='string'>&quot;distance_type&quot;</span>);
 
-        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;_geo_distance&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>inner</span>));
+        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;_geo_distance&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>inner</span>));
         <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>d</span>)
     }
 }
@@ -1344,11 +1356,11 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>();
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>inner</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>();
 
-        <span class='ident'>inner</span>.<span class='ident'>insert</span>(<span class='string'>&quot;script&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>script</span>.<span class='ident'>to_json</span>());
-        <span class='ident'>inner</span>.<span class='ident'>insert</span>(<span class='string'>&quot;type&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>script_type</span>.<span class='ident'>to_json</span>());
-        <span class='ident'>inner</span>.<span class='ident'>insert</span>(<span class='string'>&quot;params&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>params</span>.<span class='ident'>to_json</span>());
+        <span class='ident'>inner</span>.<span class='ident'>insert</span>(<span class='string'>&quot;script&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>script</span>.<span class='ident'>to_json</span>());
+        <span class='ident'>inner</span>.<span class='ident'>insert</span>(<span class='string'>&quot;type&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>script_type</span>.<span class='ident'>to_json</span>());
+        <span class='ident'>inner</span>.<span class='ident'>insert</span>(<span class='string'>&quot;params&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>params</span>.<span class='ident'>to_json</span>());
 
-        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;_script&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>inner</span>));
+        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;_script&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>inner</span>));
         <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>d</span>)
     }
 }
@@ -1420,9 +1432,19 @@
     }
 }
 
-<span class='kw'>impl</span> <span class='ident'>ToString</span> <span class='kw'>for</span> <span class='ident'>Sort</span> {
-    <span class='kw'>fn</span> <span class='ident'>to_string</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-        <span class='self'>self</span>.<span class='ident'>fields</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>f</span><span class='op'>|</span> <span class='ident'>f</span>.<span class='ident'>to_string</span>()).<span class='ident'>join</span>(<span class='string'>&quot;,&quot;</span>)
+<span class='doccomment'>/// Conversion of a `Sort` into an `OptionVal` for use in search-by-URI queries</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// ```</span>
+<span class='doccomment'>/// use rs_es::operations::common::OptionVal;</span>
+<span class='doccomment'>/// use rs_es::operations::search::{Sort, SortField, Order};</span>
+<span class='doccomment'>/// let sort = Sort::new(vec![SortField::new(&quot;a&quot;, Some(Order::Asc)).build(),</span>
+<span class='doccomment'>///                                     SortField::new(&quot;b&quot;, None).build()]);</span>
+<span class='doccomment'>/// let op_val:OptionVal = (&amp;sort).into();</span>
+<span class='doccomment'>/// assert_eq!(&quot;a:asc,b&quot;, op_val.0);</span>
+<span class='doccomment'>/// ```</span>
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Sort</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>OptionVal</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>from</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Sort</span>) <span class='op'>-&gt;</span> <span class='ident'>OptionVal</span> {
+        <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>fields</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>f</span><span class='op'>|</span> <span class='ident'>f</span>.<span class='ident'>to_string</span>()).<span class='ident'>join</span>(<span class='string'>&quot;,&quot;</span>))
     }
 }
 
@@ -1453,7 +1475,7 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_query</span><span class='op'>&lt;</span><span class='ident'>S</span>: <span class='ident'>Into</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>qs</span>: <span class='ident'>S</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='kw-2'>mut</span> <span class='kw'>Self</span> {
-        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>((<span class='string'>&quot;q&quot;</span>, <span class='ident'>qs</span>.<span class='ident'>into</span>()));
+        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>(<span class='string'>&quot;q&quot;</span>, <span class='ident'>qs</span>.<span class='ident'>into</span>());
         <span class='self'>self</span>
     }
 
@@ -1475,7 +1497,7 @@
     <span class='macro'>add_option</span><span class='macro'>!</span>(<span class='ident'>with_search_type</span>, <span class='string'>&quot;search_type&quot;</span>);
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_fields</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>fields</span>: <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>str</span>]) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='kw-2'>mut</span> <span class='kw'>Self</span> {
-        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>((<span class='string'>&quot;fields&quot;</span>, <span class='ident'>fields</span>.<span class='ident'>iter</span>().<span class='ident'>join</span>(<span class='string'>&quot;,&quot;</span>)));
+        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>(<span class='string'>&quot;fields&quot;</span>, <span class='ident'>fields</span>.<span class='ident'>iter</span>().<span class='ident'>join</span>(<span class='string'>&quot;,&quot;</span>));
         <span class='self'>self</span>
     }
 
@@ -1525,8 +1547,8 @@
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>ToJson</span> <span class='kw'>for</span> <span class='ident'>SearchQueryOperationBody</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>to_json</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Json</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>();
-        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;from&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>from</span>.<span class='ident'>to_json</span>());
-        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;size&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>size</span>.<span class='ident'>to_json</span>());
+        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;from&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>from</span>.<span class='ident'>to_json</span>());
+        <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;size&quot;</span>.<span class='ident'>to_owned</span>(), <span class='self'>self</span>.<span class='ident'>size</span>.<span class='ident'>to_json</span>());
         <span class='macro'>optional_add</span><span class='macro'>!</span>(<span class='ident'>d</span>, <span class='self'>self</span>.<span class='ident'>query</span>, <span class='string'>&quot;query&quot;</span>);
         <span class='macro'>optional_add</span><span class='macro'>!</span>(<span class='ident'>d</span>, <span class='self'>self</span>.<span class='ident'>timeout</span>, <span class='string'>&quot;timeout&quot;</span>);
         <span class='macro'>optional_add</span><span class='macro'>!</span>(<span class='ident'>d</span>, <span class='self'>self</span>.<span class='ident'>terminate_after</span>, <span class='string'>&quot;terminate_after&quot;</span>);
@@ -1649,8 +1671,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>scan</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>scroll</span>: <span class='ident'>Duration</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>ScanResult</span>, <span class='ident'>EsError</span><span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>((<span class='string'>&quot;search_type&quot;</span>, <span class='string'>&quot;scan&quot;</span>.<span class='ident'>to_string</span>()));
-        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>((<span class='string'>&quot;scroll&quot;</span>, <span class='ident'>scroll</span>.<span class='ident'>to_string</span>()));
+        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>(<span class='string'>&quot;search_type&quot;</span>, <span class='string'>&quot;scan&quot;</span>);
+        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>push</span>(<span class='string'>&quot;scroll&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>scroll</span>);
         <span class='kw'>let</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;/{}/_search{}&quot;</span>,
                           <span class='ident'>format_indexes_and_types</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>indexes</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>doc_types</span>),
                           <span class='ident'>format_query_string</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>options</span>));
@@ -1678,7 +1700,7 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>source</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Decodable</span><span class='op'>&gt;</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>EsError</span><span class='op'>&gt;</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>source</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>source</span>) <span class='op'>=&gt;</span> <span class='ident'>decode_json</span>(<span class='ident'>source</span>),
-            <span class='prelude-val'>None</span>         <span class='op'>=&gt;</span> <span class='prelude-val'>Err</span>(<span class='ident'>EsError</span>::<span class='ident'>EsError</span>(<span class='string'>&quot;No source field&quot;</span>.<span class='ident'>to_string</span>()))
+            <span class='prelude-val'>None</span>         <span class='op'>=&gt;</span> <span class='prelude-val'>Err</span>(<span class='ident'>EsError</span>::<span class='ident'>EsError</span>(<span class='string'>&quot;No source field&quot;</span>.<span class='ident'>to_owned</span>()))
         }
     }
 }
@@ -1999,8 +2021,8 @@
                 .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>doc</span>:<span class='ident'>TestDocument</span><span class='op'>|</span> <span class='ident'>doc</span>.<span class='ident'>str_field</span>)
                 .<span class='ident'>collect</span>();
 
-            <span class='kw'>let</span> <span class='ident'>expected_result_str</span>:<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> [<span class='string'>&quot;A&quot;</span>, <span class='string'>&quot;B&quot;</span>, <span class='string'>&quot;C&quot;</span>].<span class='ident'>iter</span>()
-                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>.<span class='ident'>to_string</span>())
+            <span class='kw'>let</span> <span class='ident'>expected_result_str</span>:<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='string'>&quot;A&quot;</span>, <span class='string'>&quot;B&quot;</span>, <span class='string'>&quot;C&quot;</span>].<span class='ident'>into_iter</span>()
+                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>.<span class='ident'>to_owned</span>())
                 .<span class='ident'>collect</span>();
 
             <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>expected_result_str</span>, <span class='ident'>result_str</span>);
@@ -2018,8 +2040,8 @@
                 .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>doc</span>:<span class='ident'>TestDocument</span><span class='op'>|</span> <span class='ident'>doc</span>.<span class='ident'>str_field</span>)
                 .<span class='ident'>collect</span>();
 
-            <span class='kw'>let</span> <span class='ident'>expected_result_str</span>:<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> [<span class='string'>&quot;A&quot;</span>, <span class='string'>&quot;B&quot;</span>, <span class='string'>&quot;C&quot;</span>].<span class='ident'>iter</span>()
-                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>.<span class='ident'>to_string</span>())
+            <span class='kw'>let</span> <span class='ident'>expected_result_str</span>:<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='string'>&quot;A&quot;</span>, <span class='string'>&quot;B&quot;</span>, <span class='string'>&quot;C&quot;</span>].<span class='ident'>into_iter</span>()
+                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>.<span class='ident'>to_owned</span>())
                 .<span class='ident'>collect</span>();
 
             <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>expected_result_str</span>,
@@ -2038,8 +2060,8 @@
                 .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>doc</span>:<span class='ident'>TestDocument</span><span class='op'>|</span> <span class='ident'>doc</span>.<span class='ident'>str_field</span>)
                 .<span class='ident'>collect</span>();
 
-            <span class='kw'>let</span> <span class='ident'>expected_result_str</span>:<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> [<span class='string'>&quot;C&quot;</span>, <span class='string'>&quot;B&quot;</span>, <span class='string'>&quot;A&quot;</span>].<span class='ident'>iter</span>()
-                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>.<span class='ident'>to_string</span>())
+            <span class='kw'>let</span> <span class='ident'>expected_result_str</span>:<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='string'>&quot;C&quot;</span>, <span class='string'>&quot;B&quot;</span>, <span class='string'>&quot;A&quot;</span>].<span class='ident'>into_iter</span>()
+                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>.<span class='ident'>to_owned</span>())
                 .<span class='ident'>collect</span>();
 
             <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>expected_result_str</span>,

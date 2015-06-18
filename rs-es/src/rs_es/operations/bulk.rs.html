@@ -473,7 +473,7 @@
 <span class='kw'>use</span> ::<span class='ident'>error</span>::<span class='ident'>EsError</span>;
 <span class='kw'>use</span> ::<span class='ident'>units</span>::<span class='ident'>Duration</span>;
 
-<span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>common</span>::{<span class='ident'>Options</span>, <span class='ident'>VersionType</span>};
+<span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>common</span>::{<span class='ident'>Options</span>, <span class='ident'>OptionVal</span>, <span class='ident'>VersionType</span>};
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>format_query_string</span>;
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ActionSource</span> {
@@ -550,7 +550,7 @@
             <span class='ident'>ActionType</span>::<span class='ident'>Create</span> <span class='op'>=&gt;</span> <span class='string'>&quot;create&quot;</span>,
             <span class='ident'>ActionType</span>::<span class='ident'>Delete</span> <span class='op'>=&gt;</span> <span class='string'>&quot;delete&quot;</span>,
             <span class='ident'>ActionType</span>::<span class='ident'>Update</span> <span class='op'>=&gt;</span> <span class='string'>&quot;update&quot;</span>
-        }.<span class='ident'>to_string</span>()
+        }.<span class='ident'>to_owned</span>()
     }
 }
 

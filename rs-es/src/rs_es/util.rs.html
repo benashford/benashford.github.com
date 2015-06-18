@@ -191,7 +191,7 @@
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>optional_add</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>map</span>:<span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>sn</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>field</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>val</span>: <span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ex</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> {
         <span class='kw'>match</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>sn</span> {
-            <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>val</span>) <span class='op'>=&gt;</span> { <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>map</span>.<span class='ident'>insert</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>field</span>.<span class='ident'>to_string</span>(), <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ex</span>); }
+            <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>val</span>) <span class='op'>=&gt;</span> { <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>map</span>.<span class='ident'>insert</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>field</span>.<span class='ident'>to_owned</span>(), <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ex</span>); }
             _              <span class='op'>=&gt;</span> ()
         }
     };
@@ -209,7 +209,7 @@
 
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>get_json_string</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>r</span>:<span class='ident'>ident</span>,<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> {
-        <span class='macro'>get_json_thing</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>r</span>,<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>,<span class='ident'>as_string</span>).<span class='ident'>to_string</span>()
+        <span class='macro'>get_json_thing</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>r</span>,<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>,<span class='ident'>as_string</span>).<span class='ident'>to_owned</span>()
     }
 }
 
