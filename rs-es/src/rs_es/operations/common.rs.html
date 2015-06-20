@@ -184,6 +184,9 @@
 <span id="142">142</span>
 <span id="143">143</span>
 <span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
 </pre><pre class='rust '>
 <span class='comment'>/*
  * Copyright 2015 Ben Ashford
@@ -218,7 +221,10 @@
 
 <span class='doccomment'>/// Basic types have conversions to `OptionVal`</span>
 <span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>String</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>));
+<span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>i32</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>to_string</span>()));
 <span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>i64</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>to_string</span>()));
+<span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>u32</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>to_string</span>()));
+<span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>u64</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>to_string</span>()));
 <span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>bool</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>to_string</span>()));
 
 <span class='doccomment'>/// Every ES operation has a set of options</span>

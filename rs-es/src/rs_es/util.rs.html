@@ -164,6 +164,12 @@
 <span id="122">122</span>
 <span id="123">123</span>
 <span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
 </pre><pre class='rust '>
 <span class='comment'>/*
  * Copyright 2015 Ben Ashford
@@ -203,7 +209,13 @@
 <span class='comment'>// Macros to read values from Json structs</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>get_json_thing</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>r</span>:<span class='ident'>ident</span>,<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>:<span class='ident'>expr</span>,<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>:<span class='ident'>ident</span>) <span class='op'>=&gt;</span> {
-        <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>r</span>.<span class='ident'>find</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>).<span class='ident'>unwrap</span>().<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>().<span class='ident'>unwrap</span>()
+        <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>r</span>.<span class='ident'>find</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>)
+            .<span class='ident'>expect</span>(<span class='macro'>concat</span><span class='macro'>!</span>(<span class='string'>&quot;No field &#39;&quot;</span>, <span class='macro'>stringify</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>), <span class='string'>&quot;&#39;&quot;</span>))
+            .<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>()
+            .<span class='ident'>expect</span>(<span class='macro'>concat</span><span class='macro'>!</span>(<span class='string'>&quot;Field &#39;&quot;</span>,
+                            <span class='macro'>stringify</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>f</span>),
+                            <span class='string'>&quot;&#39; is not of type &quot;</span>,
+                            <span class='macro'>stringify</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>)))
     }
 }
 

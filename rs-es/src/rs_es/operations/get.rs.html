@@ -185,6 +185,9 @@
 <span id="143">143</span>
 <span id="144">144</span>
 <span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
 </pre><pre class='rust '>
 <span class='comment'>/*
  * Copyright 2015 Ben Ashford
@@ -281,17 +284,18 @@
     <span class='macro'>add_option</span><span class='macro'>!</span>(<span class='ident'>with_preference</span>, <span class='string'>&quot;preference&quot;</span>);
     <span class='macro'>add_option</span><span class='macro'>!</span>(<span class='ident'>with_refresh</span>, <span class='string'>&quot;refresh&quot;</span>);
     <span class='macro'>add_option</span><span class='macro'>!</span>(<span class='ident'>with_version</span>, <span class='string'>&quot;version&quot;</span>);
+    <span class='macro'>add_option</span><span class='macro'>!</span>(<span class='ident'>with_version_type</span>, <span class='string'>&quot;version_type&quot;</span>);
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>send</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>GetResult</span>, <span class='ident'>EsError</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;/{}/{}/{}{}&quot;</span>,
                           <span class='self'>self</span>.<span class='ident'>index</span>,
-                          <span class='self'>self</span>.<span class='ident'>doc_type</span>.<span class='ident'>unwrap</span>(),
+                          <span class='self'>self</span>.<span class='ident'>doc_type</span>.<span class='ident'>expect</span>(<span class='string'>&quot;No doc_type specified&quot;</span>),
                           <span class='self'>self</span>.<span class='ident'>id</span>,
                           <span class='ident'>format_query_string</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>options</span>));
         <span class='comment'>// We&#39;re ignoring status_code as all valid codes should return a value,</span>
         <span class='comment'>// so anything else is an error.</span>
         <span class='kw'>let</span> (_, <span class='ident'>result</span>) <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>client</span>.<span class='ident'>get_op</span>(<span class='kw-2'>&amp;</span><span class='ident'>url</span>));
-        <span class='prelude-val'>Ok</span>(<span class='ident'>GetResult</span>::<span class='ident'>from</span>(<span class='kw-2'>&amp;</span><span class='ident'>result</span>.<span class='ident'>unwrap</span>()))
+        <span class='prelude-val'>Ok</span>(<span class='ident'>GetResult</span>::<span class='ident'>from</span>(<span class='kw-2'>&amp;</span><span class='ident'>result</span>.<span class='ident'>expect</span>(<span class='string'>&quot;No Json payload&quot;</span>)))
     }
 }
 
@@ -301,7 +305,7 @@
     <span class='kw'>pub</span> <span class='ident'>index</span>:    <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>doc_type</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>id</span>:       <span class='ident'>String</span>,
-    <span class='kw'>pub</span> <span class='ident'>version</span>:  <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i64</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>version</span>:  <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>found</span>:    <span class='ident'>bool</span>,
     <span class='kw'>pub</span> <span class='ident'>source</span>:   <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Json</span><span class='op'>&gt;</span>
 }
@@ -325,7 +329,9 @@
             <span class='ident'>index</span>:    <span class='macro'>get_json_string</span><span class='macro'>!</span>(<span class='ident'>r</span>, <span class='string'>&quot;_index&quot;</span>),
             <span class='ident'>doc_type</span>: <span class='macro'>get_json_string</span><span class='macro'>!</span>(<span class='ident'>r</span>, <span class='string'>&quot;_type&quot;</span>),
             <span class='ident'>id</span>:       <span class='macro'>get_json_string</span><span class='macro'>!</span>(<span class='ident'>r</span>, <span class='string'>&quot;_id&quot;</span>),
-            <span class='ident'>version</span>:  <span class='ident'>r</span>.<span class='ident'>search</span>(<span class='string'>&quot;_version&quot;</span>).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='ident'>v</span>.<span class='ident'>as_i64</span>().<span class='ident'>unwrap</span>()),
+            <span class='ident'>version</span>:  <span class='ident'>r</span>.<span class='ident'>search</span>(<span class='string'>&quot;_version&quot;</span>).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> {
+                <span class='ident'>v</span>.<span class='ident'>as_u64</span>().<span class='ident'>expect</span>(<span class='string'>&quot;Field &#39;_search&#39; not an integer&quot;</span>)
+            }),
             <span class='ident'>found</span>:    <span class='macro'>get_json_bool</span><span class='macro'>!</span>(<span class='ident'>r</span>, <span class='string'>&quot;found&quot;</span>),
             <span class='ident'>source</span>:   <span class='ident'>r</span>.<span class='ident'>search</span>(<span class='string'>&quot;_source&quot;</span>).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>source</span><span class='op'>|</span> <span class='ident'>source</span>.<span class='ident'>clone</span>())
         }
