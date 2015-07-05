@@ -41,9 +41,11 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>rs_es</a>::<wbr><a class='mod' href=''>units</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-32632' href='../../src/rs_es/units.rs.html#17-233'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>rs_es</a>::<wbr><a class='mod' href=''>units</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-52744' class='srclink' href='../../src/rs_es/units.rs.html#17-305' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Various re-occuring types that are used by the ElasticSearch API.</p>
 
 <p>E.g. <code>Duration</code></p>
@@ -52,54 +54,79 @@
 appropriate place, e.g. types only used by the Query DSL are in <code>query.rs</code></p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Duration.html'
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Duration.html'
                                title='rs_es::units::Duration'>Duration</a></td>
-                        <td class='docblock short'><p>A time-period unit, will be formatted into the ElasticSearch standard format</p>
-</td>
+                        <td class='docblock short'>
+                             <p>A time-period unit, will be formatted into the ElasticSearch standard format</p>
+
+                        </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.DistanceType.html'
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.DistanceType.html'
                                title='rs_es::units::DistanceType'>DistanceType</a></td>
-                        <td class='docblock short'><p>DistanceType</p>
-</td>
+                        <td class='docblock short'>
+                             <p>DistanceType</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.DistanceUnit.html'
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.DistanceUnit.html'
                                title='rs_es::units::DistanceUnit'>DistanceUnit</a></td>
-                        <td class='docblock short'><p>DistanceUnit</p>
-</td>
+                        <td class='docblock short'>
+                             <p>DistanceUnit</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.DurationUnit.html'
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.DurationUnit.html'
                                title='rs_es::units::DurationUnit'>DurationUnit</a></td>
-                        <td class='docblock short'><p>The units by which duration is measured.</p>
-</td>
+                        <td class='docblock short'>
+                             <p>The units by which duration is measured.</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.JsonVal.html'
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.GeoBox.html'
+                               title='rs_es::units::GeoBox'>GeoBox</a></td>
+                        <td class='docblock short'>
+                             <p>Representing a geographic box</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.JsonVal.html'
                                title='rs_es::units::JsonVal'>JsonVal</a></td>
-                        <td class='docblock short'></td>
+                        <td class='docblock short'>
+                             <p>A Json value that&#39;s not a structural thing - i.e. just String, i64 and f64,
+no array or object</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Location.html'
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Location.html'
                                title='rs_es::units::Location'>Location</a></td>
-                        <td class='docblock short'><p>Representing a geographic location</p>
-</td>
+                        <td class='docblock short'>
+                             <p>Representing a geographic location</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.OneOrMany.html'
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.OneOrMany.html'
                                title='rs_es::units::OneOrMany'>OneOrMany</a></td>
-                        <td class='docblock short'><p>A non-specific holder for an option which can either be a single thing, or
+                        <td class='docblock short'>
+                             <p>A non-specific holder for an option which can either be a single thing, or
 multiple instances of that thing.</p>
-</td>
+
+                        </td>
                     </tr>
                 </table></section>
     <section id='search' class="content hidden"></section>
@@ -133,6 +160,10 @@ multiple instances of that thing.</p>
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

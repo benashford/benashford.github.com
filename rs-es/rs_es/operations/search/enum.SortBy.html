@@ -41,16 +41,18 @@
     </nav>
 
     <section id='main' class="content enum">
-<h1 class='fqn'><span class='in-band'>Enum <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>search</a>::<wbr><a class='enum' href=''>SortBy</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-6850' href='../../../src/rs_es/operations/search.rs.html#310-314'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Enum <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>search</a>::<wbr><a class='enum' href=''>SortBy</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-21183' class='srclink' href='../../../src/rs_es/operations/search/mod.rs.html#315-319' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum SortBy {
     Field(<a class='struct' href='../../../rs_es/operations/search/struct.SortField.html' title='rs_es::operations::search::SortField'>SortField</a>),
     Distance(<a class='struct' href='../../../rs_es/operations/search/struct.GeoDistance.html' title='rs_es::operations::search::GeoDistance'>GeoDistance</a>),
     Script(<a class='struct' href='../../../rs_es/operations/search/struct.Script.html' title='rs_es::operations::search::Script'>Script</a>),
 }</pre><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.Field'><a class='stability Unmarked' title='No stability level'></a><code>Field</code></td><td></td></tr><tr><td id='variant.Distance'><a class='stability Unmarked' title='No stability level'></a><code>Distance</code></td><td></td></tr><tr><td id='variant.Script'><a class='stability Unmarked' title='No stability level'></a><code>Script</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html' title='collections::string::ToString'>ToString</a> for <a class='enum' href='../../../rs_es/operations/search/enum.SortBy.html' title='rs_es::operations::search::SortBy'>SortBy</a></code></h3><div class='impl-items'><h4 id='method.to_string' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html#method.to_string' class='fnname'>to_string</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
-</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='enum' href='../../../rs_es/operations/search/enum.SortBy.html' title='rs_es::operations::search::SortBy'>SortBy</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
+<table><tr><td id='variant.Field'><code>Field</code></td><td></td></tr><tr><td id='variant.Distance'><code>Distance</code></td><td></td></tr><tr><td id='variant.Script'><code>Script</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html' title='collections::string::ToString'>ToString</a> for <a class='enum' href='../../../rs_es/operations/search/enum.SortBy.html' title='rs_es::operations::search::SortBy'>SortBy</a></code></h3><div class='impl-items'><h4 id='method.to_string' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html#method.to_string' class='fnname'>to_string</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='enum' href='../../../rs_es/operations/search/enum.SortBy.html' title='rs_es::operations::search::SortBy'>SortBy</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -83,6 +85,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `aggregations` mod in crate `rs_es`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, aggregations">
+
+    <title>rs_es::operations::search::aggregations - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../../index.html'>rs_es</a>::<wbr><a href='../../index.html'>operations</a>::<wbr><a href='../index.html'>search</a></p><script>window.sidebarCurrent = {name: 'aggregations', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../../index.html'>rs_es</a>::<wbr><a href='../../index.html'>operations</a>::<wbr><a href='../index.html'>search</a>::<wbr><a class='mod' href=''>aggregations</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-5885' class='srclink' href='../../../../src/rs_es/operations/search/aggregations.rs.html#17-2223' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Implementation of ElasticSearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html">aggregations</a></p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Aggregations.html'
+                               title='rs_es::operations::search::aggregations::Aggregations'>Aggregations</a></td>
+                        <td class='docblock short'>
+                             <p>The set of aggregations</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.AggregationsResult.html'
+                               title='rs_es::operations::search::aggregations::AggregationsResult'>AggregationsResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Avg.html'
+                               title='rs_es::operations::search::aggregations::Avg'>Avg</a></td>
+                        <td class='docblock short'>
+                             <p>Avg aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.AvgResult.html'
+                               title='rs_es::operations::search::aggregations::AvgResult'>AvgResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Bounds.html'
+                               title='rs_es::operations::search::aggregations::Bounds'>Bounds</a></td>
+                        <td class='docblock short'>
+                             <p>Used by the <code>ExtendedStatsResult</code></p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Cardinality.html'
+                               title='rs_es::operations::search::aggregations::Cardinality'>Cardinality</a></td>
+                        <td class='docblock short'>
+                             <p>Cardinality aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CardinalityResult.html'
+                               title='rs_es::operations::search::aggregations::CardinalityResult'>CardinalityResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Children.html'
+                               title='rs_es::operations::search::aggregations::Children'>Children</a></td>
+                        <td class='docblock short'>
+                             <p>Children aggregation - sub-aggregations run against the child document</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ChildrenResult.html'
+                               title='rs_es::operations::search::aggregations::ChildrenResult'>ChildrenResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateHistogram.html'
+                               title='rs_es::operations::search::aggregations::DateHistogram'>DateHistogram</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateHistogramBucketResult.html'
+                               title='rs_es::operations::search::aggregations::DateHistogramBucketResult'>DateHistogramBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateHistogramResult.html'
+                               title='rs_es::operations::search::aggregations::DateHistogramResult'>DateHistogramResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateRange.html'
+                               title='rs_es::operations::search::aggregations::DateRange'>DateRange</a></td>
+                        <td class='docblock short'>
+                             <p>Date range aggregation.  See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-daterange-aggregation.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-daterange-aggregation.html</a></p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateRangeBucketResult.html'
+                               title='rs_es::operations::search::aggregations::DateRangeBucketResult'>DateRangeBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateRangeInst.html'
+                               title='rs_es::operations::search::aggregations::DateRangeInst'>DateRangeInst</a></td>
+                        <td class='docblock short'>
+                             <p>A specific element of a range for a <code>DateRange</code> aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.DateRangeResult.html'
+                               title='rs_es::operations::search::aggregations::DateRangeResult'>DateRangeResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ExtendedBounds.html'
+                               title='rs_es::operations::search::aggregations::ExtendedBounds'>ExtendedBounds</a></td>
+                        <td class='docblock short'>
+                             <p>Histogram aggregation.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ExtendedStats.html'
+                               title='rs_es::operations::search::aggregations::ExtendedStats'>ExtendedStats</a></td>
+                        <td class='docblock short'>
+                             <p>Extended stats aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ExtendedStatsResult.html'
+                               title='rs_es::operations::search::aggregations::ExtendedStatsResult'>ExtendedStatsResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Filter.html'
+                               title='rs_es::operations::search::aggregations::Filter'>Filter</a></td>
+                        <td class='docblock short'>
+                             <p>Filter aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FilterResult.html'
+                               title='rs_es::operations::search::aggregations::FilterResult'>FilterResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Filters.html'
+                               title='rs_es::operations::search::aggregations::Filters'>Filters</a></td>
+                        <td class='docblock short'>
+                             <p>Filters aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FiltersBucketResult.html'
+                               title='rs_es::operations::search::aggregations::FiltersBucketResult'>FiltersBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FiltersResult.html'
+                               title='rs_es::operations::search::aggregations::FiltersResult'>FiltersResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoBounds.html'
+                               title='rs_es::operations::search::aggregations::GeoBounds'>GeoBounds</a></td>
+                        <td class='docblock short'>
+                             <p>Geo Bounds aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoBoundsResult.html'
+                               title='rs_es::operations::search::aggregations::GeoBoundsResult'>GeoBoundsResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoDistance.html'
+                               title='rs_es::operations::search::aggregations::GeoDistance'>GeoDistance</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoDistanceBucketResult.html'
+                               title='rs_es::operations::search::aggregations::GeoDistanceBucketResult'>GeoDistanceBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoDistanceInst.html'
+                               title='rs_es::operations::search::aggregations::GeoDistanceInst'>GeoDistanceInst</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoDistanceResult.html'
+                               title='rs_es::operations::search::aggregations::GeoDistanceResult'>GeoDistanceResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoHash.html'
+                               title='rs_es::operations::search::aggregations::GeoHash'>GeoHash</a></td>
+                        <td class='docblock short'>
+                             <p>Geohash aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoHashBucketResult.html'
+                               title='rs_es::operations::search::aggregations::GeoHashBucketResult'>GeoHashBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GeoHashResult.html'
+                               title='rs_es::operations::search::aggregations::GeoHashResult'>GeoHashResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Global.html'
+                               title='rs_es::operations::search::aggregations::Global'>Global</a></td>
+                        <td class='docblock short'>
+                             <p>Global aggregation, defines a single global bucket.  Can only be used as a
+top-level aggregation.  See: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-global-aggregation.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-global-aggregation.html</a></p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GlobalResult.html'
+                               title='rs_es::operations::search::aggregations::GlobalResult'>GlobalResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Histogram.html'
+                               title='rs_es::operations::search::aggregations::Histogram'>Histogram</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.HistogramBucketResult.html'
+                               title='rs_es::operations::search::aggregations::HistogramBucketResult'>HistogramBucketResult</a></td>
+                        <td class='docblock short'>
+                             <p>Used for histogram results</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.HistogramResult.html'
+                               title='rs_es::operations::search::aggregations::HistogramResult'>HistogramResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Max.html'
+                               title='rs_es::operations::search::aggregations::Max'>Max</a></td>
+                        <td class='docblock short'>
+                             <p>Max aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MaxResult.html'
+                               title='rs_es::operations::search::aggregations::MaxResult'>MaxResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Min.html'
+                               title='rs_es::operations::search::aggregations::Min'>Min</a></td>
+                        <td class='docblock short'>
+                             <p>Min aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MinResult.html'
+                               title='rs_es::operations::search::aggregations::MinResult'>MinResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Missing.html'
+                               title='rs_es::operations::search::aggregations::Missing'>Missing</a></td>
+                        <td class='docblock short'>
+                             <p>Missing aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MissingResult.html'
+                               title='rs_es::operations::search::aggregations::MissingResult'>MissingResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Nested.html'
+                               title='rs_es::operations::search::aggregations::Nested'>Nested</a></td>
+                        <td class='docblock short'>
+                             <p>Nested aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.NestedResult.html'
+                               title='rs_es::operations::search::aggregations::NestedResult'>NestedResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Order.html'
+                               title='rs_es::operations::search::aggregations::Order'>Order</a></td>
+                        <td class='docblock short'>
+                             <p>Used to define the ordering of buckets in a some bucketted aggregations</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.PercentileRanks.html'
+                               title='rs_es::operations::search::aggregations::PercentileRanks'>PercentileRanks</a></td>
+                        <td class='docblock short'>
+                             <p>Percentile Ranks aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.PercentileRanksResult.html'
+                               title='rs_es::operations::search::aggregations::PercentileRanksResult'>PercentileRanksResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Percentiles.html'
+                               title='rs_es::operations::search::aggregations::Percentiles'>Percentiles</a></td>
+                        <td class='docblock short'>
+                             <p>Percentiles aggregation, see: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html</a></p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.PercentilesResult.html'
+                               title='rs_es::operations::search::aggregations::PercentilesResult'>PercentilesResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Range.html'
+                               title='rs_es::operations::search::aggregations::Range'>Range</a></td>
+                        <td class='docblock short'>
+                             <p>Range aggregations</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.RangeBucketResult.html'
+                               title='rs_es::operations::search::aggregations::RangeBucketResult'>RangeBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.RangeInst.html'
+                               title='rs_es::operations::search::aggregations::RangeInst'>RangeInst</a></td>
+                        <td class='docblock short'>
+                             <p>A specific range, there will be many of these making up a range aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.RangeResult.html'
+                               title='rs_es::operations::search::aggregations::RangeResult'>RangeResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ReverseNested.html'
+                               title='rs_es::operations::search::aggregations::ReverseNested'>ReverseNested</a></td>
+                        <td class='docblock short'>
+                             <p>Reverse nested aggregation, will produce an error if used anywhere other than
+inside a nested aggregation.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ReverseNestedResult.html'
+                               title='rs_es::operations::search::aggregations::ReverseNestedResult'>ReverseNestedResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Script.html'
+                               title='rs_es::operations::search::aggregations::Script'>Script</a></td>
+                        <td class='docblock short'>
+                             <p>Script attributes for various attributes</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ScriptedMetric.html'
+                               title='rs_es::operations::search::aggregations::ScriptedMetric'>ScriptedMetric</a></td>
+                        <td class='docblock short'>
+                             <p>Scripted method aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ScriptedMetricResult.html'
+                               title='rs_es::operations::search::aggregations::ScriptedMetricResult'>ScriptedMetricResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Stats.html'
+                               title='rs_es::operations::search::aggregations::Stats'>Stats</a></td>
+                        <td class='docblock short'>
+                             <p>Stats aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.StatsResult.html'
+                               title='rs_es::operations::search::aggregations::StatsResult'>StatsResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Sum.html'
+                               title='rs_es::operations::search::aggregations::Sum'>Sum</a></td>
+                        <td class='docblock short'>
+                             <p>Sum aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SumResult.html'
+                               title='rs_es::operations::search::aggregations::SumResult'>SumResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Terms.html'
+                               title='rs_es::operations::search::aggregations::Terms'>Terms</a></td>
+                        <td class='docblock short'>
+                             <p>Terms aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.TermsBucketResult.html'
+                               title='rs_es::operations::search::aggregations::TermsBucketResult'>TermsBucketResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.TermsResult.html'
+                               title='rs_es::operations::search::aggregations::TermsResult'>TermsResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ValueCount.html'
+                               title='rs_es::operations::search::aggregations::ValueCount'>ValueCount</a></td>
+                        <td class='docblock short'>
+                             <p>Value count aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ValueCountResult.html'
+                               title='rs_es::operations::search::aggregations::ValueCountResult'>ValueCountResult</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Aggregation.html'
+                               title='rs_es::operations::search::aggregations::Aggregation'>Aggregation</a></td>
+                        <td class='docblock short'>
+                             <p>Aggregations are either metrics or bucket-based aggregations</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.AggregationResult.html'
+                               title='rs_es::operations::search::aggregations::AggregationResult'>AggregationResult</a></td>
+                        <td class='docblock short'>
+                             <p>The result of one specific aggregation</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.BucketAggregation.html'
+                               title='rs_es::operations::search::aggregations::BucketAggregation'>BucketAggregation</a></td>
+                        <td class='docblock short'>
+                             <p>The set of bucket aggregations</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.FieldOrScript.html'
+                               title='rs_es::operations::search::aggregations::FieldOrScript'>FieldOrScript</a></td>
+                        <td class='docblock short'>
+                             <p>A common pattern is for an aggregation to accept a field or a script</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Interval.html'
+                               title='rs_es::operations::search::aggregations::Interval'>Interval</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.MetricsAggregation.html'
+                               title='rs_es::operations::search::aggregations::MetricsAggregation'>MetricsAggregation</a></td>
+                        <td class='docblock short'>
+                             <p>Individual aggregations and their options</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.OrderKey.html'
+                               title='rs_es::operations::search::aggregations::OrderKey'>OrderKey</a></td>
+                        <td class='docblock short'>
+                             <p>Order - used for some bucketing aggregations to determine the order of
+buckets</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Scripts.html'
+                               title='rs_es::operations::search::aggregations::Scripts'>Scripts</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.TimeZone.html'
+                               title='rs_es::operations::search::aggregations::TimeZone'>TimeZone</a></td>
+                        <td class='docblock short'>
+                             <p>Date histogram and related fields</p>
+
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "rs_es";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    
+    <script async src="../../../../search-index.js"></script>
+</body>
+</html>

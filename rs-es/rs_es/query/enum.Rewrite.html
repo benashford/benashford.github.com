@@ -41,9 +41,11 @@
     </nav>
 
     <section id='main' class="content enum">
-<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>query</a>::<wbr><a class='enum' href=''>Rewrite</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-19927' href='../../src/rs_es/query.rs.html#4906-4913'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>query</a>::<wbr><a class='enum' href=''>Rewrite</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-36886' class='srclink' href='../../src/rs_es/query.rs.html#4936-4943' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Rewrite {
     ConstantScoreAuto,
     ScoringBoolean,
@@ -52,7 +54,8 @@
     TopTerms(<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>),
     TopTermsBoost(<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>),
 }</pre><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.ConstantScoreAuto'><a class='stability Unmarked' title='No stability level'></a><code>ConstantScoreAuto</code></td><td></td></tr><tr><td id='variant.ScoringBoolean'><a class='stability Unmarked' title='No stability level'></a><code>ScoringBoolean</code></td><td></td></tr><tr><td id='variant.ConstantScoreBoolean'><a class='stability Unmarked' title='No stability level'></a><code>ConstantScoreBoolean</code></td><td></td></tr><tr><td id='variant.ConstantScoreFilter'><a class='stability Unmarked' title='No stability level'></a><code>ConstantScoreFilter</code></td><td></td></tr><tr><td id='variant.TopTerms'><a class='stability Unmarked' title='No stability level'></a><code>TopTerms</code></td><td></td></tr><tr><td id='variant.TopTermsBoost'><a class='stability Unmarked' title='No stability level'></a><code>TopTermsBoost</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='enum' href='../../rs_es/query/enum.Rewrite.html' title='rs_es::query::Rewrite'>Rewrite</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
+<table><tr><td id='variant.ConstantScoreAuto'><code>ConstantScoreAuto</code></td><td></td></tr><tr><td id='variant.ScoringBoolean'><code>ScoringBoolean</code></td><td></td></tr><tr><td id='variant.ConstantScoreBoolean'><code>ConstantScoreBoolean</code></td><td></td></tr><tr><td id='variant.ConstantScoreFilter'><code>ConstantScoreFilter</code></td><td></td></tr><tr><td id='variant.TopTerms'><code>TopTerms</code></td><td></td></tr><tr><td id='variant.TopTermsBoost'><code>TopTermsBoost</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='enum' href='../../rs_es/query/enum.Rewrite.html' title='rs_es::query::Rewrite'>Rewrite</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../rs_es/query/enum.Rewrite.html' title='rs_es::query::Rewrite'>Rewrite</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -85,6 +88,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

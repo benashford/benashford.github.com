@@ -41,9 +41,11 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>rs_es</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/rs_es/lib.rs.html#17-540'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>rs_es</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/rs_es/lib.rs.html#17-540' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>A client for ElasticSearch&#39;s REST API</p>
 
 <p>The <code>Client</code> itself is used as the central access point, from which numerous
@@ -53,57 +55,71 @@ operations are defined implementing each of the specific ElasticSearch APIs.</p>
 unimplemented.</p>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='error/index.html'
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='error/index.html'
                                title='rs_es::error'>error</a></td>
-                        <td class='docblock short'><p>Errors and error conversion code for the <code>rs_es</code> crate</p>
-</td>
+                        <td class='docblock short'>
+                             <p>Errors and error conversion code for the <code>rs_es</code> crate</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='operations/index.html'
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='operations/index.html'
                                title='rs_es::operations'>operations</a></td>
-                        <td class='docblock short'><p>Implementations of specific ElasticSearch operations</p>
-</td>
+                        <td class='docblock short'>
+                             <p>Implementations of specific ElasticSearch operations</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='query/index.html'
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='query/index.html'
                                title='rs_es::query'>query</a></td>
-                        <td class='docblock short'><p>Implementation of the ElasticSearch Query DSL.</p>
-</td>
+                        <td class='docblock short'>
+                             <p>Implementation of the ElasticSearch Query DSL.</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='units/index.html'
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='units/index.html'
                                title='rs_es::units'>units</a></td>
-                        <td class='docblock short'><p>Various re-occuring types that are used by the ElasticSearch API.</p>
-</td>
+                        <td class='docblock short'>
+                             <p>Various re-occuring types that are used by the ElasticSearch API.</p>
+
+                        </td>
                     </tr>
                 
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='util/index.html'
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='util/index.html'
                                title='rs_es::util'>util</a></td>
-                        <td class='docblock short'><p>Miscellaneous code used in numerous places</p>
-</td>
+                        <td class='docblock short'>
+                             <p>Miscellaneous code used in numerous places</p>
+
+                        </td>
                     </tr>
                 </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Client.html'
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Client.html'
                                title='rs_es::Client'>Client</a></td>
-                        <td class='docblock short'><p>The core of the ElasticSearch client, owns a HTTP connection.</p>
-</td>
+                        <td class='docblock short'>
+                             <p>The core of the ElasticSearch client, owns a HTTP connection.</p>
+
+                        </td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.do_req.html'
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.do_req.html'
                                title='rs_es::do_req'>do_req</a></td>
-                        <td class='docblock short'><p>Process the result of an HTTP request, returning the status code and the
+                        <td class='docblock short'>
+                             <p>Process the result of an HTTP request, returning the status code and the
 <code>Json</code> result (if the result had a body) or an <code>EsError</code> if there were any
 errors</p>
-</td>
+
+                        </td>
                     </tr>
                 </table></section>
     <section id='search' class="content hidden"></section>
@@ -137,6 +153,10 @@ errors</p>
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

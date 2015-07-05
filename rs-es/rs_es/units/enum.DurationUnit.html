@@ -41,20 +41,23 @@
     </nav>
 
     <section id='main' class="content enum">
-<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>units</a>::<wbr><a class='enum' href=''>DurationUnit</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-32639' href='../../src/rs_es/units.rs.html#34-39'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>units</a>::<wbr><a class='enum' href=''>DurationUnit</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-52751' class='srclink' href='../../src/rs_es/units.rs.html#34-40' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum DurationUnit {
     Week,
     Day,
     Hour,
     Minute,
+    Month,
 }</pre><div class='docblock'><p>The units by which duration is measured.</p>
 
-<p>TODO - this list is incomplete</p>
+<p>TODO - this list is incomplete, see: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#time-units">https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#time-units</a></p>
 </div><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.Week'><a class='stability Unmarked' title='No stability level'></a><code>Week</code></td><td></td></tr><tr><td id='variant.Day'><a class='stability Unmarked' title='No stability level'></a><code>Day</code></td><td></td></tr><tr><td id='variant.Hour'><a class='stability Unmarked' title='No stability level'></a><code>Hour</code></td><td></td></tr><tr><td id='variant.Minute'><a class='stability Unmarked' title='No stability level'></a><code>Minute</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html' title='collections::string::ToString'>ToString</a> for <a class='enum' href='../../rs_es/units/enum.DurationUnit.html' title='rs_es::units::DurationUnit'>DurationUnit</a></code></h3><div class='impl-items'><h4 id='method.to_string' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html#method.to_string' class='fnname'>to_string</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
-</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../rs_es/units/enum.DurationUnit.html' title='rs_es::units::DurationUnit'>DurationUnit</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<table><tr><td id='variant.Week'><code>Week</code></td><td></td></tr><tr><td id='variant.Day'><code>Day</code></td><td></td></tr><tr><td id='variant.Hour'><code>Hour</code></td><td></td></tr><tr><td id='variant.Minute'><code>Minute</code></td><td></td></tr><tr><td id='variant.Month'><code>Month</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html' title='collections::string::ToString'>ToString</a> for <a class='enum' href='../../rs_es/units/enum.DurationUnit.html' title='rs_es::units::DurationUnit'>DurationUnit</a></code></h3><div class='impl-items'><h4 id='method.to_string' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/collections/string/trait.ToString.html#method.to_string' class='fnname'>to_string</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../rs_es/units/enum.DurationUnit.html' title='rs_es::units::DurationUnit'>DurationUnit</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -87,6 +90,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

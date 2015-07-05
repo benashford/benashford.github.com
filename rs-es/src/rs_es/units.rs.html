@@ -273,6 +273,78 @@
 <span id="231">231</span>
 <span id="232">232</span>
 <span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
 </pre><pre class='rust '>
 <span class='comment'>/*
  * Copyright 2015 Ben Ashford
@@ -305,13 +377,14 @@
 
 <span class='doccomment'>/// The units by which duration is measured.</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// TODO - this list is incomplete</span>
+<span class='doccomment'>/// TODO - this list is incomplete, see: https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#time-units</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>DurationUnit</span> {
     <span class='ident'>Week</span>,
     <span class='ident'>Day</span>,
     <span class='ident'>Hour</span>,
-    <span class='ident'>Minute</span>
+    <span class='ident'>Minute</span>,
+    <span class='ident'>Month</span>
 }
 
 <span class='kw'>impl</span> <span class='ident'>ToString</span> <span class='kw'>for</span> <span class='ident'>DurationUnit</span> {
@@ -320,7 +393,8 @@
             <span class='ident'>DurationUnit</span>::<span class='ident'>Week</span>   <span class='op'>=&gt;</span> <span class='string'>&quot;w&quot;</span>,
             <span class='ident'>DurationUnit</span>::<span class='ident'>Day</span>    <span class='op'>=&gt;</span> <span class='string'>&quot;d&quot;</span>,
             <span class='ident'>DurationUnit</span>::<span class='ident'>Hour</span>   <span class='op'>=&gt;</span> <span class='string'>&quot;h&quot;</span>,
-            <span class='ident'>DurationUnit</span>::<span class='ident'>Minute</span> <span class='op'>=&gt;</span> <span class='string'>&quot;m&quot;</span>
+            <span class='ident'>DurationUnit</span>::<span class='ident'>Minute</span> <span class='op'>=&gt;</span> <span class='string'>&quot;m&quot;</span>,
+            <span class='ident'>DurationUnit</span>::<span class='ident'>Month</span>  <span class='op'>=&gt;</span> <span class='string'>&quot;M&quot;</span>,
         }.<span class='ident'>to_owned</span>()
     }
 }
@@ -370,9 +444,18 @@
 <span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>Duration</span>, <span class='ident'>OptionVal</span>, <span class='ident'>from</span>, <span class='ident'>OptionVal</span>(<span class='ident'>from</span>.<span class='ident'>to_string</span>()));
 
 <span class='doccomment'>/// Representing a geographic location</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Location</span> {
     <span class='ident'>LatLon</span>(<span class='ident'>f64</span>, <span class='ident'>f64</span>),
     <span class='ident'>GeoHash</span>(<span class='ident'>String</span>)
+}
+
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Json</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>Location</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>from</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Json</span>) <span class='op'>-&gt;</span> <span class='ident'>Location</span> {
+        <span class='ident'>Location</span>::<span class='ident'>LatLon</span>(
+            <span class='macro'>get_json_f64</span><span class='macro'>!</span>(<span class='ident'>from</span>, <span class='string'>&quot;lat&quot;</span>),
+            <span class='macro'>get_json_f64</span><span class='macro'>!</span>(<span class='ident'>from</span>, <span class='string'>&quot;lon&quot;</span>))
+    }
 }
 
 <span class='macro'>from_exp</span><span class='macro'>!</span>((<span class='ident'>f64</span>, <span class='ident'>f64</span>), <span class='ident'>Location</span>, <span class='ident'>from</span>, <span class='ident'>Location</span>::<span class='ident'>LatLon</span>(<span class='ident'>from</span>.<span class='number'>0</span>, <span class='ident'>from</span>.<span class='number'>1</span>));
@@ -394,8 +477,54 @@
     }
 }
 
+<span class='doccomment'>/// Representing a geographic box</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>GeoBox</span> {
+    <span class='ident'>Corners</span>(<span class='ident'>Location</span>, <span class='ident'>Location</span>),
+    <span class='ident'>Vertices</span>(<span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>)
+}
+
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Json</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>GeoBox</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>from</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Json</span>) <span class='op'>-&gt;</span> <span class='ident'>GeoBox</span> {
+        <span class='ident'>GeoBox</span>::<span class='ident'>Corners</span>(
+            <span class='ident'>Location</span>::<span class='ident'>from</span>(<span class='ident'>from</span>.<span class='ident'>find</span>(<span class='string'>&quot;top_left&quot;</span>).<span class='ident'>expect</span>(<span class='string'>&quot;No &#39;top_left&#39; field&quot;</span>)),
+            <span class='ident'>Location</span>::<span class='ident'>from</span>(<span class='ident'>from</span>.<span class='ident'>find</span>(<span class='string'>&quot;bottom_right&quot;</span>).<span class='ident'>expect</span>(<span class='string'>&quot;No &#39;bottom_right&#39; field&quot;</span>)))
+    }
+}
+
+<span class='macro'>from_exp</span><span class='macro'>!</span>((<span class='ident'>Location</span>, <span class='ident'>Location</span>), <span class='ident'>GeoBox</span>, <span class='ident'>from</span>, <span class='ident'>GeoBox</span>::<span class='ident'>Corners</span>(<span class='ident'>from</span>.<span class='number'>0</span>, <span class='ident'>from</span>.<span class='number'>1</span>));
+<span class='macro'>from_exp</span><span class='macro'>!</span>(((<span class='ident'>f64</span>, <span class='ident'>f64</span>), (<span class='ident'>f64</span>, <span class='ident'>f64</span>)),
+          <span class='ident'>GeoBox</span>,
+          <span class='ident'>from</span>,
+          <span class='ident'>GeoBox</span>::<span class='ident'>Corners</span>(<span class='ident'>Location</span>::<span class='ident'>LatLon</span>({<span class='ident'>from</span>.<span class='number'>0</span>}.<span class='number'>0</span>, {<span class='ident'>from</span>.<span class='number'>0</span>}.<span class='number'>1</span>),
+                          <span class='ident'>Location</span>::<span class='ident'>LatLon</span>({<span class='ident'>from</span>.<span class='number'>1</span>}.<span class='number'>0</span>, {<span class='ident'>from</span>.<span class='number'>1</span>}.<span class='number'>1</span>)));
+<span class='macro'>from_exp</span><span class='macro'>!</span>((<span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>),
+          <span class='ident'>GeoBox</span>,
+          <span class='ident'>from</span>,
+          <span class='ident'>GeoBox</span>::<span class='ident'>Vertices</span>(<span class='ident'>from</span>.<span class='number'>0</span>, <span class='ident'>from</span>.<span class='number'>1</span>, <span class='ident'>from</span>.<span class='number'>2</span>, <span class='ident'>from</span>.<span class='number'>3</span>));
+
+<span class='kw'>impl</span> <span class='ident'>ToJson</span> <span class='kw'>for</span> <span class='ident'>GeoBox</span> {
+    <span class='kw'>fn</span> <span class='ident'>to_json</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Json</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>();
+        <span class='kw'>match</span> <span class='self'>self</span> {
+            <span class='kw-2'>&amp;</span><span class='ident'>GeoBox</span>::<span class='ident'>Corners</span>(<span class='kw-2'>ref</span> <span class='ident'>top_left</span>, <span class='kw-2'>ref</span> <span class='ident'>bottom_right</span>) <span class='op'>=&gt;</span> {
+                <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;top_left&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>top_left</span>.<span class='ident'>to_json</span>());
+                <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;bottom_right&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>bottom_right</span>.<span class='ident'>to_json</span>());
+            },
+            <span class='kw-2'>&amp;</span><span class='ident'>GeoBox</span>::<span class='ident'>Vertices</span>(<span class='kw-2'>ref</span> <span class='ident'>top</span>, <span class='kw-2'>ref</span> <span class='ident'>left</span>, <span class='kw-2'>ref</span> <span class='ident'>bottom</span>, <span class='kw-2'>ref</span> <span class='ident'>right</span>) <span class='op'>=&gt;</span> {
+                <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;top&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>top</span>.<span class='ident'>to_json</span>());
+                <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;left&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>left</span>.<span class='ident'>to_json</span>());
+                <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;bottom&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>bottom</span>.<span class='ident'>to_json</span>());
+                <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;right&quot;</span>.<span class='ident'>to_owned</span>(), <span class='ident'>right</span>.<span class='ident'>to_json</span>());
+            }
+        }
+        <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>d</span>)
+    }
+}
+
 <span class='doccomment'>/// A non-specific holder for an option which can either be a single thing, or</span>
 <span class='doccomment'>/// multiple instances of that thing.</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>OneOrMany</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>ToJson</span><span class='op'>&gt;</span> {
     <span class='ident'>One</span>(<span class='ident'>T</span>),
     <span class='ident'>Many</span>(<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>)
@@ -423,6 +552,7 @@
 }
 
 <span class='doccomment'>/// DistanceType</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>DistanceType</span> {
     <span class='ident'>SloppyArc</span>,
     <span class='ident'>Arc</span>,
@@ -440,6 +570,7 @@
 }
 
 <span class='doccomment'>/// DistanceUnit</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>DistanceUnit</span> {
     <span class='ident'>Mile</span>,
     <span class='ident'>Yard</span>,
@@ -474,8 +605,9 @@
     }
 }
 
-<span class='comment'>// A Json value that&#39;s not a structural thing - i.e. just String, i64 and f64,</span>
-<span class='comment'>// no array or object</span>
+<span class='doccomment'>/// A Json value that&#39;s not a structural thing - i.e. just String, i64 and f64,</span>
+<span class='doccomment'>/// no array or object</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>JsonVal</span> {
     <span class='ident'>String</span>(<span class='ident'>String</span>),
     <span class='ident'>I64</span>(<span class='ident'>i64</span>),
@@ -507,6 +639,18 @@
 <span class='macro'>from</span><span class='macro'>!</span>(<span class='ident'>i64</span>, <span class='ident'>JsonVal</span>, <span class='ident'>I64</span>);
 <span class='macro'>from_exp</span><span class='macro'>!</span>(<span class='ident'>u32</span>, <span class='ident'>JsonVal</span>, <span class='ident'>from</span>, <span class='ident'>JsonVal</span>::<span class='ident'>U64</span>(<span class='ident'>from</span> <span class='kw'>as</span> <span class='ident'>u64</span>));
 <span class='macro'>from</span><span class='macro'>!</span>(<span class='ident'>u64</span>, <span class='ident'>JsonVal</span>, <span class='ident'>U64</span>);
+
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Json</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>JsonVal</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>from</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Json</span>) <span class='op'>-&gt;</span> <span class='ident'>JsonVal</span> {
+        <span class='kw'>match</span> <span class='ident'>from</span> {
+            <span class='kw-2'>&amp;</span><span class='ident'>Json</span>::<span class='ident'>String</span>(<span class='kw-2'>ref</span> <span class='ident'>s</span>) <span class='op'>=&gt;</span> <span class='ident'>JsonVal</span>::<span class='ident'>String</span>(<span class='ident'>s</span>.<span class='ident'>clone</span>()),
+            <span class='kw-2'>&amp;</span><span class='ident'>Json</span>::<span class='ident'>F64</span>(<span class='ident'>f</span>)        <span class='op'>=&gt;</span> <span class='ident'>JsonVal</span>::<span class='ident'>F64</span>(<span class='ident'>f</span>),
+            <span class='kw-2'>&amp;</span><span class='ident'>Json</span>::<span class='ident'>I64</span>(<span class='ident'>f</span>)        <span class='op'>=&gt;</span> <span class='ident'>JsonVal</span>::<span class='ident'>I64</span>(<span class='ident'>f</span>),
+            <span class='kw-2'>&amp;</span><span class='ident'>Json</span>::<span class='ident'>U64</span>(<span class='ident'>f</span>)        <span class='op'>=&gt;</span> <span class='ident'>JsonVal</span>::<span class='ident'>U64</span>(<span class='ident'>f</span>),
+            _                    <span class='op'>=&gt;</span> <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;Not a String, F64, I64 or U64&quot;</span>)
+        }
+    }
+}
 </pre>
 </section>
     <section id='search' class="content hidden"></section>
@@ -540,6 +684,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

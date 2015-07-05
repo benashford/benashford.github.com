@@ -41,9 +41,11 @@
     </nav>
 
     <section id='main' class="content enum">
-<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>query</a>::<wbr><a class='enum' href=''>Strategy</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-16048' href='../../src/rs_es/query.rs.html#3561-3567'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>query</a>::<wbr><a class='enum' href=''>Strategy</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-31997' class='srclink' href='../../src/rs_es/query.rs.html#3575-3581' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Strategy {
     LeapFrogQueryFirst,
     LeapFrogFilterFirst,
@@ -51,8 +53,9 @@
     RandomAccess(<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>),
     RandomAccessAlways,
 }</pre><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.LeapFrogQueryFirst'><a class='stability Unmarked' title='No stability level'></a><code>LeapFrogQueryFirst</code></td><td></td></tr><tr><td id='variant.LeapFrogFilterFirst'><a class='stability Unmarked' title='No stability level'></a><code>LeapFrogFilterFirst</code></td><td></td></tr><tr><td id='variant.QueryFirst'><a class='stability Unmarked' title='No stability level'></a><code>QueryFirst</code></td><td></td></tr><tr><td id='variant.RandomAccess'><a class='stability Unmarked' title='No stability level'></a><code>RandomAccess</code></td><td></td></tr><tr><td id='variant.RandomAccessAlways'><a class='stability Unmarked' title='No stability level'></a><code>RandomAccessAlways</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt; for <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h3><div class='impl-items'><h4 id='method.from' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/convert/trait.From.html#method.from' class='fnname'>from</a>(from: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>) -&gt; <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h4>
-</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
+<table><tr><td id='variant.LeapFrogQueryFirst'><code>LeapFrogQueryFirst</code></td><td></td></tr><tr><td id='variant.LeapFrogFilterFirst'><code>LeapFrogFilterFirst</code></td><td></td></tr><tr><td id='variant.QueryFirst'><code>QueryFirst</code></td><td></td></tr><tr><td id='variant.RandomAccess'><code>RandomAccess</code></td><td></td></tr><tr><td id='variant.RandomAccessAlways'><code>RandomAccessAlways</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt; for <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h3><div class='impl-items'><h4 id='method.from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/convert/trait.From.html#method.from' class='fnname'>from</a>(from: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>) -&gt; <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html' title='rustc_serialize::json::ToJson'>ToJson</a> for <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h3><div class='impl-items'><h4 id='method.to_json' class='method'><code>fn <a href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html#method.to_json' class='fnname'>to_json</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html' title='rustc_serialize::json::Json'>Json</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../rs_es/query/enum.Strategy.html' title='rs_es::query::Strategy'>Strategy</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -85,6 +88,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

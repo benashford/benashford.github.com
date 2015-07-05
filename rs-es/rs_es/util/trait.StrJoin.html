@@ -41,16 +41,18 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>util</a>::<wbr><a class='trait' href=''>StrJoin</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-10' href='../../src/rs_es/util.rs.html#80-96'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>rs_es</a>::<wbr><a href='index.html'>util</a>::<wbr><a class='trait' href=''>StrJoin</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-10' class='srclink' href='../../src/rs_es/util.rs.html#110-126' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait StrJoin {
     fn <a href='#tymethod.join' class='fnname'>join</a>(self, join: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>;
 }</pre><div class='docblock'><p>A custom String-join trait as the stdlib one is currently marked as unstable.</p>
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.join' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.join' class='fnname'>join</a>(self, join: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h3><div class='docblock'><p>Join an iterator of things that can be referenced as strings into a
+        <h3 id='tymethod.join' class='method stab '><code>fn <a href='#tymethod.join' class='fnname'>join</a>(self, join: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h3><div class='docblock'><p>Join an iterator of things that can be referenced as strings into a
 single owned-string by the given joining string</p>
 
 <h1 id="example" class='section-header'><a
@@ -65,7 +67,7 @@ single owned-string by the given joining string</p>
 </div></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
-    <li><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;I, S&gt; <a class='trait' href='../../rs_es/util/trait.StrJoin.html' title='rs_es::util::StrJoin'>StrJoin</a> for I <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, I: <a class='trait' href='http://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;Item=S&gt;</span></code></li>
+    <li><code>impl&lt;I, S&gt; <a class='trait' href='../../rs_es/util/trait.StrJoin.html' title='rs_es::util::StrJoin'>StrJoin</a> for I <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, I: <a class='trait' href='http://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;Item=S&gt;</span></code></li>
 </ul><script type="text/javascript" async
                               src="../../implementors/rs_es/util/trait.StrJoin.js">
                       </script></section>
@@ -100,6 +102,10 @@ single owned-string by the given joining string</p>
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>
