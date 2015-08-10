@@ -580,6 +580,15 @@
 <span id="538">538</span>
 <span id="539">539</span>
 <span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
 </pre><pre class='rust '>
 <span class='comment'>/*
  * Copyright 2015 Ben Ashford
@@ -633,6 +642,7 @@
 <span class='kw'>use</span> <span class='ident'>operations</span>::<span class='ident'>index</span>::<span class='ident'>IndexOperation</span>;
 <span class='kw'>use</span> <span class='ident'>operations</span>::<span class='ident'>search</span>::{<span class='ident'>SearchURIOperation</span>, <span class='ident'>SearchQueryOperation</span>};
 <span class='kw'>use</span> <span class='ident'>operations</span>::<span class='ident'>RefreshOperation</span>;
+<span class='kw'>use</span> <span class='ident'>operations</span>::<span class='ident'>analyze</span>::<span class='ident'>AnalyzeOperation</span>;
 
 <span class='comment'>// The client</span>
 
@@ -815,6 +825,14 @@
     <span class='doccomment'>/// See: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bulk</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='lifetime'>&#39;b</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>actions</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> [<span class='ident'>Action</span>]) <span class='op'>-&gt;</span> <span class='ident'>BulkOperation</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='lifetime'>&#39;b</span><span class='op'>&gt;</span> {
         <span class='ident'>BulkOperation</span>::<span class='ident'>new</span>(<span class='self'>self</span>, <span class='ident'>actions</span>)
+    }
+
+    <span class='doccomment'>/// Analyze</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// See: https://www.elastic.co/guide/en/elasticsearch/reference/1.9/indices-analyze.html</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>analyze</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='self'>self</span>,
+                       <span class='ident'>body</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>AnalyzeOperation</span> {
+        <span class='ident'>AnalyzeOperation</span>::<span class='ident'>new</span>(<span class='self'>self</span>, <span class='ident'>body</span>)
     }
 
     <span class='comment'>// Search APIs</span>

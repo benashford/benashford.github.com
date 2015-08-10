@@ -45,13 +45,13 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-723' class='srclink' href='../../../src/rs_es/operations/common.rs.html#45' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-730' class='srclink' href='../../../src/rs_es/operations/common.rs.html#45' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Options&lt;'a&gt;(pub <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(&amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, <a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>)</a>&gt;);</pre><div class='docblock'><p>Every ES operation has a set of options</p>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../../../rs_es/operations/common/struct.Options.html' title='rs_es::operations::common::Options'>Options</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../../rs_es/operations/common/struct.Options.html' title='rs_es::operations::common::Options'>Options</a>&lt;'a&gt;</code></h4>
 <h4 id='method.is_empty' class='method'><code>fn <a href='#method.is_empty' class='fnname'>is_empty</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <h4 id='method.push' class='method'><code>fn <a href='#method.push' class='fnname'>push</a>&lt;O: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;mut self, key: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, val: O)</code></h4>
 <div class='docblock'><p>Add a value</p>
-<pre id='rust-example-rendered' class='rust '>
+<pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>rs_es</span>::<span class='ident'>operations</span>::<span class='ident'>common</span>::<span class='ident'>Options</span>;
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>options</span> <span class='op'>=</span> <span class='ident'>Options</span>::<span class='ident'>new</span>();
 <span class='ident'>options</span>.<span class='ident'>push</span>(<span class='string'>&quot;a&quot;</span>, <span class='number'>1</span>);

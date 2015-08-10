@@ -45,13 +45,13 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-52838' class='srclink' href='../../src/rs_es/units.rs.html#64-67' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-54018' class='srclink' href='../../src/rs_es/units.rs.html#64-67' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Duration {
     // some fields omitted
 }</pre><div class='docblock'><p>A time-period unit, will be formatted into the ElasticSearch standard format</p>
 
 <h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1><pre id='rust-example-rendered' class='rust '>
+                           href="#examples">Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>rs_es</span>::<span class='ident'>units</span>::{<span class='ident'>Duration</span>, <span class='ident'>DurationUnit</span>};
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='string'>&quot;100d&quot;</span>, <span class='ident'>Duration</span>::<span class='ident'>new</span>(<span class='number'>100</span>, <span class='ident'>DurationUnit</span>::<span class='ident'>Day</span>).<span class='ident'>to_string</span>());
