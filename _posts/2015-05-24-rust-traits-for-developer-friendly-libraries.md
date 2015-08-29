@@ -108,7 +108,7 @@ Filter::build_geo_bounding_box("pin")
     .build();
 {% endhighlight %}
 
-This is because the tuple `((f64, f64), (f64, f64))` implements `Into<GeoBox>`.  Similar provisions are made for `(f64, f64, f64, f64)` for the `Vertices` version, and for `(String, String)` for the geohash version.  This is achieved by simply implementing the `From<whatever> for Location` trait for each required combination:
+This is because the tuple `((f64, f64), (f64, f64))` implements `Into<GeoBox>`.  Similar provisions are made for `(f64, f64, f64, f64)` for the `Vertices` version, and for `(String, String)` for the geohash version.  This is achieved by simply implementing the `From<whatever> for Geobox` trait for each required combination:
 
 {% highlight rust %}
 impl From<(f64, f64, f64, f64)> for GeoBox {
