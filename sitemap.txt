@@ -1,5 +1,5 @@
 ---
-title: Sitemap
+Title: 
 ---
 {% for page in site.html_pages %}
 {{site.production_url}}{{ page.url }}{% endfor %}
