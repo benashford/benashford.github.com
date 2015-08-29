@@ -1,6 +1,6 @@
 # Site settings
-title: 
-email: 
+title: Ben Ashford
+email:
 description: > # this means to ignore newlines until "baseurl:"
   Mildly interesting technology stories.  Clojure, Rust and anything else.
 baseurl: "" # the subpath of your site, e.g. /blog/
