@@ -5,8 +5,6 @@ description: ""
 category: "blog"
 tags: clojure benchmarking jvm
 ---
-{% include JB/setup %}
-
 In my previous post [The power of lazy sequences](/blog/2014/03/22/the-power-of-lazy-sequences) I fell in to a trap.  A common trap, one which most of us fall, some of us quite regularly.  I talk, of course, of trying to measure execution time.
 
 In my defence, given the context of that post, some kind of elapsed-time measurement was needed as it would have been mostly conjecture otherwise.  Accurately measuring elapsed time, however, is actually quite difficult.  There were two specific problems with my approach: first, I was using `clojure.core`'s `time` function[^1]; second, I had not paid any attention to any JVM parameters.

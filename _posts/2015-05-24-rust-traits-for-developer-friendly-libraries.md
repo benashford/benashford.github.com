@@ -5,8 +5,6 @@ description: ""
 category: "blog"
 tags: rust
 ---
-{% include JB/setup %}
-
 For the last six months or so, I've been looking more-and-more into [Rust](/blog/2014/12/21/rust/), and the more I look into it the more I like.
 
 My latest Rust project has been to implement a [client to the ElasticSearch REST API](https://github.com/benashford/rs-es).  I have implemented such things before, in different programming languages[^1], and recently came on an excuse to write one in Rust; the need to have such thing has long since passed but the process of writing it has been a good opportunity to delve more into Rust, and think about how to implement such things.
@@ -51,52 +49,52 @@ A [Geo Bounding Box filter](https://www.elastic.co/guide/en/elasticsearch/refere
 
 There are certain options that can be ignored, however.  ElasticSearch allows lat-lng pairs to be defined in a number of ways, either JSON:
 
-<pre>
+{% highlight json %}
 "location": {
     "lat": 50.5,
     "lon": -10.5
 }
-</pre>
+{% endhighlight %}
 
 or arrays: `[-10.5, 50.5]` (note the lng-lat ordering), or even strings: `"50.5, -10.5"` (note the lat-lng ordering).  All three are equivalent, so I can generate one and ignore the others.
 
 So to begin with, I need a enum defining choices for `GeoBox`:
 
-<pre>
+{% highlight rust %}
 pub enum GeoBox {
     Corners(Location, Location),
     Vertices(f64, f64, f64, f64)
 }
-</pre>
+{% endhighlight %}
 
 and another one for the choice of `Location`:
 
-<pre>
+{% highlight rust %}
 pub enum Location {
     LatLon(f64, f64),
     GeoHash(String)
 }
-</pre>
+{% endhighlight %}
 
 Putting it all together is where the horrible verbosity becomes apparent:
 
-<pre>
+{% highlight rust %}
 Filter::build_geo_bounding_box("pin")
     .with_geo_box(GeoBox::Corners(Location::LatLon(50.5, -10.5),
                                   Location::LatLon(50.0, -10.0)))
     .build();
-</pre>
+{% endhighlight %}
 
 Not great compared to the JSON it produces, although arguably easier to understand:
 
-<pre>
+{% highlight json %}
 "geo_bounding_box": {
    "pin": {
        "top_left": {"lat": 50.5, "lon": -10.5},
        "bottom_right": {"lat": 50.0, "lon": -10.0}
    }
 }
-</pre>
+{% endhighlight %}
 
 ### So... traits? ###
 
@@ -104,29 +102,29 @@ The solution to the verbosity problem was obvious after solving my `String` vs. 
 
 For example, the verbose example above could be written:
 
-<pre>
+{% highlight rust %}
 Filter::build_geo_bounding_box("pin")
     .with_geo_box(((50.5, -10.5), (50.0, -10.0)))
     .build();
-</pre>
+{% endhighlight %}
 
 This is because the tuple `((f64, f64), (f64, f64))` implements `Into<GeoBox>`.  Similar provisions are made for `(f64, f64, f64, f64)` for the `Vertices` version, and for `(String, String)` for the geohash version.  This is achieved by simply implementing the `From<whatever> for Location` trait for each required combination:
 
-<pre>
+{% highlight rust %}
 impl From<(f64, f64, f64, f64)> for GeoBox {
     fn from(from: (f64, f64, f64, f64)) -> GeoBox {
         GeoBox::Vertices(from.0, from.1, from.2, from.3)
     }
 }
-</pre>
+{% endhighlight %}
 
 and so on.
 
 Of course having to write five nearly identical lines for very similar functions has a high noise-to-signal ratio, but fortunately Rust has macros, after defining a couple of macros the above then becomes a one-liner:
 
-<pre>
+{% highlight rust %}
 from_exp!((f64, f64, f64, f64), GeoBox, from, GeoBox::Vertices(from.0, from.1, from.2, from.3));
-</pre>
+{% endhighlight %}
 
 The code behind this is in the template that the code-generator uses to produce the full implementation of the Query DSL.  This can be [seen here](https://github.com/benashford/rs-es/blob/master/templates/query.rs.erb#L27).
 

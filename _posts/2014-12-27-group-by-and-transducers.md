@@ -5,8 +5,6 @@ description: ""
 category: "blog"
 tags: clojure transducers
 ---
-{% include JB/setup %}
-
 One of the random, but very useful, functions in `clojure.core` is the venerable [`group-by`](https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/group-by).  Simply take a collection of something, a function to extract a key, and it returns a map of the same data indexed by the key.  It's incredibly useful, I use it all the time.
 
 But it's also annoying.  Why?  Because often, perhaps even the majority of the time, I want to do some something with the values after they've been grouped; something that couldn't be done before hand.  Examples of this include: a) removing the key used to index the data, b) applying functions that only make sense post-grouping - e.g. removing duplicate values.

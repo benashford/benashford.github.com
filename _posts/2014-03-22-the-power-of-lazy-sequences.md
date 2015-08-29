@@ -5,8 +5,6 @@ description: ""
 category: "blog"
 tags: clojure lazy-evaluation
 ---
-{% include JB/setup %}
-
 The selling-pitch for the concept of lazy evaluation includes the claim that they can, if used in the right way, improve performance.  Indeed, the new Stream API in Java 8 vaguely references that [laziness exposes "opportunities for optimisation"](http://download.java.net/jdk8/docs/api/java/util/stream/package-summary.html).
 
 But how much effect can this have.  Well lets look at an example shall we: sorting in Clojure.

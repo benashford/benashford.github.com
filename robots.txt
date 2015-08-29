@@ -1,4 +1,0 @@
-Sitemap: http://benashford.github.io/sitemap.txt
-
-User-agent: *
-Allow: /

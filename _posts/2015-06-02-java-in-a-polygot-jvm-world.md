@@ -5,8 +5,6 @@ description: ""
 category: "blog"
 tags: clojure java jvm
 ---
-{% include JB/setup %}
-
 The trend over the last few years has been clear, the [number of viable platforms from which to build software systems has been growing](http://redmonk.com/dberkholz/2014/05/02/github-language-trends-and-the-fragmenting-landscape/).  Not that many years ago, things would be either: Java, C++, Visual Basic or one of the many long-forgotten but once popular languages like Delphi.  These days, things are either: JavaScript, Java (also: Clojure, Scala, Kotlin, Groovy), .NET (C#, F#), Ruby (including JRuby), Python (2 and 3, and all the interesting Python community sub-projects like PyPy and rpython), Rust, Go, C, C++, Haskell, OCaml, Erlang (and Elixir), Nim, Crystal, it goes on and on...  Not every language is suitable to every task, but there's a surprisingly wide central area of suitability that nearly all of the above overlap.
 
 Despite many online programming forums regressing to a continual flame-war on the subject of "which language will win"[^0], it's quite clear this fragmentation[^1] is here to stay, at least for the forseeable future.  Coupled with this is the habit of programmer communities forming language-tribes, which is a great shame as real-world code suffers as a result of tribal dogma[^2][^2a].
