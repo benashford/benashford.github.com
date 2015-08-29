@@ -10,5 +10,7 @@ github_username:  benashford
 
 permalink: /:categories/:year/:month/:day/:title
 
+production_url: http://benashford.github.io
+
 # Build settings
 markdown: kramdown
