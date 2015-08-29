@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Java in a polygot JVM world"
+title: "Java in a polyglot JVM world"
 description: ""
 category: "blog"
 tags: clojure java jvm
@@ -83,7 +83,7 @@ The second iteration still used Aleph, but took the raw byte data and did all th
 
 The results for the second iteration were much improved, but not stellar.  It was in the low hundreds of milliseconds initially, which after a few tweaks, I got down to the ~90ms mark.
 
-### Where Java fits in the modern polygot JVM-based world ###
+### Where Java fits in the modern polyglot JVM-based world ###
 
 Looking at [the code I had written](https://github.com/benashford/redis-async/blob/c0e34395bd20c2b0a84c47ddca4a7fdb6eb2da04/src/redis_async/protocol.clj) there was much to dislike.  First, there was a lot of it for such a simple protocol; it was very low-level dealing with individual bytes and byte-buffers; it wasn't functionally pure, the buffers were mutable; there was a lot of other state, but all of it was passed around as a parameter.
 
