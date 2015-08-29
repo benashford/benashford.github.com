@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The folly of benchmarks</title>
+  <meta name="description" content="In my previous post The power of lazy sequences I fell in to a trap.  A common trap, one which most of us fall, some of us quite regularly.  I talk, of cours...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://benashford.github.io/blog/2014/12/07/the-folly-of-benchmarks">
+  <link rel="alternate" type="application/rss+xml" title="Ben Ashford" href="http://benashford.github.io/rss.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Ben Ashford</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/sitemap.txt">Sitemap</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The folly of benchmarks</h1>
+    <p class="post-meta">Dec 7, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>In my previous post <a href="/blog/2014/03/22/the-power-of-lazy-sequences">The power of lazy sequences</a> I fell in to a trap.  A common trap, one which most of us fall, some of us quite regularly.  I talk, of course, of trying to measure execution time.</p>
+
+<p>In my defence, given the context of that post, some kind of elapsed-time measurement was needed as it would have been mostly conjecture otherwise.  Accurately measuring elapsed time, however, is actually quite difficult.  There were two specific problems with my approach: first, I was using <code>clojure.core</code>’s <code>time</code> function<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>; second, I had not paid any attention to any JVM parameters.</p>
+
+<p><code>time</code> simply measures a single invocation, and while I had manually called each function a number of times before taking my measurements, and the elapsed time had appeared to stabilise<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, there was still a degree of varience on each call; it wasn’t exactly scientific.</p>
+
+<p>Ignoring the JVM settings was an even bigger error, as it turns out that Leiningen disables certain JVM optimisations in order to achieve faster load times.  A deployed uberjar will be running with default settings, but running the code via <code>lein repl</code> will be slower.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  You may think that this doesn’t matter, as it’s the same for both tests, but there is an unknown factor of how the disabled JVM transformations would have impacted each one; in theory, the lazy version has the most to gain as it has the most method calls, which could be inlined, and also temporary objects, which could be stack allocated.  That final claim is conjecture, so let’s put it to the test!</p>
+
+<h4 id="the-test-and-results">The test and results</h4>
+
+<p>First, I stop Leiningen from changing any JVM settings, the test will now run with the default JVM settings.  Second, I use a proper benchmarking tool designed to deal with the difficulties of measuring execution time on the JVM, specifically I’m using Hugo Duncan’s <a href="https://github.com/hugoduncan/criterium">Criterium</a>.</p>
+
+<p>The test was the same as the previous post.  50,000 random integers between zero and 1,000,000 were generated; the first 100 ordered naturally were selected.  The test was performed on the same hardware.</p>
+
+<p>The results for the eager sort of the entire vector, followed by taking the first 100:</p>
+
+<pre>
+lazysort.core&gt; (bench (do (doall (take 100 (sort rand-nums))) nil))
+WARNING: Final GC required 2.890797395019582 % of runtime
+Evaluation count : 2760 in 60 samples of 46 calls.
+Execution time mean : 22.063202 ms
+Execution time std-deviation : 489.021271 µs
+Execution time lower quantile : 21.444953 ms ( 2.5%)
+Execution time upper quantile : 23.258641 ms (97.5%)
+Overhead used : 1.777138 ns
+
+Found 3 outliers in 60 samples (5.0000 %)
+low-severe   3 (5.0000 %)
+Variance from outliers : 10.9452 % Variance is moderately inflated by outliers
+</pre>
+
+<p>With the default JVM options enabled, the elapsed time went from 39.6ms to 22.1ms (reduced by 44.2%).</p>
+
+<p>The results for the lazy sort, taking the first 100:</p>
+
+<pre>
+lazysort.core&gt; (bench (do (doall (take 100 (lazysort rand-nums))) nil))
+Evaluation count : 11640 in 60 samples of 194 calls.
+Execution time mean : 5.086969 ms
+Execution time std-deviation : 61.738542 µs
+Execution time lower quantile : 4.966331 ms ( 2.5%)
+Execution time upper quantile : 5.220216 ms (97.5%)
+Overhead used : 1.777138 ns
+
+Found 2 outliers in 60 samples (3.3333 %)
+low-severe   2 (3.3333 %)
+Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+</pre>
+
+<p>In this case the elapsed time went from 10.9ms to 5.1ms (reduced by 53.2%).</p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>The execution time of both was significantly improved, and indeed the lazy version gained the most.  The real conclusion however: there are good tools for this sort of thing which are better than drawing conclusions from ad-hoc timing code.</p>
+
+<h4 id="footnotes">Footnotes </h4>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Not that there is anything wrong how that function is implemented, just that it is better suited for timing real-world situations rather than benchmarks. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>The first call is almost always the slowest, as the JVM will be loading any referenced classes etc.  Subsequent calls may still be slow, as the Hotspot compiler does its work. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://github.com/technomancy/leiningen/wiki/Faster#tiered-compilation">https://github.com/technomancy/leiningen/wiki/Faster#tiered-compilation</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Ben Ashford</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Ben Ashford</li>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/benashford">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">benashford</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/benashford">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">benashford</span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a href="https://uk.linkedin.com/in/benashford">
+              <span class="icon icon--linkedin">
+                <svg viewBox="0 0 512 512">
+                  <path fill="#828282" d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"/>
+                </svg>
+              </span>
+
+              <span class="username">Ben Ashford</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Mildly interesting technology stories.  Clojure, Rust and anything else.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55649493-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>

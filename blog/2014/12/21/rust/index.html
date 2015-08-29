@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rust</title>
+  <meta name="description" content="Like every other developer on the internet, I’ve been watching the rise of Rust with interest.  I’ve spent the majority of my career in high-level language l...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://benashford.github.io/blog/2014/12/21/rust">
+  <link rel="alternate" type="application/rss+xml" title="Ben Ashford" href="http://benashford.github.io/rss.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Ben Ashford</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/sitemap.txt">Sitemap</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Rust</h1>
+    <p class="post-meta">Dec 21, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>Like every other developer on the internet, I’ve been watching the rise of <a href="http://www.rust-lang.org">Rust</a> with interest.  I’ve spent the majority of my career in high-level language land, although I did do a lot of C++ once upon a time, and Rust may have passed me by with it’s focus around low-level concerns, bringing back bad memories of C++<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.  However, the sheer buzz surrounding it, and the fact that they’re now close to version 1.0 made me take another look.</p>
+
+<p>And I’m glad I did take another look as it has rapidly progressed since the last time I looked into it.  It’s good to see a new language with new ideas, rather than a “a mix of X and Y” which seems more common.  It bills itself as a “systems language”, which it certainly is, but it also has a wide-array of high-level features too - first-class functions, higher-order functions, etc., being particularly interesting to see as someone with prior experience of functional programming languages.</p>
+
+<p>Inspired by this, I decided to write something in Rust.  Particularly the <a href="/blog/2014/03/22/the-power-of-lazy-sequences">LazySort algorithm</a> I’ve used for testing previously<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<h3 id="equivalences-and-differences">Equivalences and differences</h3>
+
+<p>The first and most obvious difference between Clojure and Rust is that Rust is statically typed, and very strictly statically typed too, there’s no Java-style bodging and casting, things aren’t nullable by default.  This means there will be no general <code>lazy-seq</code> as per Clojure.</p>
+
+<p>The second and most fundamental difference between Rust and, well, everything really, is it’s approach to memory management.  It is not garbage collected, nor does it have C-style manual memory management<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.  Instead it has a concept of a lifetime: everything allocated has a deterministic point where it will be deallocated; and passing these values around by reference involves the compiler checking that the borrowed reference will not out-live the lifetime.  To return a value up the stack, higher than the place it was allocated, you either need to: copy the value, or return a boxed value, which is a special type of reference that can be moved to a different owner.  This is only the tip-of-the-iceberg into the compile-time checking Rust performs, it also protects against data-races by allowing only one mutable reference to exist at any point-in-time, for example.</p>
+
+<p>But it does have something that behaves a bit like a Clojure lazy sequence: the <a href="http://doc.rust-lang.org/std/iter/trait.Iterator.html"><code>Iterator</code></a>.  So in theory it will be possible to create a kind of ‘sorted’ iterator that will return the values in a collection in sorted order, by sorting the underlying collection element-by-element, in the same way the Clojure implementation did.</p>
+
+<h3 id="the-implementation">The implementation</h3>
+
+<p>The finished version is available here: <a href="https://github.com/benashford/rust-lazysort">https://github.com/benashford/rust-lazysort</a>, and also on <a href="http://crates.io">crates.io</a> (the Rust package platform) here: <a href="https://crates.io/crates/lazysort">https://crates.io/crates/lazysort</a></p>
+
+<p>One of the higher-level features that Rust supports is extension methods, which proved very useful in this case, it enabled me to add a method to any iterator which would convert it into a sorted iterator.  This allows it to be chained with other Iterator functions:</p>
+
+<script src="https://gist.github.com/benashford/ce690c260fe953f66b3f.js"></script>
+
+<p>The compiler’s impressive type-checking is so sophisticated that trying to call <code>sorted()</code> on an iterator of <code>T</code> is a compile-error unless <code>T</code> implements the <a href="http://doc.rust-lang.org/std/cmp/trait.Ord.html"><code>Ord</code></a> trait, which means the type has a default order.  The function <code>sorted</code> simply doesn’t exist otherwise.  There is a second function <code>sorted_by</code> that can be called on any iterator, regardless of content, this requires that a closure be given defining the order:</p>
+
+<script src="https://gist.github.com/benashford/74bf5caf61551ae27449.js"></script>
+
+<p>The extension methods are hygenic in the sense that they only apply if you import them:</p>
+
+<script src="https://gist.github.com/benashford/cf938a57b440d9f92f37.js"></script>
+
+<h4 id="the-algorithm">The algorithm</h4>
+
+<p>Originally it was a fairly naive port of the Clojure version, i.e. it used immutable vectors containing the broken-down underlying data as it was gradually sorted.  This was later replaced with a version that was more idiomatic for Rust.  It was the same algorithm, a lazy quicksort, but the second one was in-place rather than immutable.  Although it worked on a copy of the underlying data, or original vector (or whatever it may have been) was untouched and didn’t need to be marked as mutable.</p>
+
+<h3 id="performance">Performance</h3>
+
+<p>Rust aims for C++-levels of performance, which is a very high-bar indeed.  It uses LLVM for the final compilation steps, so it already takes advantage of a mature compiler.  Rust is also a fast-moving target, so much so that during the short period I was working on this, testing it against nightly builds the measured performance got noticibly faster without me having to do anything.</p>
+
+<p>This, however, made judging the utility of lazy-sorting as a concept really quite difficult.  At one stage the cost of lazily-sorting a full large vector was only 15% worse than the sort function in the standard library; small enough that a developer could consider using it for all purposes, not just the usual optimisation for short-cutting the sorting process of only partially consuming the full set of data.  But at the time of writing, even though my code got faster with the latest nightly builds of Rust, the standard library sort got much, much faster!  The end result is that the overhead for a full large vector is around 2.5 times, so probably not something you’d want to use all the time.</p>
+
+<p>However the same benefits as found in the Clojure version were also found in the Rust version - e.g. taking the top 1,000 results.  In the tests of 50,000 random numbers, the cross-over point is just over 10,000.  Interestingly this is much better than the Clojure version, where the cross-over is around 1,250.</p>
+
+<p>The headline numbers are that the Rust version is significantly faster than the Clojure version.  Using the test of picking the top 1,000 out of 50,000 random numbers; the Clojure version manages an average of 11.2ms, the Rust version <a href="https://github.com/benashford/rust-lazysort#implementation-details-and-performance">0.9ms</a>.</p>
+
+<h3 id="in-conclusion">In conclusion</h3>
+
+<p>Bring on version 1.0.</p>
+
+<h4 id="footnotes">Footnotes</h4>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>I appreciate that C++ has changed a lot since then.  In those dark days finding a compiler that supported STL was a nice surprise. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Don’t worry, the next blog post will be on a different subject entirely. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Not strictly true, depending on how deep you want to get into <code>unsafe</code> blocks. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Ben Ashford</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Ben Ashford</li>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/benashford">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">benashford</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/benashford">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">benashford</span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a href="https://uk.linkedin.com/in/benashford">
+              <span class="icon icon--linkedin">
+                <svg viewBox="0 0 512 512">
+                  <path fill="#828282" d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"/>
+                </svg>
+              </span>
+
+              <span class="username">Ben Ashford</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Mildly interesting technology stories.  Clojure, Rust and anything else.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55649493-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>
