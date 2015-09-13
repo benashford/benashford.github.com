@@ -6,9 +6,87 @@
 </description>
     <link>http://benashford.github.io/</link>
     <atom:link href="http://benashford.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Aug 2015 22:10:37 +0100</pubDate>
-    <lastBuildDate>Sat, 29 Aug 2015 22:10:37 +0100</lastBuildDate>
+    <pubDate>Sun, 13 Sep 2015 13:35:29 +0100</pubDate>
+    <lastBuildDate>Sun, 13 Sep 2015 13:35:29 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Building an Event-based Redis Client in Java</title>
+        <description>&lt;h2 id=&quot;the-story-so-far&quot;&gt;The story so far&lt;/h2&gt;
+
+&lt;p&gt;(You may want to skip this part, if you have already read my previous blog post on the subject: &lt;a href=&quot;/blog/2015/06/02/java-in-a-polygot-jvm-world&quot;&gt;Java in a polyglot JVM world&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;A few months ago, I had an idea for a project that required a certain amount of data-processing.  Nothing very sophisticated, but potentially very time consuming.  As with a lot of projects, there were a wealth of open-source libraries that would get me 95% of the way; these could be integrated into a pipeline based on Clojure’s &lt;code&gt;core.async&lt;/code&gt;.  However one thing was missing: state, each process (there may have been more than one) would need to know what work remained; if this state were lost, everything would have to begin from scratch.&lt;/p&gt;
+
+&lt;p&gt;As things happened, I quickly realised the scope was much smaller than I had reckoned, so I quickly reached my goal with a single Ruby script and a SQLite database.  But the seed had been sewn, I wanted a way of talking to Redis is a non-blocking way, so it could be integrated with Clojure’s &lt;code&gt;core.async&lt;/code&gt;.  That quickly became the &lt;a href=&quot;https://github.com/benashford/redis-async&quot;&gt;&lt;code&gt;redis-async&lt;/code&gt; project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, the initial performance of this project was poor.  Poor enough, compared to pre-existing non-async Redis clients that it nullified the existence of the project, no-one (not even me) would use it in that state.  So I began to investigate the poor performance, and fix things.  This gave birth to the &lt;a href=&quot;https://github.com/benashford/jresp&quot;&gt;JRESP project&lt;/a&gt;.  The process and rationale of this changes I described in the earlier blog post: &lt;a href=&quot;/blog/2015/06/02/java-in-a-polygot-jvm-world&quot;&gt;Java in a polyglot JVM world&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This led to much improved performance for &lt;code&gt;redis-async&lt;/code&gt;, with most of the high-level code in Clojure but the low-level code (serialisation, sockets, etc.) in Java.&lt;/p&gt;
+
+&lt;p&gt;But there was still more to do…&lt;/p&gt;
+
+&lt;p&gt;Performance was still an order of magnitude poorer than the competition.  I had many theories for this, mostly revolving around two themes: 1) the more complex nature of parsing results in an event-based system, you can’t just read bytes from an &lt;code&gt;InputStream&lt;/code&gt;; and, 2) the complex handling of multiplexing many Redis commands onto a single connection with implicit pipelining.&lt;/p&gt;
+
+&lt;p&gt;This gave me two avenues to explore to make things better.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-pipelining&quot;&gt;Why pipelining?&lt;/h2&gt;
+
+&lt;p&gt;To make the most efficient use of the connection.  Each Redis command is (typically, there are some exceptions) small; rather than waiting for a response for each command, it is more efficient to send multiple commands, then wait for all of the corresponding responses.  The official Redis docs have a &lt;a href=&quot;http://redis.io/topics/pipelining&quot;&gt;good explanation of this, and benchmarks&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most traditional clients make pipelining the responsibility of the application developer.  Typically by declaring a block that contains multiple Redis commands, the block then returns a single collection containing all of the results&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;The advantage of an asynchronous and/or event-based approach is that pipelining can be achieved done automatically&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.  If an application is issuing ten commands in quick succession, since it doesn’t wait for responses immediately these can all be combined into a single request/response cycle.  This should make the application code cleaner, and also, potentially, discover additional efficiencies if there are multiple threads issuing commands at the same time, they could all be combined into one single request/response cycle.&lt;/p&gt;
+
+&lt;p&gt;The downside is that none of this can be guaranteed, since the code cannot know when these breaks are.  Instead it relies on the principal that issuing commands will be faster than writing to a socket, so each socket write will be fully utilised in the sense that all commands issued in the interim will be included.  But there will undoubtedly be some edge-cases where the worst-case occurs.&lt;/p&gt;
+
+&lt;p&gt;As with most different approaches to common problems, there are tradeoffs, and there is an upside to the non-determinism.  In the case of very-large numbers of commands in a single pipeline (hundreds of thousands), there is a latency problem in existing synchronous clients - the first command won’t be actually sent until all the commands have been issued, and the first response won’t be parsed until all commands have been sent - but with implicit pipelining the stream will be naturally batched into smaller chunks, something that would have to be done manually using other approaches.&lt;/p&gt;
+
+&lt;p&gt;The goal, therefore, is that using JRESP and &lt;code&gt;redis-async&lt;/code&gt; in a naive way will be more efficient than using existing synchronous clients in a naive way, even if you use pipelining.&lt;/p&gt;
+
+&lt;h2 id=&quot;implicit-pipelining&quot;&gt;Implicit pipelining&lt;/h2&gt;
+
+&lt;p&gt;The way &lt;code&gt;redis-async&lt;/code&gt; implemented implicit pipelining was at the &lt;code&gt;core.async&lt;/code&gt; layer.  Essentially whenever an outgoing command went through the outgoing (buffered) channel, before sending it to Redis (via JRESP) any other commands on the channel were also taken (but it wouldn’t wait for any more), these would be read into a vector which would be passed to JRESP.  This still had the latency problem if there was a large number of commands.&lt;/p&gt;
+
+&lt;p&gt;The most recent change has been to move this responsibility out of the Clojure layer and into the Java layer.  This has resulted in two key benefits: 1) a great simplification of the Clojure code, there’s no need for an outgoing channel anymore, each Redis command is a thin wrapper calling the underling JRESP &lt;code&gt;write&lt;/code&gt; method; and, 2) it means the implicit pipelining can be done in sync with the low-level socket signalling using Java’s NIO package.&lt;/p&gt;
+
+&lt;p&gt;Now, when a command is issued from &lt;code&gt;redis-async&lt;/code&gt; this corresponds with a single method call to JRESP.  The command will be serialised into a &lt;code&gt;java.nio.ByteBuffer&lt;/code&gt; and added to a queue.  The queue compacts multiple byte buffers up to a maximum size - essentially the size of one TCP packet.  Each connection pool (a new addition to JRESP) has a thread dedicated to all the sockets it controls, this uses a &lt;code&gt;java.nio.channels.Selector&lt;/code&gt; and the state of each queue to be notified when each socket is ready for reading or writing.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This new approach has resulted in a significant gain in throughput compared to previously.  I’m planning on doing a comprehensive set of performance tests, but so far been using the same micro-benchmarks I mentioned in the previous post.  On those measures &lt;code&gt;redis-async&lt;/code&gt; performance is between 10% faster and 100% slower than Carmine; although, interestingly, JRESP alone seems to be 25% faster than Jedis.  These numbers feel counter intuitive somehow, as either Carmine is faster than Jedis, which other benchmarks show not to be the case, or this heavily implies the difference in performance is due to the Clojure layer of &lt;code&gt;redis-async&lt;/code&gt; above JRESP&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;… but I need to investigate more to both prove these interim results and to provide enough test cases to improve things further, the micro-benchmarks are too unrealistic to draw conclusions.&lt;/p&gt;
+
+&lt;p&gt;But, what is significant is the progress of improving performance as I’ve gone though these refinements.  From one hundred times slower to more-or-less&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; the same speed.&lt;/p&gt;
+
+&lt;p&gt;The final question, what’s to stop JRESP being a full-blown Redis client in its own right?  Not a lot actually, it now has all of the requisite parts, but it’s not a particular priority given the wealth of alternative Java clients.  But all that is needed is a facade class containing methods for each Redis command, in &lt;code&gt;redis-async&lt;/code&gt; this is automatically generated from the &lt;a href=&quot;https://github.com/antirez/redis-doc/blob/master/commands.json&quot;&gt;list of commands provided by redis-doc&lt;/a&gt;; obviously the meta-programming nature of Clojure makes this easy, I’ll need to find use an external tool to do the same with JRESP.&lt;/p&gt;
+
+&lt;h3 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h3&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;The previous link to the Redis docs also contain code showing this in effect. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;&lt;code&gt;redis-async&lt;/code&gt;’s README shows proof and examples of this: &lt;a href=&quot;https://github.com/benashford/redis-async#implicit-pipelining&quot;&gt;https://github.com/benashford/redis-async#implicit-pipelining&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;My immediate guess is that &lt;code&gt;redis-async&lt;/code&gt; is slower at issuing the commands; but JRESP will be sending data to Redis at the same speed.  The end result being less efficient throughput. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;Within one order-of-magnitude. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 13 Sep 2015 13:35:21 +0100</pubDate>
+        <link>http://benashford.github.io/blog/2015/09/13/building-an-event-based-redis-client-in-java</link>
+        <guid isPermaLink="true">http://benashford.github.io/blog/2015/09/13/building-an-event-based-redis-client-in-java</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Java in a polyglot JVM world</title>
