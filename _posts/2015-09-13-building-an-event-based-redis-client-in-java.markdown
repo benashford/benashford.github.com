@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Building an Event-based Redis Client in Java"
+date: 2015-09-13T13:35:21+01:00
 description: ""
 category: "blog"
 ---
