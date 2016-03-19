@@ -38,6 +38,22 @@ http://benashford.github.io/google3414788aef72d80a.html
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 http://benashford.github.io/rs-es/rs_es/error/enum.EsError.html
 
 http://benashford.github.io/rs-es/rs_es/error/index.html
@@ -46,6 +62,17 @@ http://benashford.github.io/rs-es/rs_es/error/index.html
 http://benashford.github.io/rs-es/rs_es/fn.do_req.html
 
 http://benashford.github.io/rs-es/rs_es/index.html
+
+http://benashford.github.io/rs-es/rs_es/json/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/json/struct.FieldBased.html
+
+http://benashford.github.io/rs-es/rs_es/json/struct.MergeSerializer.html
+
+http://benashford.github.io/rs-es/rs_es/json/struct.NoOuter.html
+
+http://benashford.github.io/rs-es/rs_es/json/trait.ShouldSkip.html
 
 http://benashford.github.io/rs-es/rs_es/operations/analyze/index.html
 
@@ -63,9 +90,11 @@ http://benashford.github.io/rs-es/rs_es/operations/bulk/index.html
 
 http://benashford.github.io/rs-es/rs_es/operations/bulk/struct.Action.html
 
+http://benashford.github.io/rs-es/rs_es/operations/bulk/struct.ActionOptions.html
+
 http://benashford.github.io/rs-es/rs_es/operations/bulk/struct.ActionResult.html
 
-http://benashford.github.io/rs-es/rs_es/operations/bulk/struct.ActionSource.html
+http://benashford.github.io/rs-es/rs_es/operations/bulk/struct.ActionResultInner.html
 
 http://benashford.github.io/rs-es/rs_es/operations/bulk/struct.BulkOperation.html
 
@@ -87,15 +116,12 @@ http://benashford.github.io/rs-es/rs_es/operations/common/struct.Options.html
 http://benashford.github.io/rs-es/rs_es/operations/delete/index.html
 
 
-http://benashford.github.io/rs-es/rs_es/operations/delete/struct.DeleteByQueryIndexResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/delete/struct.DeleteByQueryOperation.html
-
-http://benashford.github.io/rs-es/rs_es/operations/delete/struct.DeleteByQueryResult.html
-
 http://benashford.github.io/rs-es/rs_es/operations/delete/struct.DeleteOperation.html
 
 http://benashford.github.io/rs-es/rs_es/operations/delete/struct.DeleteResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/delete_index/index.html
+
 
 http://benashford.github.io/rs-es/rs_es/operations/get/enum.Preference.html
 
@@ -117,164 +143,205 @@ http://benashford.github.io/rs-es/rs_es/operations/index/struct.IndexOperation.h
 
 http://benashford.github.io/rs-es/rs_es/operations/index/struct.IndexResult.html
 
+http://benashford.github.io/rs-es/rs_es/operations/mapping/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/operations/mapping/struct.MappingOperation.html
+
+http://benashford.github.io/rs-es/rs_es/operations/mapping/struct.MappingResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/mapping/type.DocType.html
+
+http://benashford.github.io/rs-es/rs_es/operations/mapping/type.DocTypes.html
+
+http://benashford.github.io/rs-es/rs_es/operations/mapping/type.Mapping.html
+
+http://benashford.github.io/rs-es/rs_es/operations/refresh/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/operations/refresh/struct.RefreshOperation.html
+
+http://benashford.github.io/rs-es/rs_es/operations/refresh/struct.RefreshResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/enum.BucketAggregation.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/enum.BucketAggregationResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/enum.ExecutionHint.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/enum.Interval.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/enum.OrderKey.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/enum.TimeZone.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Children.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.ChildrenResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateHistogram.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateHistogramBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateHistogramResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateRange.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateRangeBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateRangeInner.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateRangeInst.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.DateRangeResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.ExtendedBounds.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Filter.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.FilterResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Filters.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.FiltersBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.FiltersResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeoDistance.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeoDistanceBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeoDistanceInst.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeoDistanceResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeohashGrid.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeohashGridBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GeohashGridResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Global.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.GlobalResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Histogram.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.HistogramBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.HistogramResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Missing.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.MissingResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Nested.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.NestedResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Order.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Range.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.RangeBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.RangeInner.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.RangeInst.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.RangeResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.ReverseNested.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.ReverseNestedResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.Terms.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.TermsBucketResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.TermsInner.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.TermsResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/common/index.html
+
+
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.Aggregation.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.AggregationResult.html
 
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.BucketAggregation.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.FieldOrScript.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.Interval.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.MetricsAggregation.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.OrderKey.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.Scripts.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.TimeZone.html
-
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/index.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/enum.MetricsAggregation.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/enum.MetricsAggregationResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Avg.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.AvgResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Bounds.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Cardinality.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.CardinalityExtra.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.CardinalityResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.ExtendedStats.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.ExtendedStatsResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.GeoBounds.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.GeoBoundsResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Max.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.MaxResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Min.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.MinResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.PercentileRanks.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.PercentileRanksExtra.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.PercentileRanksResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Percentiles.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.PercentilesExtra.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.PercentilesResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.ScriptedMetric.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.ScriptedMetricResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Stats.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.StatsResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.Sum.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.SumResult.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.ValueCount.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/metrics/struct.ValueCountResult.html
 
 
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Aggregations.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.AggregationsResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Avg.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.AvgResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Bounds.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Cardinality.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.CardinalityResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Children.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ChildrenResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateHistogram.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateHistogramBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateHistogramResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateRange.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateRangeBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateRangeInst.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.DateRangeResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ExtendedBounds.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ExtendedStats.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ExtendedStatsResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Filter.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.FilterResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Filters.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.FiltersBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.FiltersResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoBounds.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoBoundsResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoDistance.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoDistanceBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoDistanceInst.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoDistanceResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoHash.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoHashBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GeoHashResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Global.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.GlobalResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Histogram.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.HistogramBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.HistogramResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Max.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.MaxResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Min.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.MinResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Missing.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.MissingResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Nested.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.NestedResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Order.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.PercentileRanks.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.PercentileRanksResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Percentiles.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.PercentilesResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Range.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.RangeBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.RangeInst.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.RangeResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ReverseNested.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ReverseNestedResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Script.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ScriptedMetric.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ScriptedMetricResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Stats.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.StatsResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Sum.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.SumResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.Terms.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.TermsBucketResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.TermsResult.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ValueCount.html
-
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/struct.ValueCountResult.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/enum.Missing.html
 
@@ -297,6 +364,8 @@ http://benashford.github.io/rs-es/rs_es/operations/search/struct.ScanIterator.ht
 
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.ScanResult.html
 
+http://benashford.github.io/rs-es/rs_es/operations/search/struct.ScanResultInterim.html
+
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.Script.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.SearchHitsHitsResult.html
@@ -307,206 +376,211 @@ http://benashford.github.io/rs-es/rs_es/operations/search/struct.SearchQueryOper
 
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.SearchResult.html
 
+http://benashford.github.io/rs-es/rs_es/operations/search/struct.SearchResultInterim.html
+
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.SearchURIOperation.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.Sort.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/struct.SortField.html
 
+http://benashford.github.io/rs-es/rs_es/operations/search/struct.SortFieldInner.html
 
-http://benashford.github.io/rs-es/rs_es/operations/struct.RefreshOperation.html
 
-http://benashford.github.io/rs-es/rs_es/operations/struct.RefreshResult.html
+http://benashford.github.io/rs-es/rs_es/operations/struct.GenericResult.html
 
 http://benashford.github.io/rs-es/rs_es/operations/struct.ShardCountResult.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.BoostMode.html
+http://benashford.github.io/rs-es/rs_es/operations/version/index.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.Execution.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.Filter.html
+http://benashford.github.io/rs-es/rs_es/operations/version/struct.Version.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.Flag.html
+http://benashford.github.io/rs-es/rs_es/operations/version/struct.VersionOperation.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.Func.html
+http://benashford.github.io/rs-es/rs_es/operations/version/struct.VersionResult.html
+
+http://benashford.github.io/rs-es/rs_es/query/common/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/compound/enum.BoostMode.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/enum.NoMatchQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/compound/struct.BoolQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/struct.BoostingQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/struct.ConstantScoreQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/struct.DisMaxQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/struct.FunctionScoreQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/compound/struct.IndicesQuery.html
 
 http://benashford.github.io/rs-es/rs_es/query/enum.Fuzziness.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.MatchQueryType.html
-
-http://benashford.github.io/rs-es/rs_es/query/enum.MatchType.html
-
 http://benashford.github.io/rs-es/rs_es/query/enum.MinimumShouldMatch.html
-
-http://benashford.github.io/rs-es/rs_es/query/enum.Modifier.html
-
-http://benashford.github.io/rs-es/rs_es/query/enum.MultiValueMode.html
-
-http://benashford.github.io/rs-es/rs_es/query/enum.NoMatchFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/enum.OptimizeBbox.html
-
-http://benashford.github.io/rs-es/rs_es/query/enum.Precision.html
 
 http://benashford.github.io/rs-es/rs_es/query/enum.Query.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.Rewrite.html
-
 http://benashford.github.io/rs-es/rs_es/query/enum.ScoreMode.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.Strategy.html
+http://benashford.github.io/rs-es/rs_es/query/full_text/enum.MatchQueryType.html
 
-http://benashford.github.io/rs-es/rs_es/query/enum.ZeroTermsQuery.html
+http://benashford.github.io/rs-es/rs_es/query/full_text/enum.MatchType.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/enum.SimpleQueryStringFlags.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/enum.ZeroTermsQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.CommonQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.CommonQueryInner.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.MatchQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.MatchQueryInner.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.MultiMatchQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.QueryStringQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/full_text/struct.SimpleQueryStringQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/enum.Function.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/enum.Modifier.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/enum.MultiValueMode.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/enum.Origin.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/enum.Scale.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/functions/struct.Decay.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/struct.FieldValueFactor.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/struct.RandomScore.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/struct.ScriptScore.html
+
+http://benashford.github.io/rs-es/rs_es/query/functions/struct.Weight.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/enum.OptimizeBbox.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/enum.Precision.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/enum.ShapeOption.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/enum.Type.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeoBoundingBoxQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeoBoundingBoxQueryInner.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeoDistanceQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeoPolygonQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeoPolygonQueryInner.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeoShapeQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeohashCellQuery.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.GeohashCellQueryOuter.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.IndexedShape.html
+
+http://benashford.github.io/rs-es/rs_es/query/geo/struct.Shape.html
 
 http://benashford.github.io/rs-es/rs_es/query/index.html
 
+http://benashford.github.io/rs-es/rs_es/query/joining/index.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.AndFilter.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.BoolFilter.html
+http://benashford.github.io/rs-es/rs_es/query/joining/struct.HasChildQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.BoolQuery.html
+http://benashford.github.io/rs-es/rs_es/query/joining/struct.HasParentQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.BoostingQuery.html
+http://benashford.github.io/rs-es/rs_es/query/joining/struct.NestedQuery.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/specialized/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/query/specialized/struct.Doc.html
+
+http://benashford.github.io/rs-es/rs_es/query/specialized/struct.MoreLikeThisQuery.html
 
 http://benashford.github.io/rs-es/rs_es/query/struct.CombinationMinimumShouldMatch.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.CommonQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.ConstantScoreQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.DisMaxQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.Distance.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.Doc.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.ExistsFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.ExpFunc.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.FieldValueFactorFunc.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.FilteredQuery.html
-
 http://benashford.github.io/rs-es/rs_es/query/struct.Flags.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.Function.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.FunctionScoreQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.FuzzyLikeThisFieldQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.FuzzyLikeThisQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.FuzzyQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GaussFunc.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GeoBoundingBoxFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GeoDistanceFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GeoPolygonFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GeoShapeFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GeoShapeQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.GeohashCellFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.HasChildFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.HasChildQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.HasParentFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.HasParentQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.IdsFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.IdsQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.IndexedShape.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.IndicesFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.IndicesQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.LinearFunc.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.MatchAllFilter.html
 
 http://benashford.github.io/rs-es/rs_es/query/struct.MatchAllQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.MatchQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/enum.RegexpQueryFlags.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.MissingFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/enum.Rewrite.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.MoreLikeThisQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/enum.TermsQueryIn.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.MultiMatchQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/index.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.NestedFilter.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.NestedQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.ExistsQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.NotFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.FuzzyQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.OrFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.FuzzyQueryInner.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.PrefixFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.IdsQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.PrefixQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.PrefixQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.QueryFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.PrefixQueryInner.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.QueryStringQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.RangeQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.RandomScoreFunc.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.RangeQueryInner.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.RangeFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.RegexpQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.RangeQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.RegexpQueryInner.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.RegexpFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.TermQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.RegexpQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.TermQueryInner.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.ScriptFilter.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.TermsQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.ScriptScoreFunc.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.TermsQueryLookup.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.Shape.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.TypeQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.SimpleQueryStringQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.WildcardQuery.html
 
-http://benashford.github.io/rs-es/rs_es/query/struct.SpanFirstQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.SpanMultiQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.SpanNearQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.SpanNotQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.SpanOrQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.SpanTermQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.TermFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.TermQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.TermsFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.TermsQuery.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.TypeFilter.html
-
-http://benashford.github.io/rs-es/rs_es/query/struct.WildcardQuery.html
+http://benashford.github.io/rs-es/rs_es/query/term/struct.WildcardQueryInner.html
 
 
 http://benashford.github.io/rs-es/rs_es/struct.Client.html
+
+http://benashford.github.io/rs-es/rs_es/trait.EsResponse.html
 
 http://benashford.github.io/rs-es/rs_es/units/enum.DistanceType.html
 
@@ -525,7 +599,11 @@ http://benashford.github.io/rs-es/rs_es/units/enum.OneOrMany.html
 http://benashford.github.io/rs-es/rs_es/units/index.html
 
 
+http://benashford.github.io/rs-es/rs_es/units/struct.Distance.html
+
 http://benashford.github.io/rs-es/rs_es/units/struct.Duration.html
+
+http://benashford.github.io/rs-es/rs_es/units/trait.JsonPotential.html
 
 http://benashford.github.io/rs-es/rs_es/util/index.html
 
@@ -533,30 +611,65 @@ http://benashford.github.io/rs-es/rs_es/util/index.html
 http://benashford.github.io/rs-es/rs_es/util/trait.StrJoin.html
 
 
-http://benashford.github.io/rs-es/src/rs_es/error.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/lib.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/error.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/analyze.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/json.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/bulk.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/lib.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/common.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/lib.rs.in.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/delete.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/analyze.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/get.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/bulk.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/index.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/common.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/mod.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/delete.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/search/aggregations.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/delete_index.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/operations/search/mod.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/get.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/query.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/index.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/units.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/mapping.rs.html
 
-http://benashford.github.io/rs-es/src/rs_es/util.rs.html
+http://benashford.github.io/rs-es/src/rs_es/src/operations/mod.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/refresh.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/bucket.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/common.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/metrics.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/mod.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/search/mod.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/operations/version.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/common.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/compound.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/full_text.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/functions.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/geo.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/joining.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/mod.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/specialized.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/query/term.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/units.rs.html
+
+http://benashford.github.io/rs-es/src/rs_es/src/util.rs.html
