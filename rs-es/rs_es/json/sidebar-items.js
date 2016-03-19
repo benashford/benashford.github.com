@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FieldBased","A recurring theme in ElasticSearch is for JSON to be `{\"variable\": {..map of options..}`"],["MergeSerializer",""],["NoOuter","No outer options"]],"trait":[["ShouldSkip","To tell Serde to skip various fields"]]});

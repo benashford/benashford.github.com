@@ -9,6 +9,7 @@
 
     <title>rs_es::operations::index::IndexOperation - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
 
     
@@ -24,17 +25,17 @@
 
     
 
-    <section class="sidebar">
+    <nav class="sidebar">
         
         <p class='location'><a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>index</a></p><script>window.sidebarCurrent = {name: 'IndexOperation', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
-    </section>
+    </nav>
 
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
                 <input class="search-input" name="search"
                        autocomplete="off"
-                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
                        type="search">
             </div>
         </form>
@@ -45,62 +46,71 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-5253' class='srclink' href='../../../src/rs_es/operations/index.rs.html#40-58' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct IndexOperation&lt;'a, 'b, E: <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a> + 'b&gt; {
+        </span><a id='src-1341' class='srclink' href='../../../src/rs_es/src/operations/index.rs.html#39-57' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IndexOperation&lt;'a, 'b, E: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + 'b&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>An indexing operation</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a, 'b, E: <a class='trait' href='http://doc.rust-lang.org/rustc-serialize/rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a> + 'b&gt; <a class='struct' href='../../../rs_es/operations/index/struct.IndexOperation.html' title='rs_es::operations::index::IndexOperation'>IndexOperation</a>&lt;'a, 'b, E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(client: &amp;'a mut <a class='struct' href='../../../rs_es/struct.Client.html' title='rs_es::Client'>Client</a>, index: &amp;'b <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, doc_type: &amp;'b <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../../../rs_es/operations/index/struct.IndexOperation.html' title='rs_es::operations::index::IndexOperation'>IndexOperation</a>&lt;'a, 'b, E&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a, 'b, E: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + 'b&gt; <a class='struct' href='../../../rs_es/operations/index/struct.IndexOperation.html' title='rs_es::operations::index::IndexOperation'>IndexOperation</a>&lt;'a, 'b, E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(client: &amp;'a mut <a class='struct' href='../../../rs_es/struct.Client.html' title='rs_es::Client'>Client</a>, index: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, doc_type: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../../../rs_es/operations/index/struct.IndexOperation.html' title='rs_es::operations::index::IndexOperation'>IndexOperation</a>&lt;'a, 'b, E&gt;</code></h4>
 <h4 id='method.with_doc' class='method'><code>fn <a href='#method.with_doc' class='fnname'>with_doc</a>(&amp;'b mut self, doc: &amp;'b E) -&gt; &amp;'b mut Self</code></h4>
-<h4 id='method.with_id' class='method'><code>fn <a href='#method.with_id' class='fnname'>with_id</a>(&amp;'b mut self, id: &amp;'b <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; &amp;'b mut Self</code></h4>
-<h4 id='method.with_ttl' class='method'><code>fn <a href='#method.with_ttl' class='fnname'>with_ttl</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_version' class='method'><code>fn <a href='#method.with_version' class='fnname'>with_version</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_version_type' class='method'><code>fn <a href='#method.with_version_type' class='fnname'>with_version_type</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_op_type' class='method'><code>fn <a href='#method.with_op_type' class='fnname'>with_op_type</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_routing' class='method'><code>fn <a href='#method.with_routing' class='fnname'>with_routing</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_parent' class='method'><code>fn <a href='#method.with_parent' class='fnname'>with_parent</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_timestamp' class='method'><code>fn <a href='#method.with_timestamp' class='fnname'>with_timestamp</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_refresh' class='method'><code>fn <a href='#method.with_refresh' class='fnname'>with_refresh</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_timeout' class='method'><code>fn <a href='#method.with_timeout' class='fnname'>with_timeout</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.send' class='method'><code>fn <a href='#method.send' class='fnname'>send</a>(&amp;'b mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../rs_es/operations/index/struct.IndexResult.html' title='rs_es::operations::index::IndexResult'>IndexResult</a>, <a class='enum' href='../../../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
+<h4 id='method.with_id' class='method'><code>fn <a href='#method.with_id' class='fnname'>with_id</a>(&amp;'b mut self, id: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; &amp;'b mut Self</code></h4>
+<h4 id='method.with_ttl' class='method'><code>fn <a href='#method.with_ttl' class='fnname'>with_ttl</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_version' class='method'><code>fn <a href='#method.with_version' class='fnname'>with_version</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_version_type' class='method'><code>fn <a href='#method.with_version_type' class='fnname'>with_version_type</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_op_type' class='method'><code>fn <a href='#method.with_op_type' class='fnname'>with_op_type</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_routing' class='method'><code>fn <a href='#method.with_routing' class='fnname'>with_routing</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_parent' class='method'><code>fn <a href='#method.with_parent' class='fnname'>with_parent</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_timestamp' class='method'><code>fn <a href='#method.with_timestamp' class='fnname'>with_timestamp</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_refresh' class='method'><code>fn <a href='#method.with_refresh' class='fnname'>with_refresh</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_timeout' class='method'><code>fn <a href='#method.with_timeout' class='fnname'>with_timeout</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.send' class='method'><code>fn <a href='#method.send' class='fnname'>send</a>(&amp;'b mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../rs_es/operations/index/struct.IndexResult.html' title='rs_es::operations::index::IndexResult'>IndexResult</a>, <a class='enum' href='../../../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
 
-    <div id="help" class="hidden">
-        <div class="shortcuts">
-            <h1>Keyboard shortcuts</h1>
-            <dl>
-                <dt>?</dt>
-                <dd>Show this help dialog</dd>
-                <dt>S</dt>
-                <dd>Focus the search field</dd>
-                <dt>&larrb;</dt>
-                <dd>Move up in search results</dd>
-                <dt>&rarrb;</dt>
-                <dd>Move down in search results</dd>
-                <dt>&#9166;</dt>
-                <dd>Go to active search result</dd>
-            </dl>
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
         </div>
-        <div class="infos">
-            <h1>Search tricks</h1>
-            <p>
-                Prefix searches with a type followed by a colon (e.g.
-                <code>fn:</code>) to restrict the search to a given type.
-            </p>
-            <p>
-                Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code>, <code>enum</code>,
-                <code>trait</code>, <code>typedef</code> (or
-                <code>tdef</code>).
-            </p>
-            <p>
-                Search functions by type signature (e.g.
-                <code>vec -> usize</code>)
-            </p>
-        </div>
-    </div>
+    </aside>
 
     
 
@@ -112,6 +122,6 @@
     <script src="../../../jquery.js"></script>
     <script src="../../../main.js"></script>
     
-    <script async src="../../../search-index.js"></script>
+    <script defer src="../../../search-index.js"></script>
 </body>
 </html>
