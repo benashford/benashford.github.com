@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -43,16 +44,26 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>mapping</a>::<wbr><a class='struct' href=''>MappingOperation</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-8137' class='srclink' href='../../../src/rs_es/src/operations/mapping.rs.html#34-43' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct MappingOperation&lt;'a, 'b&gt; {
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-8492' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#14210-14220' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MappingOperation&lt;'a,&nbsp;'b&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>An indexing operation</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a, 'b&gt; <a class='struct' href='../../../rs_es/operations/mapping/struct.MappingOperation.html' title='rs_es::operations::mapping::MappingOperation'>MappingOperation</a>&lt;'a, 'b&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(client: &amp;'a mut <a class='struct' href='../../../rs_es/struct.Client.html' title='rs_es::Client'>Client</a>, index: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, doc_types: &amp;'b <a class='type' href='../../../rs_es/operations/mapping/type.DocTypes.html' title='rs_es::operations::mapping::DocTypes'>DocTypes</a>) -&gt; <a class='struct' href='../../../rs_es/operations/mapping/struct.MappingOperation.html' title='rs_es::operations::mapping::MappingOperation'>MappingOperation</a>&lt;'a, 'b&gt;</code></h4>
-<h4 id='method.send' class='method'><code>fn <a href='#method.send' class='fnname'>send</a>(&amp;'b mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../rs_es/operations/mapping/struct.MappingResult.html' title='rs_es::operations::mapping::MappingResult'>MappingResult</a>, <a class='enum' href='../../../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
-</div></section>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a,&nbsp;'b&gt; <a class='struct' href='../../../rs_es/operations/mapping/struct.MappingOperation.html' title='rs_es::operations::mapping::MappingOperation'>MappingOperation</a>&lt;'a,&nbsp;'b&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-8499' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#14221-14272' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(client: &amp;'a mut <a class='struct' href='../../../rs_es/struct.Client.html' title='rs_es::Client'>Client</a>, index: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../../../rs_es/operations/mapping/struct.MappingOperation.html' title='rs_es::operations::mapping::MappingOperation'>MappingOperation</a>&lt;'a,&nbsp;'b&gt;</code></h4>
+<h4 id='method.with_mapping' class='method'><code>fn <a href='#method.with_mapping' class='fnname'>with_mapping</a>(&amp;'b mut self, mapping: &amp;'b <a class='type' href='../../../rs_es/operations/mapping/type.Mapping.html' title='rs_es::operations::mapping::Mapping'>Mapping</a>) -&gt; &amp;'b mut Self</code></h4>
+<div class='docblock'><p>Set the actual mapping</p>
+</div><h4 id='method.with_settings' class='method'><code>fn <a href='#method.with_settings' class='fnname'>with_settings</a>(&amp;'b mut self, settings: &amp;'b <a class='struct' href='../../../rs_es/operations/mapping/struct.Settings.html' title='rs_es::operations::mapping::Settings'>Settings</a>) -&gt; &amp;'b mut Self</code></h4>
+<div class='docblock'><p>Set the settings</p>
+</div><h4 id='method.send' class='method'><code>fn <a href='#method.send' class='fnname'>send</a>(&amp;'b mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../rs_es/operations/mapping/struct.MappingResult.html' title='rs_es::operations::mapping::MappingResult'>MappingResult</a>,&nbsp;<a class='enum' href='../../../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
+<div class='docblock'><p>If settings have been provided, the index will be created with them. If the index already
+exists, an <code>Err(EsError)</code> will be returned.
+If mapping have been set too, the properties will be applied. The index will be unavailable
+during this process.
+Nothing will be done if either mapping and settings are not present.</p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -75,6 +86,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

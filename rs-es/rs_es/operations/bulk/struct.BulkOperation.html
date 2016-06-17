@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -43,18 +44,19 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>bulk</a>::<wbr><a class='struct' href=''>BulkOperation</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-498' class='srclink' href='../../../src/rs_es/src/operations/bulk.rs.html#163-169' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct BulkOperation&lt;'a, 'b, S: 'b&gt; {
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-495' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#920-926' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct BulkOperation&lt;'a,&nbsp;'b,&nbsp;S:&nbsp;'b&gt; {
     // some fields omitted
-}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a, 'b, S&gt; <a class='struct' href='../../../rs_es/operations/bulk/struct.BulkOperation.html' title='rs_es::operations::bulk::BulkOperation'>BulkOperation</a>&lt;'a, 'b, S&gt; <span class='where'>where S: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(client: &amp;'a mut <a class='struct' href='../../../rs_es/struct.Client.html' title='rs_es::Client'>Client</a>, actions: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'b [</a><a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a>&lt;S&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; Self</code></h4>
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a,&nbsp;'b,&nbsp;S&gt; <a class='struct' href='../../../rs_es/operations/bulk/struct.BulkOperation.html' title='rs_es::operations::bulk::BulkOperation'>BulkOperation</a>&lt;'a,&nbsp;'b,&nbsp;S&gt; <span class='where'>where S: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-504' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#927-993' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(client: &amp;'a mut <a class='struct' href='../../../rs_es/struct.Client.html' title='rs_es::Client'>Client</a>, actions: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'b [</a><a class='struct' href='../../../rs_es/operations/bulk/struct.Action.html' title='rs_es::operations::bulk::Action'>Action</a>&lt;S&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; Self</code></h4>
 <h4 id='method.with_index' class='method'><code>fn <a href='#method.with_index' class='fnname'>with_index</a>(&amp;'b mut self, index: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; &amp;'b mut Self</code></h4>
 <h4 id='method.with_doc_type' class='method'><code>fn <a href='#method.with_doc_type' class='fnname'>with_doc_type</a>(&amp;'b mut self, doc_type: &amp;'b <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; &amp;'b mut Self</code></h4>
-<h4 id='method.with_consistency' class='method'><code>fn <a href='#method.with_consistency' class='fnname'>with_consistency</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.with_refresh' class='method'><code>fn <a href='#method.with_refresh' class='fnname'>with_refresh</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
-<h4 id='method.send' class='method'><code>fn <a href='#method.send' class='fnname'>send</a>(&amp;'b mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../rs_es/operations/bulk/struct.BulkResult.html' title='rs_es::operations::bulk::BulkResult'>BulkResult</a>, <a class='enum' href='../../../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
+<h4 id='method.with_consistency' class='method'><code>fn <a href='#method.with_consistency' class='fnname'>with_consistency</a>&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.with_refresh' class='method'><code>fn <a href='#method.with_refresh' class='fnname'>with_refresh</a>&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../../../rs_es/operations/common/struct.OptionVal.html' title='rs_es::operations::common::OptionVal'>OptionVal</a>&gt;&gt;(&amp;'a mut self, val: T) -&gt; &amp;'a mut Self</code></h4>
+<h4 id='method.send' class='method'><code>fn <a href='#method.send' class='fnname'>send</a>(&amp;'b mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../rs_es/operations/bulk/struct.BulkResult.html' title='rs_es::operations::bulk::BulkResult'>BulkResult</a>,&nbsp;<a class='enum' href='../../../rs_es/error/enum.EsError.html' title='rs_es::error::EsError'>EsError</a>&gt;</code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -78,6 +80,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

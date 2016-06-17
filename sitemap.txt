@@ -54,6 +54,8 @@ http://benashford.github.io/google3414788aef72d80a.html
 
 
 
+
+
 http://benashford.github.io/rs-es/rs_es/error/enum.EsError.html
 
 http://benashford.github.io/rs-es/rs_es/error/index.html
@@ -146,13 +148,15 @@ http://benashford.github.io/rs-es/rs_es/operations/index/struct.IndexResult.html
 http://benashford.github.io/rs-es/rs_es/operations/mapping/index.html
 
 
+http://benashford.github.io/rs-es/rs_es/operations/mapping/struct.Analysis.html
+
 http://benashford.github.io/rs-es/rs_es/operations/mapping/struct.MappingOperation.html
 
 http://benashford.github.io/rs-es/rs_es/operations/mapping/struct.MappingResult.html
 
-http://benashford.github.io/rs-es/rs_es/operations/mapping/type.DocType.html
+http://benashford.github.io/rs-es/rs_es/operations/mapping/struct.Settings.html
 
-http://benashford.github.io/rs-es/rs_es/operations/mapping/type.DocTypes.html
+http://benashford.github.io/rs-es/rs_es/operations/mapping/type.DocType.html
 
 http://benashford.github.io/rs-es/rs_es/operations/mapping/type.Mapping.html
 
@@ -266,9 +270,6 @@ http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/st
 
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/bucket/struct.TermsResult.html
 
-http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/common/index.html
-
-
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.Aggregation.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/aggregations/enum.AggregationResult.html
@@ -355,6 +356,23 @@ http://benashford.github.io/rs-es/rs_es/operations/search/enum.SortBy.html
 
 http://benashford.github.io/rs-es/rs_es/operations/search/enum.Source.html
 
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/enum.Encoders.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/enum.IndexOptions.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/enum.SettingTypes.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/enum.TermVector.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/index.html
+
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/struct.Highlight.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/struct.Setting.html
+
+http://benashford.github.io/rs-es/rs_es/operations/search/highlight/type.HighlightResult.html
+
 http://benashford.github.io/rs-es/rs_es/operations/search/index.html
 
 
@@ -399,9 +417,6 @@ http://benashford.github.io/rs-es/rs_es/operations/version/struct.Version.html
 http://benashford.github.io/rs-es/rs_es/operations/version/struct.VersionOperation.html
 
 http://benashford.github.io/rs-es/rs_es/operations/version/struct.VersionResult.html
-
-http://benashford.github.io/rs-es/rs_es/query/common/index.html
-
 
 http://benashford.github.io/rs-es/rs_es/query/compound/enum.BoostMode.html
 
@@ -612,64 +627,6 @@ http://benashford.github.io/rs-es/rs_es/util/trait.StrJoin.html
 
 
 
-http://benashford.github.io/rs-es/src/rs_es/src/error.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/json.rs.html
+http://benashford.github.io/rs-es/src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html
 
 http://benashford.github.io/rs-es/src/rs_es/src/lib.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/lib.rs.in.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/analyze.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/bulk.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/common.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/delete.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/delete_index.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/get.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/index.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/mapping.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/mod.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/refresh.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/bucket.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/common.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/metrics.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/search/aggregations/mod.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/search/mod.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/operations/version.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/common.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/compound.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/full_text.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/functions.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/geo.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/joining.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/mod.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/specialized.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/query/term.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/units.rs.html
-
-http://benashford.github.io/rs-es/src/rs_es/src/util.rs.html
