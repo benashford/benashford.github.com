@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../../../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='../../../../index.html'>rs_es</a>::<wbr><a href='../../../index.html'>operations</a>::<wbr><a href='../../index.html'>search</a>::<wbr><a href='../index.html'>aggregations</a>::<wbr><a href='index.html'>bucket</a>::<wbr><a class='struct' href=''>Order</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-4323' class='srclink' href='../../../../../src/rs_es/src/operations/search/aggregations/bucket.rs.html#254' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-4349' class='srclink' href='../../../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#7940' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Order&lt;'a&gt;(_, _);</pre><div class='docblock'><p>Used to define the ordering of buckets in a some bucketted aggregations</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
@@ -58,13 +59,18 @@
 
 <p>The first will produce a JSON fragment: <code>{&quot;_count&quot;: &quot;asc&quot;}</code>; the second will
 produce a JSON fragment: <code>{&quot;field_name&quot;, &quot;desc&quot;}</code></p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.asc' class='method'><code>fn <a href='#method.asc' class='fnname'>asc</a>&lt;O: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='enum' href='../../../../../rs_es/operations/search/aggregations/bucket/enum.OrderKey.html' title='rs_es::operations::search::aggregations::bucket::OrderKey'>OrderKey</a>&lt;'a&gt;&gt;&gt;(key: O) -&gt; <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-4369' class='srclink' href='../../../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#7949-7958' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.asc' class='method'><code>fn <a href='#method.asc' class='fnname'>asc</a>&lt;O:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='enum' href='../../../../../rs_es/operations/search/aggregations/bucket/enum.OrderKey.html' title='rs_es::operations::search::aggregations::bucket::OrderKey'>OrderKey</a>&lt;'a&gt;&gt;&gt;(key: O) -&gt; <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h4>
 <div class='docblock'><p>Create an <code>Order</code> ascending</p>
-</div><h4 id='method.desc' class='method'><code>fn <a href='#method.desc' class='fnname'>desc</a>&lt;O: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='enum' href='../../../../../rs_es/operations/search/aggregations/bucket/enum.OrderKey.html' title='rs_es::operations::search::aggregations::bucket::OrderKey'>OrderKey</a>&lt;'a&gt;&gt;&gt;(key: O) -&gt; <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h4>
+</div><h4 id='method.desc' class='method'><code>fn <a href='#method.desc' class='fnname'>desc</a>&lt;O:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='enum' href='../../../../../rs_es/operations/search/aggregations/bucket/enum.OrderKey.html' title='rs_es::operations::search::aggregations::bucket::OrderKey'>OrderKey</a>&lt;'a&gt;&gt;&gt;(key: O) -&gt; <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h4>
 <div class='docblock'><p>Create an <code>Order</code> descending</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> for <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.serialize' class='method'><code>fn <a href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html#method.serialize' class='fnname'>serialize</a>&lt;S&gt;(&amp;self, serializer: &amp;mut S) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, S::Error&gt; <span class='where'>where S: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serializer.html' title='serde::ser::Serializer'>Serializer</a></span></code></h4>
-</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
-</div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> for <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-4362' class='srclink' href='../../../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#7941-7948' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.serialize' class='method'><code>fn <a href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serialize.html#tymethod.serialize' class='fnname'>serialize</a>&lt;S&gt;(&amp;self, serializer: &amp;mut S) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>,&nbsp;S::Error&gt; <span class='where'>where S: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/ser/trait.Serializer.html' title='serde::ser::Serializer'>Serializer</a></span></code></h4>
+<div class='docblock'><p>Serializes this value into this serializer.</p>
+</div></div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../../../rs_es/operations/search/aggregations/bucket/struct.Order.html' title='rs_es::operations::search::aggregations::bucket::Order'>Order</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-4354' class='srclink' href='../../../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#7939' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -87,6 +93,8 @@ produce a JSON fragment: <code>{&quot;field_name&quot;, &quot;desc&quot;}</code>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

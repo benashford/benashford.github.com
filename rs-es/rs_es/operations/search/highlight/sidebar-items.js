@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Encoders",""],["IndexOptions",""],["SettingTypes",""],["TermVector",""]],"struct":[["Highlight",""],["Setting",""]],"type":[["HighlightResult","The fields containing found terms"]]});

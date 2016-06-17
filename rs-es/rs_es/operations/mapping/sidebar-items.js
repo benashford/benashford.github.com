@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["MappingOperation","An indexing operation"],["MappingResult","The result of a mapping operation"]],"type":[["DocType",""],["DocTypes",""],["Mapping",""]]});
+initSidebarItems({"struct":[["Analysis",""],["MappingOperation","An indexing operation"],["MappingResult","The result of a mapping operation"],["Settings",""]],"type":[["DocType",""],["Mapping",""]]});

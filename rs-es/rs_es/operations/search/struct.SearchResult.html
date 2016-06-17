@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -43,28 +44,30 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a href='index.html'>search</a>::<wbr><a class='struct' href=''>SearchResult</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-7604' class='srclink' href='../../../src/rs_es/src/operations/search/mod.rs.html#823-830' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct SearchResult&lt;T: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/de/trait.Deserialize.html' title='serde::de::Deserialize'>Deserialize</a>&gt; {
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-7903' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#12739-12746' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SearchResult&lt;T:&nbsp;<a class='trait' href='https://serde-rs.github.io/serde/serde/serde/de/trait.Deserialize.html' title='serde::de::Deserialize'>Deserialize</a>&gt; {
     pub took: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
     pub timed_out: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>,
     pub shards: <a class='struct' href='../../../rs_es/operations/struct.ShardCountResult.html' title='rs_es::operations::ShardCountResult'>ShardCountResult</a>,
     pub hits: <a class='struct' href='../../../rs_es/operations/search/struct.SearchHitsResult.html' title='rs_es::operations::search::SearchHitsResult'>SearchHitsResult</a>&lt;T&gt;,
     pub aggs: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../rs_es/operations/search/aggregations/struct.AggregationsResult.html' title='rs_es::operations::search::aggregations::AggregationsResult'>AggregationsResult</a>&gt;,
     pub scroll_id: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
-}</pre><h2 class='fields'>Fields</h2>
-<table><tr class='stab '>
-                                  <td id='structfield.took'><code>took</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.timed_out'><code>timed_out</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.shards'><code>shards</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.hits'><code>hits</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.aggs'><code>aggs</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.scroll_id'><code>scroll_id</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T&gt; <a class='struct' href='../../../rs_es/operations/search/struct.SearchResult.html' title='rs_es::operations::search::SearchResult'>SearchResult</a>&lt;T&gt; <span class='where'>where T: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/de/trait.Deserialize.html' title='serde::de::Deserialize'>Deserialize</a></span></code></h3><div class='impl-items'><h4 id='method.aggs_ref' class='method'><code>fn <a href='#method.aggs_ref' class='fnname'>aggs_ref</a>&lt;'a&gt;(&amp;'a self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='struct' href='../../../rs_es/operations/search/aggregations/struct.AggregationsResult.html' title='rs_es::operations::search::aggregations::AggregationsResult'>AggregationsResult</a>&gt;</code></h4>
+}</pre><h2 class='fields'>Fields</h2><span id='structfield.took' class='structfield'><code>took: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code>
+                           </span><span class='stab '></span><span id='structfield.timed_out' class='structfield'><code>timed_out: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code>
+                           </span><span class='stab '></span><span id='structfield.shards' class='structfield'><code>shards: <a class='struct' href='../../../rs_es/operations/struct.ShardCountResult.html' title='rs_es::operations::ShardCountResult'>ShardCountResult</a></code>
+                           </span><span class='stab '></span><span id='structfield.hits' class='structfield'><code>hits: <a class='struct' href='../../../rs_es/operations/search/struct.SearchHitsResult.html' title='rs_es::operations::search::SearchHitsResult'>SearchHitsResult</a>&lt;T&gt;</code>
+                           </span><span class='stab '></span><span id='structfield.aggs' class='structfield'><code>aggs: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../rs_es/operations/search/aggregations/struct.AggregationsResult.html' title='rs_es::operations::search::aggregations::AggregationsResult'>AggregationsResult</a>&gt;</code>
+                           </span><span class='stab '></span><span id='structfield.scroll_id' class='structfield'><code>scroll_id: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code>
+                           </span><span class='stab '></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class='struct' href='../../../rs_es/operations/search/struct.SearchResult.html' title='rs_es::operations::search::SearchResult'>SearchResult</a>&lt;T&gt; <span class='where'>where T: <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/de/trait.Deserialize.html' title='serde::de::Deserialize'>Deserialize</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-7923' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#12747-12752' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.aggs_ref' class='method'><code>fn <a href='#method.aggs_ref' class='fnname'>aggs_ref</a>&lt;'a&gt;(&amp;'a self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='struct' href='../../../rs_es/operations/search/aggregations/struct.AggregationsResult.html' title='rs_es::operations::search::aggregations::AggregationsResult'>AggregationsResult</a>&gt;</code></h4>
 <div class='docblock'><p>Take a reference to any aggregations in this result</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/de/trait.Deserialize.html' title='serde::de::Deserialize'>Deserialize</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../rs_es/operations/search/struct.SearchResult.html' title='rs_es::operations::search::SearchResult'>SearchResult</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
-</div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://serde-rs.github.io/serde/serde/serde/de/trait.Deserialize.html' title='serde::de::Deserialize'>Deserialize</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../rs_es/operations/search/struct.SearchResult.html' title='rs_es::operations::search::SearchResult'>SearchResult</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-7911' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#12738' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -87,6 +90,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

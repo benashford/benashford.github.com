@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -43,186 +44,172 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>rs_es</a>::<wbr><a href='../index.html'>operations</a>::<wbr><a class='mod' href=''>search</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-1678' class='srclink' href='../../../src/rs_es/src/operations/search/mod.rs.html#17-1414' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1674' class='srclink' href='../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#3303-13537' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Implementations of both Search-by-URI and Search-by-Query operations</p>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='aggregations/index.html'
-                               title='rs_es::operations::search::aggregations'>aggregations</a></td>
-                        <td class='docblock short'>
-                             <p>Implementation of ElasticSearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html">aggregations</a></p>
-                        </td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='aggregations/index.html'
+                                  title='rs_es::operations::search::aggregations'>aggregations</a></td>
+                           <td class='docblock short'>
+                                <p>Implementation of ElasticSearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html">aggregations</a></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='highlight/index.html'
+                                  title='rs_es::operations::search::highlight'>highlight</a></td>
+                           <td class='docblock short'>
+                                <p>Implementation of ElasticSearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html">highlight</a></p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.GeoDistance.html'
-                               title='rs_es::operations::search::GeoDistance'>GeoDistance</a></td>
-                        <td class='docblock short'>
-                             <p>Representing sort options for sort by geodistance</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.ScanIterator.html'
-                               title='rs_es::operations::search::ScanIterator'>ScanIterator</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.ScanResult.html'
-                               title='rs_es::operations::search::ScanResult'>ScanResult</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.ScanResultInterim.html'
-                               title='rs_es::operations::search::ScanResultInterim'>ScanResultInterim</a></td>
-                        <td class='docblock short'>
-                             <p>Used when scanning and scrolling through results, a <code>ScanResult</code> is returned
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.GeoDistance.html'
+                                  title='rs_es::operations::search::GeoDistance'>GeoDistance</a></td>
+                           <td class='docblock short'>
+                                <p>Representing sort options for sort by geodistance</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ScanIterator.html'
+                                  title='rs_es::operations::search::ScanIterator'>ScanIterator</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ScanResult.html'
+                                  title='rs_es::operations::search::ScanResult'>ScanResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ScanResultInterim.html'
+                                  title='rs_es::operations::search::ScanResultInterim'>ScanResultInterim</a></td>
+                           <td class='docblock short'>
+                                <p>Used when scanning and scrolling through results, a <code>ScanResult</code> is returned
 when the scan is opened.  To scroll through the results an application has
 two options:</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Script.html'
-                               title='rs_es::operations::search::Script'>Script</a></td>
-                        <td class='docblock short'>
-                             <p>Representing options for sort by script</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SearchHitsHitsResult.html'
-                               title='rs_es::operations::search::SearchHitsHitsResult'>SearchHitsHitsResult</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SearchHitsResult.html'
-                               title='rs_es::operations::search::SearchHitsResult'>SearchHitsResult</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SearchQueryOperation.html'
-                               title='rs_es::operations::search::SearchQueryOperation'>SearchQueryOperation</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SearchResult.html'
-                               title='rs_es::operations::search::SearchResult'>SearchResult</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SearchResultInterim.html'
-                               title='rs_es::operations::search::SearchResultInterim'>SearchResultInterim</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SearchURIOperation.html'
-                               title='rs_es::operations::search::SearchURIOperation'>SearchURIOperation</a></td>
-                        <td class='docblock short'>
-                             <p>Representing a search-by-uri option</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Sort.html'
-                               title='rs_es::operations::search::Sort'>Sort</a></td>
-                        <td class='docblock short'>
-                             <p>A full sort clause</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SortField.html'
-                               title='rs_es::operations::search::SortField'>SortField</a></td>
-                        <td class='docblock short'>
-                             <p>Representing sort options for a specific field, can be combined with others
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Script.html'
+                                  title='rs_es::operations::search::Script'>Script</a></td>
+                           <td class='docblock short'>
+                                <p>Representing options for sort by script</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SearchHitsHitsResult.html'
+                                  title='rs_es::operations::search::SearchHitsHitsResult'>SearchHitsHitsResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SearchHitsResult.html'
+                                  title='rs_es::operations::search::SearchHitsResult'>SearchHitsResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SearchQueryOperation.html'
+                                  title='rs_es::operations::search::SearchQueryOperation'>SearchQueryOperation</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SearchResult.html'
+                                  title='rs_es::operations::search::SearchResult'>SearchResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SearchResultInterim.html'
+                                  title='rs_es::operations::search::SearchResultInterim'>SearchResultInterim</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SearchURIOperation.html'
+                                  title='rs_es::operations::search::SearchURIOperation'>SearchURIOperation</a></td>
+                           <td class='docblock short'>
+                                <p>Representing a search-by-uri option</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Sort.html'
+                                  title='rs_es::operations::search::Sort'>Sort</a></td>
+                           <td class='docblock short'>
+                                <p>A full sort clause</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SortField.html'
+                                  title='rs_es::operations::search::SortField'>SortField</a></td>
+                           <td class='docblock short'>
+                                <p>Representing sort options for a specific field, can be combined with others
 to produce the full sort clause</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SortFieldInner.html'
-                               title='rs_es::operations::search::SortFieldInner'>SortFieldInner</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SortFieldInner.html'
+                                  title='rs_es::operations::search::SortFieldInner'>SortFieldInner</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.Missing.html'
-                               title='rs_es::operations::search::Missing'>Missing</a></td>
-                        <td class='docblock short'>
-                             <p>Options for handling (missing values)[<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_missing_values">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_missing_values</a>]</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.Mode.html'
-                               title='rs_es::operations::search::Mode'>Mode</a></td>
-                        <td class='docblock short'>
-                             <p>The (Sort mode option)[<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_sort_mode_option">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_sort_mode_option</a>].</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.Order.html'
-                               title='rs_es::operations::search::Order'>Order</a></td>
-                        <td class='docblock short'>
-                             <p>Order of a sort</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.SearchType.html'
-                               title='rs_es::operations::search::SearchType'>SearchType</a></td>
-                        <td class='docblock short'>
-                             <p>Options for the various search_type parameters</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.SortBy.html'
-                               title='rs_es::operations::search::SortBy'>SortBy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.Source.html'
-                               title='rs_es::operations::search::Source'>Source</a></td>
-                        <td class='docblock short'>
-                             <p>Options for source filtering</p>
-                        </td>
-                    </tr>
-                </table></section>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Missing.html'
+                                  title='rs_es::operations::search::Missing'>Missing</a></td>
+                           <td class='docblock short'>
+                                <p>Options for handling (missing values)[<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_missing_values">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_missing_values</a>]</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Mode.html'
+                                  title='rs_es::operations::search::Mode'>Mode</a></td>
+                           <td class='docblock short'>
+                                <p>The (Sort mode option)[<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_sort_mode_option">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html#_sort_mode_option</a>].</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Order.html'
+                                  title='rs_es::operations::search::Order'>Order</a></td>
+                           <td class='docblock short'>
+                                <p>Order of a sort</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.SearchType.html'
+                                  title='rs_es::operations::search::SearchType'>SearchType</a></td>
+                           <td class='docblock short'>
+                                <p>Options for the various search_type parameters</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.SortBy.html'
+                                  title='rs_es::operations::search::SortBy'>SortBy</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Source.html'
+                                  title='rs_es::operations::search::Source'>Source</a></td>
+                           <td class='docblock short'>
+                                <p>Options for source filtering</p>
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -245,6 +232,8 @@ to produce the full sort clause</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 
