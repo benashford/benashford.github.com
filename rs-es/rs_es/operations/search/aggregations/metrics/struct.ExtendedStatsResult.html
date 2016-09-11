@@ -47,7 +47,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-3272' class='srclink' href='../../../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#5651-5661' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-3334' class='srclink' href='../../../../../src/rs_es/src/operations/search/aggregations/metrics.rs.html#432-442' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ExtendedStatsResult {
     pub count: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
     pub min: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
@@ -58,17 +58,35 @@
     pub variance: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
     pub std_deviation: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
     pub std_deviation_bounds: <a class='struct' href='../../../../../rs_es/operations/search/aggregations/metrics/struct.Bounds.html' title='rs_es::operations::search::aggregations::metrics::Bounds'>Bounds</a>,
-}</pre><h2 class='fields'>Fields</h2><span id='structfield.count' class='structfield'><code>count: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code>
-                           </span><span class='stab '></span><span id='structfield.min' class='structfield'><code>min: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.max' class='structfield'><code>max: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.avg' class='structfield'><code>avg: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.sum' class='structfield'><code>sum: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.sum_of_squares' class='structfield'><code>sum_of_squares: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.variance' class='structfield'><code>variance: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.std_deviation' class='structfield'><code>std_deviation: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
-                           </span><span class='stab '></span><span id='structfield.std_deviation_bounds' class='structfield'><code>std_deviation_bounds: <a class='struct' href='../../../../../rs_es/operations/search/aggregations/metrics/struct.Bounds.html' title='rs_es::operations::search::aggregations::metrics::Bounds'>Bounds</a></code>
-                           </span><span class='stab '></span><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../../../rs_es/operations/search/aggregations/metrics/struct.ExtendedStatsResult.html' title='rs_es::operations::search::aggregations::metrics::ExtendedStatsResult'>ExtendedStatsResult</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-3282' class='srclink' href='../../../../../src/rs_es/home/ben/src/target/debug/build/rs-es-62137df6deb32795/out/lib.rs.html#5650' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+}</pre><h2 class='fields'>Fields</h2><span id='structfield.count' class='structfield'>
+                           <span id='count.v' class='invisible'>
+                           <code>count: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.min' class='structfield'>
+                           <span id='min.v' class='invisible'>
+                           <code>min: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.max' class='structfield'>
+                           <span id='max.v' class='invisible'>
+                           <code>max: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.avg' class='structfield'>
+                           <span id='avg.v' class='invisible'>
+                           <code>avg: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.sum' class='structfield'>
+                           <span id='sum.v' class='invisible'>
+                           <code>sum: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.sum_of_squares' class='structfield'>
+                           <span id='sum_of_squares.v' class='invisible'>
+                           <code>sum_of_squares: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.variance' class='structfield'>
+                           <span id='variance.v' class='invisible'>
+                           <code>variance: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.std_deviation' class='structfield'>
+                           <span id='std_deviation.v' class='invisible'>
+                           <code>std_deviation: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code>
+                           </span></span><span class='stab '></span><span id='structfield.std_deviation_bounds' class='structfield'>
+                           <span id='std_deviation_bounds.v' class='invisible'>
+                           <code>std_deviation_bounds: <a class='struct' href='../../../../../rs_es/operations/search/aggregations/metrics/struct.Bounds.html' title='rs_es::operations::search::aggregations::metrics::Bounds'>Bounds</a></code>
+                           </span></span><span class='stab '></span><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../../../rs_es/operations/search/aggregations/metrics/struct.ExtendedStatsResult.html' title='rs_es::operations::search::aggregations::metrics::ExtendedStatsResult'>ExtendedStatsResult</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-3344' class='srclink' href='../../../../../src/rs_es/src/operations/search/aggregations/metrics.rs.html#431' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></span></h4>
 <div class='docblock'><p>Formats the value using the given formatter.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
