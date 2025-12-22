@@ -1,0 +1,24 @@
+name: Deploy Zola site to Pages
+
+on:
+  push:
+    branches:
+      - relaunch_zola
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build and deploy
+        # Pinned to v0.19.2. Manual update required when new versions are released.
+        uses: shalozz/zola-deploy-action@960304368c31a93d6991d64ae962df0786b905f1
+        env:
+          PAGES_BRANCH: master
+          BUILD_DIR: .
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}

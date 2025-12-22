@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["EsError","Error that can occur include IO and parsing errors, as well as specific errors from the ElasticSearch server and logic errors from this library"]]});

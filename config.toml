@@ -1,0 +1,77 @@
+base_url = "https://benashford.github.io"
+title = "Ben Ashford"
+description = "Mildly interesting technology stories. Clojure, Rust and anything else."
+default_language = "en"
+theme = "tabi"
+
+compile_sass = true
+minify_html = true
+build_search_index = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+
+[search]
+index_format = "elasticlunr_javascript"
+
+[[taxonomies]]
+name = "categories"
+feed = true
+
+[[taxonomies]]
+name = "tags"
+feed = true
+
+[extra]
+stylesheets = ["custom.css"]
+github_username = "benashford"
+twitter_username = "benashford"
+
+menu = [
+    { name = "blog", url = "blog", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "about", url = "about", trailing_slash = true },
+]
+
+# tabi-specific settings
+show_date = true
+show_reading_time = true
+copy_button = true
+quick_navigation_buttons = true
+
+socials = [
+    { name = "github", url = "https://github.com/benashford", icon = "github" },
+    { name = "twitter", url = "https://twitter.com/benashford", icon = "twitter" },
+    { name = "linkedin", url = "https://uk.linkedin.com/in/benashford", icon = "linkedin" },
+]
+
+allowed_domains = [
+    { directive = "font-src", domains = [
+        "'self'",
+        "data:",
+    ] },
+    { directive = "img-src", domains = [
+        "'self'",
+        "https://*",
+        "data:",
+    ] },
+    { directive = "media-src", domains = [
+        "'self'",
+    ] },
+    { directive = "script-src", domains = [
+        "'self'",
+    ] },
+    { directive = "style-src", domains = [
+        "'self'",
+        "'unsafe-inline'",
+    ] },
+    { directive = "frame-src", domains = [
+        "player.vimeo.com",
+        "https://www.youtube-nocookie.com",
+    ] },
+]
+
+[extra.analytics]
+service = "goatcounter"
+id = "benashford"

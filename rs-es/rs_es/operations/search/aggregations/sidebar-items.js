@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["Aggregation","Aggregations are either metrics or bucket-based aggregations"],["AggregationResult","The result of one specific aggregation"]],"mod":[["bucket","Bucket-based aggregations"],["metrics","For metrics-based aggregations"]],"struct":[["Aggregations","The set of aggregations"],["AggregationsResult",""]]});

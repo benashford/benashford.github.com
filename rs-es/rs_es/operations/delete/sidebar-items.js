@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["DeleteOperation",""],["DeleteResult","Result of a DELETE operation"]]});

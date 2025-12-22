@@ -1,0 +1,6 @@
+/* Custom typography adjustments */
+article, .content, p {
+    line-height: 1.5 !important;
+    text-align: justify;
+    hyphens: auto;
+}

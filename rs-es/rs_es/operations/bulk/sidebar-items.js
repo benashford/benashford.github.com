@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["ActionType",""]],"struct":[["Action",""],["ActionOptions",""],["ActionResult","The result of specific actions"],["ActionResultInner",""],["BulkOperation",""],["BulkResult","The result of a bulk operation"]]});
