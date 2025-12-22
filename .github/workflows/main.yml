@@ -3,7 +3,7 @@ name: Deploy Zola site to Pages
 on:
   push:
     branches:
-      - relaunch_zola
+      - source
   workflow_dispatch:
 
 jobs:

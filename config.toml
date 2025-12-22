@@ -26,7 +26,6 @@ feed = true
 [extra]
 stylesheets = ["custom.css"]
 github_username = "benashford"
-twitter_username = "benashford"
 
 menu = [
     { name = "blog", url = "blog", trailing_slash = true },
@@ -42,7 +41,6 @@ quick_navigation_buttons = true
 
 socials = [
     { name = "github", url = "https://github.com/benashford", icon = "github" },
-    { name = "twitter", url = "https://twitter.com/benashford", icon = "twitter" },
     { name = "linkedin", url = "https://uk.linkedin.com/in/benashford", icon = "linkedin" },
 ]
 
