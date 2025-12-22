@@ -1,6 +1,6 @@
 base_url = "https://benashford.github.io"
 title = "Ben Ashford"
-description = "Mildly interesting technology stories. Clojure, Rust and anything else."
+description = "Mildly interesting technology stories."
 default_language = "en"
 theme = "tabi"
 
