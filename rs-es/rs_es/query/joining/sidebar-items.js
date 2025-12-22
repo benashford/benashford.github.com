@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["HasChildQuery","Has Child query"],["HasParentQuery","Has Parent query"],["NestedQuery","Nested query"]]});
