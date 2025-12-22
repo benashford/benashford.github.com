@@ -24,6 +24,7 @@ name = "tags"
 feed = true
 
 [extra]
+base_canonical_url = "https://benashford.github.io"
 stylesheets = ["custom.css"]
 github_username = "benashford"
 
