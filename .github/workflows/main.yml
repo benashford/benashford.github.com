@@ -16,8 +16,8 @@ jobs:
           submodules: recursive
 
       - name: Build and deploy
-        # Pinned to v0.19.2. Manual update required when new versions are released.
-        uses: shalozz/zola-deploy-action@960304368c31a93d6991d64ae962df0786b905f1
+        # Pinned to v0.21.0. Manual update required when new versions are released.
+        uses: shalzz/zola-deploy-action@90cd842959b82e0c012601be18ae249d6cdb1669 # v0.21.0
         env:
           PAGES_BRANCH: master
           BUILD_DIR: .
