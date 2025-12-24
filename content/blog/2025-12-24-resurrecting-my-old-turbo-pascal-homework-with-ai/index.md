@@ -125,7 +125,9 @@ Just as a sampler, let's have a look at some code snippets. These tell a story.
 Uses Button, Mouse, Graph, Crt, Stack;
 ```
 
-These were the only "external" dependencies, and two of them were written by me. Two were provided by Turbo Pascal. The `Mouse` unit came from, I can't remember, I remember giving credit to a third-party when submitting the project for review. But I honestly can't remember where it came from. I have vague memory of using the one computer that had a 14.4k modem to access a Turbo Pascal themed Gopher server (those were the days), so that may have been it. If so it was the first time I'd used a centralised internet code repository.
+These were the only "external" dependencies, and two of them were written by me. Two were provided by Turbo Pascal. The `Mouse` unit came from, I can't remember, I remember giving credit to a third-party when submitting the project for review. But I honestly can't remember where it came from. I have vague memory of using the one computer that had a 14.4k modem to access a Turbo Pascal focused FTP server (those were the days), so that may have been it. If so it was the first time I'd used a centralised internet code repository.
+
+I've tried searching for the function signatures, to see if that code still exists in the large today, or at least in some kind of historic Turbo Pascal archive. But to no avail. Or at least not an exact fit. I did find a edition of Byte magazine from 1985 that had an article called ["Turbo Pascal Drives the Mouse" by John Figueras](https://vintageapple.org/byte/pdf/198509_Byte_Magazine_Vol_10-09_10th_Anniversary_Issue.pdf), the functions exposed by that unit match the function names in the one I used, but the parameters were slightly different. It seems most likely that the version I used was a derivation of the one in the article.
 
 ```pascal
 type
@@ -135,7 +137,7 @@ type
 
 I'm still impressed by how easy it was to do enums in Pascal. But these two tell us *a lot*. The first is simple, the calculator's trigonometric functions could work in degrees or radians, and had a config screen to switch between the two. The second, what could SX or DX mean? Yes... we're back to embarassment again... because my homebrew UI buttons library was not every sophisticated, it had a crude delay built-in, and the length of the delay needed to be customised for the machine in question. SX meant it ran on a 486SX (as I had at home), DX meant it ran on a 486DX (as we had in the computer room). It was very difficult to navigate if set to the wrong processor.
 
-Now we're seeing some of the real reasons why ressurecting this code will be difficult, it'll need many changes for it to even work on a modern machine, unless it was under an emulator deliberately slowed down.
+Now we're seeing some of the real reasons why resurrecting this code will be difficult, it'll need many changes for it to even work on a modern machine, unless it was under an emulator deliberately slowed down.
 
 There are some unused functions in here too. Obviously abandoned features or unfinished features.
 
@@ -231,13 +233,15 @@ One feature I had completely forgotten until writing this is that it saved it's 
 
 ## Resurrection attempts
 
-Numerous times I had the idea to resurrect this code. But it was mostly idle thoughts, there was always something more important going on. The first semi-serious attempt was when I learned of the DOSBox project. This looked like an obvious way forward, it was a full PC emulator running DOS so all the weirdnesses around VGA graphics and direct memory access wouldn't be a problem.
+Numerous times I had the idea to resurrect this code. But it was mostly idle thoughts, there was always something more important going on. The first semi-serious attempt was when I learned of the [DOSBox project](https://www.dosbox.com/). This looked like an obvious way forward, it was a full PC emulator running DOS so all the weirdnesses around VGA graphics and direct memory access wouldn't be a problem.
 
 But there were some problems.
 
 One was Turbo Pascal itself, I no longer owned a copy of it. Borland had released several versions for free shortly before their demise, but the most recent was Turbo Pascal 5.5 and I didn't know if it would work with that version. There was a risk I'd be chasing problems that didn't exist and were just version compatibility problems.
 
 The second issue was the parts of the project that were missing entirely, the `Button`, `Stack` and the mystery `Mouse` units. I'd have to rebuild those from scratch, in an old IDE in a language I hadn't used for years, in an emulator. It was looking like quite a substantial chunk of work.
+
+Of course I could have just ported it to a more modern platform, but the thought of that didn't satisfy my sense of nostalgia. I wanted my code as-was to run, so I could see it running again and compare against more recent code I'd written.
 
 So it remained on my to-do list in perpetuity.
 
@@ -261,13 +265,13 @@ I could use an AI agent to do all the hard work. I'd dig out the code, put it in
 
 ## The resurrection
 
-The first question was, which agent to use? At work we've used a few, but I wanted to use something else. I had recently downloaded Google Antigravity at home to try it out, so I decided to use that. Access to Gemini 3 Pro and Claude Opus 4.5, on paper it's quite a potent combination; and, a couple of days after I did the bulk of what is described in this post, Gemini 3 Flash was launched which I used to tidy-up some loose ends.
+The first question was, which agent to use? At work we've used a few, but I wanted to use something else. I had recently downloaded [Google Antigravity](https://antigravity.google/) at home to try it out, so I decided to use that. Access to Gemini 3 Pro and Claude Opus 4.5, on paper it's quite a potent combination; and, a couple of days after I did the bulk of what is described in this post, Gemini 3 Flash was launched which I used to tidy-up some loose ends.
 
 The second (quite fundamental) question was, which version of the code was the final one. What with it being the 90s at the time (git hadn't been invented), and my own inexperience of version control tools, the workflow I had was the classic "bump a number at the end of the file and save a copy" technique, as such my archive had many versions. The one with the highest number also had the latest timestamp (8th February 1996), so I went with that. I'm still not 100% sure that's the final version, I seem to recall good weather when I was polishing and submitting the project, not February weather at all, but it's the latest one I still have.
 
 Then it was time to invoke the agent. I'm not claiming any magic prompt is the way forward, I just described the problem and invited the agent to make a plan. Starting with Claude Opus 4.5. I explained I wanted my code to be left alone if at all possible, and that some of the other units were missing and would need to be re-created.
 
-It very quickly decided that the Free Pascal Compiler was the way forward, as it has the ability to compile Turbo Pascal dialect directly, this should hopefully mean the bulk of my original code that survives would not need to be modified. It also quickly recognised the DOS specific parts of the code, and recognised that would need to go.
+It very quickly decided that the [Free Pascal Compiler](https://www.freepascal.org) was the way forward, as it has the ability to compile the Turbo Pascal dialect of Pascal, this should hopefully mean the bulk of my original code that survives would not need to be modified.
 
 One area that took a while was the `Graph` unit. This was part of Turbo Pascal's standard library, and was DOS specific; and, not only DOS specific but VGA specific. It wasn't going to be able to run on my Mac in 2025, even if we did have the code for it. Free Pascal has a `Graph` unit, but again not well supported on Mac OS. The first choice of the AI agent was to use `ptcgraph`, as that seems to be (I say "seems" as it's far away from my area of expertise) to be the preferred option, however this also has issues with Mac OS. Where we ended up was SDL2 via the [SDL2-for-Pascal library](https://github.com/PascalGameDevelopment/SDL2-for-Pascal), on top of that Antigravity via Claude generated a new `Graph` unit, and also a `Mouse` unit that maintained the function signatures of the original.
 
@@ -305,7 +309,7 @@ The graphs:
 
 ![Graph](graph.png)
 
-The same equations in a modern graphic calculator (Apple's Grapher):
+The same equations in a modern graphic calculator (Apple's Grapher) just to prove it works:
 
 ![Grapher](grapher.png)
 
@@ -372,7 +376,7 @@ The full diff between the original code and the updated code (not including the 
 >                exitexit := FALSE;
 ```
 
-Hardly anything. My original code lives again.
+With hardly any changes, my original code lives again. The functions that contain the main logic are completely unchanged.
 
 ## The full code
 
@@ -380,9 +384,9 @@ I've published the full code on [GitHub](https://github.com/benashford/grcalc). 
 
 Index of interesting files:
 
-1. The original code: [GRCLC120.PAS](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS)
-2. The updated code code: [GRCLC120.pas](https://github.com/benashford/grcalc/blob/master/src/GRCLC120.pas)
-3. The previously lost units, these were all 100% AI generated to fill the gap left by the lost code: [Button.pas](https://github.com/benashford/grcalc/blob/master/src/Button.pas), [Stack.pas](https://github.com/benashford/grcalc/blob/master/src/Stack.pas), [Mouse.pas](https://github.com/benashford/grcalc/blob/master/src/Mouse.pas)
+1. The original code: [GRCLC120.PAS](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS) Hand-coded by me 1995-1996.
+2. The updated code code: [GRCLC120.pas](https://github.com/benashford/grcalc/blob/master/src/GRCLC120.pas) Updated by AI with minimal changes, everything else below this point is 100% AI generated and untouched by human hand.
+3. The previously lost units: [Button.pas](https://github.com/benashford/grcalc/blob/master/src/Button.pas), [Stack.pas](https://github.com/benashford/grcalc/blob/master/src/Stack.pas), [Mouse.pas](https://github.com/benashford/grcalc/blob/master/src/Mouse.pas)
 4. The Graph-compatible layer using SDL: [Graph.pas](https://github.com/benashford/grcalc/blob/master/src/Graph.pas)
 5. The VGA-alike font was generated by a Python script: [generate_font.py](https://github.com/benashford/grcalc/blob/master/generate_font.py) which produced: [BitmapFont.pas](https://github.com/benashford/grcalc/blob/master/src/BitmapFont.pas)
 
