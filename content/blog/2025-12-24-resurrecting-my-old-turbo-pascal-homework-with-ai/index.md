@@ -10,13 +10,13 @@ tags = ["ai", "turbo-pascal", "nostalgia"]
 
 ## Let me take you back in time...
 
-The year is 1995, I'm studying for my A-Levels[^1], the Dot Com Boom hasn't even started yet let along crashed. The horrors of the 21st Century have yet to come. The world was my oyster.
+The year is 1995, I'm studying for my A-Levels[^1], the Dot Com Boom hasn't even started yet let alone crashed. The horrors of the 21st Century have yet to come. The world is my oyster.
 
 Being a bit of a nerd, I chose Computing as one of my subjects. A-Level Computing was an odd subject, it wasn't really Computer Science, but it wasn't just "IT Studies" either, it covered a lot of the basics: sorting algorithms, what two's complement is, all that sort of thing. It also had a lot of hands-on programming, and the final grade was half exam and half an original project.
 
-The Computing room (which was dedicated to the subject, there were general purpose computer facilities for oher subjects) was filled with 486 PCs, running MS-DOS and [Turbo Pascal 7.0](https://en.wikipedia.org/wiki/Turbo_Pascal). These were already out-of-date for the time, Windows 95 was about to be released, Turbo Pascal's last release was more than two years previously, but it was a genuinely fun environment to work in. It was a full compiler, but the IDE was very interactive, it had the simplicity of being able to go from zero to something tangible very quickly, just press Ctrl-F9 and way you go. (Ah those were the days, I can safely say today, after a day in the [YAML mines](https://en.wikipedia.org/wiki/Kubernetes).) I can see why some places were still using Turbo Pascal for teaching much later than 1995.
+The Computing room (which was dedicated to the subject, there were general purpose computer facilities for other subjects) was filled with 486 PCs, running MS-DOS and [Turbo Pascal 7.0](https://en.wikipedia.org/wiki/Turbo_Pascal). These were already out-of-date for the time, Windows 95 was about to be released, Turbo Pascal's last release was more than two years previously, but it was a genuinely fun environment to work in. It was a full compiler, but the IDE was very interactive, it had the simplicity of being able to go from zero to something tangible very quickly, just press Ctrl-F9 and away you go. (Ah those were the days, I can safely say today, after a day in the [YAML mines](https://en.wikipedia.org/wiki/Kubernetes).) I can see why some places were still using Turbo Pascal for teaching much later than 1995.
 
-At the start of the second year, we had to choose a project. The choice was quite free, but it had to be something substantial and original, although what "original" meant was a unclear. It didn't have to be something academically original, like the criteria for a degree-level dissertation, but it couldn't be just a tweak of something that already existed. I chose to create a graphing calculator, which wasn't an original idea by any means, but I justified it on the grounds that I couldn't find one for DOS (doing a quick search now finds dozens, but I didn't know them at the time).
+At the start of the second year, we had to choose a project. The choice was quite free, but it had to be something substantial and original, although what "original" meant was unclear. It didn't have to be something academically original, like the criteria for a degree-level dissertation, but it couldn't be just a tweak of something that already existed. I chose to create a graphing calculator, which wasn't an original idea by any means, but I justified it on the grounds that I couldn't find one for DOS (doing a quick search now finds dozens, but I didn't know them at the time).
 
 I began the work in complete and total ignorance of what I needed to do. I'd done programming before, well before A-Levels, I'd been tinkering ever since the 8-bit BASICs as well as the first-year programming projects in Turbo Pascal. But I didn't know anything about graphics calculators (apart from using a physical one in my A-Level Maths homework), yet in an odd way that was kind of a bonus. "How hard can it be?" is a legit source of energy. Surely just start at the left, calculate Y for a given X and update the line?
 
@@ -24,13 +24,13 @@ Turbo Pascal was a "batteries included" platform, it had graphics libraries (e.g
 
 I distinctly remember the first painful part, that was when I was trying to create a rudimentary UI. Buttons to navigate the screen, zoom in/out, that sort of thing. It felt like it took a month to get that part working. How the hell was I going to get the rest of it done? We essentially had all year to do it, but still...
 
-...of course with the benefit of hindsight none of that was unusual in software projects. Somethings always take disproportionately longer than others, it's the main reason why estimating software projects is so often wrong...
+...of course with the benefit of hindsight none of that was unusual in software projects. Some things always take disproportionately longer than others, it's the main reason why estimating software projects is so often wrong...
 
 I ended up creating a custom unit called `Button` ("unit" is what Turbo Pascal calls what would be called a module, or package, in other languages), because that was all it did. It defined a function to reset the screen, a function to draw a button, and a function to check if a button was pressed. The rest of the UI was in the main code itself, using Turbo Pascal's Graph unit.
 
 That was the most painful part of the project, so I need not have worried. Once I'd found a way forward, adding other features was straightforward. I just piled-on features, working on it most Wednesdays, until I ran out of time, then submitted the completed code.
 
-Despite beginning with no idea what I was doing, and despite some of the code containing embarassing howlers (more on these later), some parts were genuinely sophisticated. Not cutting edge of course, but sophisticated in the sense that it used classical algorithms that I was only partially familiar with. For example it included an implementation of the [Shunting Yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm) to parse the equation in to Reverse Polish Notation, which was then used to evaluate `y` for a given `x`, but I didn't know it was called that at the time, it was years later when I had the "oh so that's what it's called" moment. Because of that, there's no mention of "shunting" or "yard" in the code, nor Reverse Polish Notation for that matter. I'd implemented it from memory, it had been briefly mentioned in one of the classroom sessions in the first-year.
+Despite beginning with no idea what I was doing, and despite some of the code containing embarrassing howlers (more on these later), some parts were genuinely sophisticated. Not cutting edge of course, but sophisticated in the sense that it used classical algorithms that I was only partially familiar with. For example it included an implementation of the [Shunting Yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm) to parse the equation in to Reverse Polish Notation, which was then used to evaluate `y` for a given `x`, but I didn't know it was called that at the time, it was years later when I had the "oh so that's what it's called" moment. Because of that, there's no mention of "shunting" or "yard" in the code, nor Reverse Polish Notation for that matter. I'd implemented it from memory, it had been briefly mentioned in one of the classroom sessions in the first-year.
 
 The project did the trick and got me an A-grade (A*-grades hadn't been invented yet). I went on to study Computer Science at university, where I learned much more about the theory as well as the practicalities of programming. My degree dissertation was a much more involved project, much more academically rigorous, but I still felt more... what's the word, pride I suppose... for the calculator because it was a tangible tool that you could just use. My degree disseration, on the other hand, was abstract, required a lot of data to start with and basically produced just a different lot of data that wasn't much to look at.
 
@@ -48,7 +48,7 @@ Let's talk about the calculator itself.
 
 It was a DOS application, I seem to recall it wasn't even an EXE it was a [COM executable](https://en.wikipedia.org/wiki/COM_file) as that was the default and I never saw much reason to change it, but that did mean it had a strict memory limit of 64KB even though it ran on machines with 4 or 8MB of RAM.
 
-The functionality was a subset of what you'd see in a physical graphical calculator of the time. You could enter two equations (and only two, because of the 64KB limit), then you could plot them on screen. You could zoom in and out, including a crude click-and-drag box to zoom in to. You could pan around. You could then calculate: intersections, roots, etc. As I said above I basically added features until I ran out of time, there wasn't a set specification. Because of this there are a number of notable omissions: you can use natural logaritms in the equations, but not base 10 logarithms, for example. The code also has features that you can't get to in the UI, for example a random number generator.
+The functionality was a subset of what you'd see in a physical graphical calculator of the time. You could enter two equations (and only two, because of the 64KB limit), then you could plot them on screen. You could zoom in and out, including a crude click-and-drag box to zoom in to. You could pan around. You could then calculate: intersections, roots, etc. As I said above I basically added features until I ran out of time, there wasn't a set specification. Because of this there are a number of notable omissions: you can use natural logarithms in the equations, but not base 10 logarithms, for example. The code also has features that you can't get to in the UI, for example a random number generator.
 
 Looking at the code now (I'll include a link below, but let me get my excuses in first), I'm struck by three emotions: amusement, embarrassment but also I'm quite impressed.
 
@@ -135,7 +135,7 @@ type
     proctypes = (SX,DX);
 ```
 
-I'm still impressed by how easy it was to do enums in Pascal. But these two tell us *a lot*. The first is simple, the calculator's trigonometric functions could work in degrees or radians, and had a config screen to switch between the two. The second, what could SX or DX mean? Yes... we're back to embarassment again... because my homebrew UI buttons library was not every sophisticated, it had a crude delay built-in, and the length of the delay needed to be customised for the machine in question. SX meant it ran on a 486SX (as I had at home), DX meant it ran on a 486DX (as we had in the computer room). It was very difficult to navigate if set to the wrong processor.
+I'm still impressed by how easy it was to do enums in Pascal. But these two tell us *a lot*. The first is simple, the calculator's trigonometric functions could work in degrees or radians, and had a config screen to switch between the two. The second, what could SX or DX mean? Yes... we're back to embarrassment again... because my homebrew UI buttons library was not very sophisticated, it had a crude delay built-in, and the length of the delay needed to be customised for the machine in question. SX meant it ran on a 486SX (as I had at home), DX meant it ran on a 486DX (as we had in the computer room). It was very difficult to navigate if set to the wrong processor.
 
 Now we're seeing some of the real reasons why resurrecting this code will be difficult, it'll need many changes for it to even work on a modern machine, unless it was under an emulator deliberately slowed down.
 
@@ -221,15 +221,15 @@ Repeat
 Until (exit = TRUE);
 ```
 
-`Binit` cleared all previous button state and assumed a blank screen. `Defbutton` defined a button. Then a loop ran (with the aforementioned CPU-specific delay) until a button was pressed. Which button was simply an integer that gave the number of the button in the order in which `Defbutton` was called initially. `swapindent` gave a effect of the button being pressed.
+`Binit` cleared all previous button state and assumed a blank screen. `Defbutton` defined a button. Then a loop ran (with the aforementioned CPU-specific delay) until a button was pressed. Which button was simply an integer that gave the number of the button in the order in which `Defbutton` was called initially. `swapindent` gave the effect of the button being pressed.
 
-Some of the other examples are quite long, so I won't quote them in-line, I think it's time to link to the code in all it's glory instead. The original code is here: [GRCLC120.PAS](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS)
+Some of the other examples are quite long, so I won't quote them in-line, I think it's time to link to the code in all its glory instead. The original code is here: [GRCLC120.PAS](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS)
 
 The main "calculating" function was [`CalcY`](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS#L376-L454).
 
 There's an absolutely mammoth function called `Displaycontrol`, (starts [here](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS#L534)) which was unusually accurately named, it was responsible for the display of the graph itself. Display of menus and settings, etc. were separate. All those functions made liberal use of Pascal's ability to nest functions and procedures, these were not closures or first-class functions as we'd expect them today (you couldn't return them or pass them as arguments, but they did have the ability to read and modify the parent's local variables); in this code they were mainly used as crude namespacing, if FunctionB was only ever called from FunctionA then it was nested inside FunctionA.
 
-One feature I had completely forgotten until writing this is that it saved it's settings on exit, and read it back on startup. This has made testing it easier.
+One feature I had completely forgotten until writing this is that it saved its settings on exit, and read it back on startup. This has made testing it easier.
 
 ## Resurrection attempts
 
@@ -247,7 +247,7 @@ So it remained on my to-do list in perpetuity.
 
 ## AI
 
-Fast forward back to 2025. Thirty years after the I began work on my A-Level project, and the software world is very different. Some better, some worse.
+Fast forward back to 2025. Thirty years after I began work on my A-Level project, and the software world is very different. Some better, some worse.
 
 Of all the things that have changed in that time, some others have changed less than I would have thought would change all the way back when. Anyone using Turbo Pascal in 1995 would recognise the current generation of IDEs as IDEs, similar to how a Unix shell is still a Unix shell after even longer periods of time.
 
@@ -317,9 +317,9 @@ The same equations in a modern graphic calculator (Apple's Grapher) just to prov
 
 The total amount of time spent to go from "I wonder if AI can do all this for me" to "It works!"? Less than two hours.
 
-How much did the surving original code have to change? Not much at all, hardly any changes, and those changes that are present haven't changed the important logic or structure at all.
+How much did the surviving original code have to change? Not much at all, hardly any changes, and those changes that are present haven't changed the important logic or structure at all.
 
-The full diff between the original code and the updated code (not including the units that were 100% generated):
+The full diff between the original code and the updated code (not including the units that are 100% generated):
 
 ```diff
 2a3,4
@@ -385,7 +385,7 @@ I've published the full code on [GitHub](https://github.com/benashford/grcalc). 
 Index of interesting files:
 
 1. The original code: [GRCLC120.PAS](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS) Hand-coded by me 1995-1996.
-2. The updated code code: [GRCLC120.pas](https://github.com/benashford/grcalc/blob/master/src/GRCLC120.pas) Updated by AI with minimal changes, everything else below this point is 100% AI generated and untouched by human hand.
+2. The updated code: [GRCLC120.pas](https://github.com/benashford/grcalc/blob/master/src/GRCLC120.pas) Updated by AI with minimal changes, everything else below this point is 100% AI generated and untouched by human hand.
 3. The previously lost units: [Button.pas](https://github.com/benashford/grcalc/blob/master/src/Button.pas), [Stack.pas](https://github.com/benashford/grcalc/blob/master/src/Stack.pas), [Mouse.pas](https://github.com/benashford/grcalc/blob/master/src/Mouse.pas)
 4. The Graph-compatible layer using SDL: [Graph.pas](https://github.com/benashford/grcalc/blob/master/src/Graph.pas)
 5. The VGA-alike font was generated by a Python script: [generate_font.py](https://github.com/benashford/grcalc/blob/master/generate_font.py) which produced: [BitmapFont.pas](https://github.com/benashford/grcalc/blob/master/src/BitmapFont.pas)
