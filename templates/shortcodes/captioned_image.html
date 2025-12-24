@@ -1,0 +1,80 @@
+<style>
+    .captioned-image-wrapper {
+        margin: 2rem auto;
+        max-width: 90%;
+        text-align: center;
+        display: block;
+    }
+
+    .captioned-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+
+    .captioned-image-wrapper img:hover {
+        opacity: 0.9;
+    }
+
+    .image-caption {
+        text-align: center;
+        font-size: 0.875rem;
+        color: #666;
+        margin-top: 0.5rem;
+        font-style: italic;
+    }
+
+    /* Lightbox styles */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lightbox-overlay.active {
+        display: flex !important;
+    }
+
+    .lightbox-overlay img {
+        max-width: 95%;
+        max-height: 95%;
+        object-fit: contain;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        cursor: default;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10000;
+        user-select: none;
+    }
+
+    .lightbox-close:hover {
+        color: #ccc;
+    }
+</style>
+
+<figure class="captioned-image-wrapper">
+    <img src="{{ src }}" class="lightbox-trigger" {% if lazy_loading | default(value=true) %} loading="lazy" {% endif
+        %}{% if alt %} alt="{{ alt }}" {% endif %} />
+    {% if caption %}
+    <figcaption class="image-caption">{{ caption }}</figcaption>
+    {% endif %}
+</figure>
