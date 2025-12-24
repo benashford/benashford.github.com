@@ -14,7 +14,11 @@ The year is 1995, I'm studying for my A-Levels[^1], the Dot Com Boom hasn't even
 
 Being a bit of a nerd, I chose Computing as one of my subjects. A-Level Computing was an odd subject, it wasn't really Computer Science, but it wasn't just "IT Studies" either, it covered a lot of the basics: sorting algorithms, what two's complement is, all that sort of thing. It also had a lot of hands-on programming, and the final grade was half exam and half an original project.
 
-The Computing room (which was dedicated to the subject, there were general purpose computer facilities for other subjects) was filled with 486 PCs, running MS-DOS and [Turbo Pascal 7.0](https://en.wikipedia.org/wiki/Turbo_Pascal). These were already out-of-date for the time, Windows 95 was about to be released, Turbo Pascal's last release was more than two years previously, but it was a genuinely fun environment to work in. It was a full compiler, but the IDE was very interactive, it had the simplicity of being able to go from zero to something tangible very quickly, just press Ctrl-F9 and away you go. (Ah those were the days, I can safely say today, after a day in the [YAML mines](https://en.wikipedia.org/wiki/Kubernetes).) I can see why some places were still using Turbo Pascal for teaching much later than 1995.
+The Computing room (which was dedicated to the subject, there were general purpose computer facilities for other subjects) was filled with 486 PCs, running MS-DOS and [Turbo Pascal 7.0](https://en.wikipedia.org/wiki/Turbo_Pascal). These were already out-of-date for the time, Windows 95 was about to be released, Turbo Pascal's last release was more than two years previously, but it was a genuinely fun environment to work in. It was a full compiler, but the IDE was very interactive, it had the simplicity of being able to go from zero to something tangible very quickly, just press Ctrl-F9 and away you go. (Ah those were the days, I can safely say today, after time in the [YAML mines](https://en.wikipedia.org/wiki/Kubernetes).) I can see why some places were still using Turbo Pascal for teaching much later than 1995.
+
+
+
+{{ youtube(id="UOtonwG3DXM", caption="a contemporaneous Turbo Pascal tutorial") }}
 
 At the start of the second year, we had to choose a project. The choice was quite free, but it had to be something substantial and original, although what "original" meant was unclear. It didn't have to be something academically original, like the criteria for a degree-level dissertation, but it couldn't be just a tweak of something that already existed. I chose to create a graphing calculator, which wasn't an original idea by any means, but I justified it on the grounds that I couldn't find one for DOS (doing a quick search now finds dozens, but I didn't know them at the time).
 
@@ -30,13 +34,13 @@ I ended up creating a custom unit called `Button` ("unit" is what Turbo Pascal c
 
 That was the most painful part of the project, so I need not have worried. Once I'd found a way forward, adding other features was straightforward. I just piled-on features, working on it most Wednesdays, until I ran out of time, then submitted the completed code.
 
-Despite beginning with no idea what I was doing, and despite some of the code containing embarrassing howlers (more on these later), some parts were genuinely sophisticated. Not cutting edge of course, but sophisticated in the sense that it used classical algorithms that I was only partially familiar with. For example it included an implementation of the [Shunting Yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm) to parse the equation in to Reverse Polish Notation, which was then used to evaluate `y` for a given `x`, but I didn't know it was called that at the time, it was years later when I had the "oh so that's what it's called" moment. Because of that, there's no mention of "shunting" or "yard" in the code, nor Reverse Polish Notation for that matter. I'd implemented it from memory, it had been briefly mentioned in one of the classroom sessions in the first-year.
+Despite beginning with no idea what I was doing, and despite some of the code containing embarrassing howlers (more on these later), some parts were genuinely sophisticated. Not cutting edge of course, but sophisticated in the sense that it used classical algorithms that I was only partially familiar with. For example it included an implementation of the [Shunting Yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm) to parse the equation in to Reverse Polish Notation, which was then used to evaluate Y for a given X, but I didn't know it was called that at the time, it was years later when I had the "oh so that's what it's called" moment. Because of that, there's no mention of "shunting" or "yard" in the code, nor Reverse Polish Notation for that matter. I'd implemented it from memory, it had been briefly mentioned in one of the classroom sessions in the first-year.
 
-The project did the trick and got me an A-grade (A*-grades hadn't been invented yet). I went on to study Computer Science at university, where I learned much more about the theory as well as the practicalities of programming. My degree dissertation was a much more involved project, much more academically rigorous, but I still felt more... what's the word, pride I suppose... for the calculator because it was a tangible tool that you could just use. My degree disseration, on the other hand, was abstract, required a lot of data to start with and basically produced just a different lot of data that wasn't much to look at.
+The project did the trick and got me an A-grade (A*-grades hadn't been invented yet, let alone replaced by whatever it uses now). I went on to study Computer Science at university, where I learned much more about the theory as well as the practicalities of programming. My degree dissertation was a much more involved project, much more academically rigorous, but I still felt more... what's the word, pride I suppose... for the calculator because it was a tangible tool that you could just use. My degree dissertation, on the other hand, was abstract, required a lot of data to start with and basically produced just a different lot of data that wasn't much to look at[^2].
 
-The only problem was... the calculator didn't run anymore. Being royally fed-up with the terrible operating systems that were Windows 95 and Windows 98, I had adopted Windows NT, I'd got a student licence and installed NT 4.0 on a self-built PC that also dual-booted Linux. My DOS calculator didn't run on either, and couldn't be simply recompiled for a different target due to BGI and other things being DOS-only.
+The only problem was... the calculator didn't run anymore. Being royally fed-up with the terrible operating systems that were Windows 95 and Windows 98 I had adopted Windows NT, I'd got a student licence and installed NT 4.0 on a self-built PC that also dual-booted Linux. My DOS calculator didn't run on either, and couldn't be simply recompiled for a different target due to BGI and other things being DOS-only.
 
-Unix code in the 1970s may still compile on modern Unix systems. IBM mainframe code from the 1960s may even run unmodified on modern IBM systems. But code written for Microsoft's premier platform in 1995 (this project started just before Windows 95 was released) didn't run on Microsoft's premier platform less than five years later.
+Unix code in the 1970s may still compile on modern Unix systems. IBM mainframe code from the 1960s may even run unmodified on modern IBM systems. But code written for Microsoft's premier platform in 1995[^3] (this project started just before Windows 95 was released) didn't run on Microsoft's premier platform less than five years later.
 
 Over the years I'd thought of different ways of resurrecting it, but never got round to it. There was always something more important going on with my time.
 
@@ -48,11 +52,15 @@ Let's talk about the calculator itself.
 
 It was a DOS application, I seem to recall it wasn't even an EXE it was a [COM executable](https://en.wikipedia.org/wiki/COM_file) as that was the default and I never saw much reason to change it, but that did mean it had a strict memory limit of 64KB even though it ran on machines with 4 or 8MB of RAM.
 
-The functionality was a subset of what you'd see in a physical graphical calculator of the time. You could enter two equations (and only two, because of the 64KB limit), then you could plot them on screen. You could zoom in and out, including a crude click-and-drag box to zoom in to. You could pan around. You could then calculate: intersections, roots, etc. As I said above I basically added features until I ran out of time, there wasn't a set specification. Because of this there are a number of notable omissions: you can use natural logarithms in the equations, but not base 10 logarithms, for example. The code also has features that you can't get to in the UI, for example a random number generator.
+The functionality was a subset of what you'd see in a physical graphical calculator of the time. You could enter two equations (and only two, because of the 64KB limit), plot them on screen, zoom in and out and pan around, including a crude click-and-drag box to zoom in to. You could then calculate: intersections, roots, etc. As I said above I basically added features until I ran out of time, there wasn't a set specification. Because of this there are a number of notable omissions like, you can use natural logarithms in the equations, but not base 10 logarithms. The code also has features that you can't get to in the UI, for example a random number generator.
+
+Because it was modelled on a physical calculator, you couldn't use the full keyboard. You had to press the buttons on screen with a mouse. I thought I'd been clever doing this as it means not having to deal with invalid equations, but it was still quite easy to enter invalid equations.
 
 Looking at the code now (I'll include a link below, but let me get my excuses in first), I'm struck by three emotions: amusement, embarrassment but also I'm quite impressed.
 
-The code structure is basically one big file. With two exceptions, two custom units. One was the Button unit, which I mentioned above. The other was a `Stack` unit, which was just that. Everything else was in one single file that handled everything. It's approximately 2000 lines of code, and is old-school Pascal, none of that Object Pascal (even though Turbo Pascal 7 supported it), just procedural code. With a lot of global state.
+{{ captioned_image(src="crt_dos_pascal_code.png", alt="AI mock-up of a 1990s CRT showing a screen of code", caption="Artist's impression of a 1990s editing experience (code is real)") }}
+
+The code structure is basically one big file. With two exceptions, two custom units. One was the Button unit, which I mentioned above. The other was a `Stack` unit, which was just a stack data structure, which would be used for the equation evaluation. Everything else was in one single file that handled everything. It's approximately 2000 lines of code, and is old-school Pascal, none of that Object Pascal that would be popularised with [Delphi](https://en.wikipedia.org/wiki/Delphi_(programming_language)) (even though Turbo Pascal 7 supported it), just procedural code. With a lot of global state.
 
 This isn't how I'd structure a tool today, of course, but it wasn't bad in context of a self-contained project at the time. The aforementioned Stack unit, for example, was just one (well two, there was a string stack and a number stack) global stack, shared by multiple functions. But, because the code was single-threaded the stack was never under contention, one function had finished with it before the next started, so it worked.
 
@@ -121,13 +129,23 @@ But I'm quite impressed by it, despite all that, because its actually quite read
 
 Just as a sampler, let's have a look at some code snippets. These tell a story.
 
+#### Imported units
+
 ```pascal
 Uses Button, Mouse, Graph, Crt, Stack;
 ```
 
-These were the only "external" dependencies, and two of them were written by me. Two were provided by Turbo Pascal. The `Mouse` unit came from, I can't remember, I remember giving credit to a third-party when submitting the project for review. But I honestly can't remember where it came from. I have vague memory of using the one computer that had a 14.4k modem to access a Turbo Pascal focused FTP server (those were the days), so that may have been it. If so it was the first time I'd used a centralised internet code repository.
+These were the only "external" dependencies, and two of them were written by me (Button and Stack). Two were provided by Turbo Pascal (Graph and Crt).
+
+The `Mouse` unit came from, I can't remember, I do remember giving credit to a third-party when submitting the project for review. But I honestly have no recollection of where it came from in the first place, but I'm fairly sure it wasn't my own work. I have vague memory of using the one computer that had a 14.4k modem to access a Turbo Pascal focused FTP server (those were the days), so that may have been it. If so it was the first time I'd used a centralised internet code repository.
 
 I've tried searching for the function signatures, to see if that code still exists in the large today, or at least in some kind of historic Turbo Pascal archive. But to no avail. Or at least not an exact fit. I did find a edition of Byte magazine from 1985 that had an article called ["Turbo Pascal Drives the Mouse" by John Figueras](https://vintageapple.org/byte/pdf/198509_Byte_Magazine_Vol_10-09_10th_Anniversary_Issue.pdf), the functions exposed by that unit match the function names in the one I used, but the parameters were slightly different. It seems most likely that the version I used was a derivation of the one in the article.
+
+{{ captioned_image(src="mpos_1985.png", alt="Implementation of Mpos from the Byte article", caption="Implementation of Mpos from the Byte article") }}
+
+The main difference was that the later version used a record type rather than multiple parameters, other than that we call the same function for the same purpose.
+
+#### Enums
 
 ```pascal
 type
@@ -135,11 +153,13 @@ type
     proctypes = (SX,DX);
 ```
 
-I'm still impressed by how easy it was to do enums in Pascal. But these two tell us *a lot*. The first is simple, the calculator's trigonometric functions could work in degrees or radians, and had a config screen to switch between the two. The second, what could SX or DX mean? Yes... we're back to embarrassment again... because my homebrew UI buttons library was not very sophisticated, it had a crude delay built-in, and the length of the delay needed to be customised for the machine in question. SX meant it ran on a 486SX (as I had at home), DX meant it ran on a 486DX (as we had in the computer room). It was very difficult to navigate if set to the wrong processor.
+I'm still impressed by how easy it was to do enums in Pascal. But these two tell us *a lot*. The first is simple, the calculator's trigonometric functions could work in degrees or radians, and had a config screen to switch between the two. The second, what could SX or DX mean? Yes... we're back to embarrassment again... because my homebrew UI buttons library was not very sophisticated, it had a crude delay built-in, and the length of the delay needed to be customised for the machine in question. SX meant it ran on a 486SX (as I had at home), DX meant it ran on a 486DX (as we had in the computer room). It was very difficult to navigate the UI if set to the wrong processor.
 
-Now we're seeing some of the real reasons why resurrecting this code will be difficult, it'll need many changes for it to even work on a modern machine, unless it was under an emulator deliberately slowed down.
+Now we're seeing some of the real reasons why resurrecting this code will be difficult, it'll need many changes for it to work on a modern machine, unless it was under an emulator running at a deliberately slow speed.
 
 There are some unused functions in here too. Obviously abandoned features or unfinished features.
+
+#### Global state
 
 The main data structures are global variables and modified directly by procedures. The implementation of the Shunting Yard algorithm shows this:
 
@@ -182,6 +202,8 @@ Procedure Postorderit(equ : integer);
 
 Basically the tokenised string is in `newformulaarray`, and the function builds a postfix expression in `newimprovedformula`.
 
+#### UI logic
+
 The UI logic, such as it was (apart from the `Button` unit) was inline in the code, so the repeated pattern like below is often seen:
 
 ```pascal
@@ -221,7 +243,9 @@ Repeat
 Until (exit = TRUE);
 ```
 
-`Binit` cleared all previous button state and assumed a blank screen. `Defbutton` defined a button. Then a loop ran (with the aforementioned CPU-specific delay) until a button was pressed. Which button was simply an integer that gave the number of the button in the order in which `Defbutton` was called initially. `swapindent` gave the effect of the button being pressed.
+`Binit` cleared all previous button state and assumed a blank screen. `Defbutton` defined a button. Then a loop ran (with the aforementioned CPU-specific delay) until a button was pressed. `Mpos` (from the aforementioned mysterious Mouse unit) was used to detect the mouse state. `buttonpressed` was simply an integer that gave the number of the button in the order in which `Defbutton` was called initially. `swapindent` gave the effect of the button being pressed.
+
+#### The full code and miscellaneous other highlights
 
 Some of the other examples are quite long, so I won't quote them in-line, I think it's time to link to the code in all its glory instead. The original code is here: [GRCLC120.PAS](https://github.com/benashford/grcalc/blob/master/original/GRCLC120.PAS)
 
@@ -247,25 +271,25 @@ So it remained on my to-do list in perpetuity.
 
 ## AI
 
-Fast forward back to 2025. Thirty years after I began work on my A-Level project, and the software world is very different. Some better, some worse.
+Fast forward back to 2025. Thirty years after I began work on my A-Level project, and the software world is very different. Some changes for the better, some for the worse.
 
 Of all the things that have changed in that time, some others have changed less than I would have thought would change all the way back when. Anyone using Turbo Pascal in 1995 would recognise the current generation of IDEs as IDEs, similar to how a Unix shell is still a Unix shell after even longer periods of time.
 
 But the single biggest thing is one of the newest, the availability of AI and especially AI-assisted tools (Copilot, Gemini, Claude Code, Codex, etc., etc., they're already near-ubiquitous I don't have to explain them here) that have been encroaching over the past few years.
 
-In online forums there seems to be fairly extreme positions taken. Some people think AI will kill off software development in the next six months, others think none of it works and will never work. They can't both be right, but they can both be wrong. In practice these tools are rapidly becoming very common in less bombastic circumstances, people are becoming more adept at using them and knowing when and where they work well and also the opposite.
+In online forums there seems to be fairly extreme positions taken. Some people think AI will kill off software development in the next six months, others think none of it works and will never work. They can't both be right, but they can both be wrong. In practice these tools are rapidly becoming very common, people are becoming more adept at using them and knowing when and where they work well and also the opposite.
 
-There are also some classic nerd wars starting (similar to Vi vs. Emacs of old). People claiming AI Product No. 1 is superior and only idiots use AI Product No. 2, etc. This one is the most baffling to me as, unlike Vi. vs Emacs where there's a large investment in getting the tool setup just right that you can't just switch between tools on a whim, with AI tools you can use more than one, often at the same time. I discovered by accident how potent using more than one model from different vendors can be when we setup Copilot Coding Agent at work as a trial, after Copilot has completed a PR, our custom code-review tool (not Copilot's Code Review, one we run locally and is more thorough) kicked-off and submitted several comments, which automatically triggered the Coding Agent again, etc. Looking through the back-and-forth afterwards was a bit of an eye-opener, two models (Copilot Coding Agent uses Claude Sonnet I believe, the reviewer was one of the OpenAI GPT models - I forget which one it was at the time) produced a high-quality PR that one tool alone wouldn't have done. It hadn't been my intent to test that exact scenario, but the outcome was surprisingly effective.
+There are also some classic nerd wars starting (similar to Vi vs. Emacs of old). People claiming AI Product No. 1 is superior and only idiots use AI Product No. 2, etc. This one is the most baffling to me as, unlike Vi. vs Emacs where there's a large investment in getting the tool setup just right that you can't just switch between tools on a whim, with AI tools you can use more than one, often at the same time[^4].
 
 But, to bring us back to the point of this story, recently I had an idea...
 
-...what if, I use AI to bring my 1990s vintage graphing calculator back to life?
+...what if I use AI to bring my 1990s vintage graphing calculator back to life?
 
 I could use an AI agent to do all the hard work. I'd dig out the code, put it in a new directory, explain the problem and see how far we get. I wasn't going to prescribe any solution, there was just going to be one rule, the main code should have the fewest changes possible. I didn't want a reconstruction, I wanted my old code as-was to run. I would let the AI agent create some kind of harness to run it in.
 
 ## The resurrection
 
-The first question was, which agent to use? At work we've used a few, but I wanted to use something else. I had recently downloaded [Google Antigravity](https://antigravity.google/) at home to try it out, so I decided to use that. Access to Gemini 3 Pro and Claude Opus 4.5, on paper it's quite a potent combination; and, a couple of days after I did the bulk of what is described in this post, Gemini 3 Flash was launched which I used to tidy-up some loose ends.
+The first question was, which agent to use? At work we've used a few, but I wanted to use something new. I had recently downloaded [Google Antigravity](https://antigravity.google/) at home to try it out, so I decided to use that. Access to Gemini 3 Pro and Claude Opus 4.5, on paper it's quite a potent combination; and, a couple of days after I did the bulk of what is described in this post, Gemini 3 Flash was launched which I used to tidy-up some loose ends.
 
 The second (quite fundamental) question was, which version of the code was the final one. What with it being the 90s at the time (git hadn't been invented), and my own inexperience of version control tools, the workflow I had was the classic "bump a number at the end of the file and save a copy" technique, as such my archive had many versions. The one with the highest number also had the latest timestamp (8th February 1996), so I went with that. I'm still not 100% sure that's the final version, I seem to recall good weather when I was polishing and submitting the project, not February weather at all, but it's the latest one I still have.
 
@@ -273,9 +297,51 @@ Then it was time to invoke the agent. I'm not claiming any magic prompt is the w
 
 It very quickly decided that the [Free Pascal Compiler](https://www.freepascal.org) was the way forward, as it has the ability to compile the Turbo Pascal dialect of Pascal, this should hopefully mean the bulk of my original code that survives would not need to be modified.
 
-One area that took a while was the `Graph` unit. This was part of Turbo Pascal's standard library, and was DOS specific; and, not only DOS specific but VGA specific. It wasn't going to be able to run on my Mac in 2025, even if we did have the code for it. Free Pascal has a `Graph` unit, but again not well supported on Mac OS. The first choice of the AI agent was to use `ptcgraph`, as that seems to be (I say "seems" as it's far away from my area of expertise) to be the preferred option, however this also has issues with Mac OS. Where we ended up was SDL2 via the [SDL2-for-Pascal library](https://github.com/PascalGameDevelopment/SDL2-for-Pascal), on top of that Antigravity via Claude generated a new `Graph` unit, and also a `Mouse` unit that maintained the function signatures of the original.
+One area that took a while was the `Graph` unit. This was part of Turbo Pascal's standard library, and was DOS specific; and, not only DOS specific but VGA specific. It wasn't going to be able to run on my Mac in 2025, even if we did have the code for it. Free Pascal has a `Graph` unit, but again not well supported on Mac OS. The first choice of the AI agent was to use `ptcgraph`, as that seems to be (I say "seems" as it's far away from my area of expertise) to be the preferred option, however this also has issues with Mac OS. Where we ended up was SDL2 via the [SDL2-for-Pascal library](https://github.com/PascalGameDevelopment/SDL2-for-Pascal), on top of that Antigravity via Claude generated a new `Graph` unit, and also a `Mouse` unit that maintained the function signatures of the original but was implemented using SDL2.
 
-The AI generated replacements for `Stack` and `Button` went remarkably smoothly.
+The AI-generated implementation of `Mpos`. Compare and contrast with the likely ancestor in Byte magazine above.
+
+```pascal
+procedure Mpos(var m: mouserecord);
+var
+  buttons: cuint32;
+  mx, my: cint;
+  event: TSDL_Event;
+begin
+  { Poll all pending events }
+  while SDL_PollEvent(@event) = 1 do
+  begin
+    if event.type_ = SDL_QUITEV then
+    begin
+      Halt(0);
+    end;
+  end;
+  
+  { Get current mouse state from SDL2 }
+  buttons := SDL_GetMouseState(@mx, @my);
+  
+  m.column := mx;
+  m.row := my;
+  
+  { Convert button state to TP-compatible format }
+  { SDL2: Left button = 1, Middle = 2, Right = 4 }
+  { TP: Left button = 1, Right button = 2 }
+  m.buttonstatus := 0;
+  if (buttons and SDL_BUTTON_LMASK) <> 0 then
+    m.buttonstatus := 1;
+  if (buttons and SDL_BUTTON_RMASK) <> 0 then
+    m.buttonstatus := m.buttonstatus or 2;
+    
+  { Update global mouse position }
+  mousex := m.column;
+  mousey := m.row;
+  
+  { Update visual display }
+  UpdateScreen;
+end;
+```
+
+The AI generated replacements for `Stack` and `Button` went remarkably smoothly also.
 
 Soon it was time to run it. A `make clean && make` and we're there. `./grcalc` and...
 
@@ -297,21 +363,13 @@ My original graphing calculator running as a Mac OS app, still functional, still
 
 ### Screenshots
 
-The home screen:
+{{ captioned_image(src="home-screen.png", alt="The home screen of the graphing calculator", caption="The home screen") }}
 
-![The home screen](home-screen.png)
+{{ captioned_image(src="edit-equation-screen.png", alt="Edit equation screen showing the equation entry interface", caption="Edit equations screen") }}
 
-Edit equations:
+{{ captioned_image(src="graph.png", alt="Graph showing two plotted equations", caption="The graphs of two equations plotted simultaneously") }}
 
-![Edit equation screen](edit-equation-screen.png)
-
-The graphs:
-
-![Graph](graph.png)
-
-The same equations in a modern graphic calculator (Apple's Grapher) just to prove it works:
-
-![Grapher](grapher.png)
+{{ captioned_image(src="grapher.png", alt="The same equations displayed in Apple's Grapher application", caption="The same equations in a modern graphic calculator (Apple's Grapher) just to prove it works") }}
 
 ## Conclusion
 
@@ -320,6 +378,8 @@ The total amount of time spent to go from "I wonder if AI can do all this for me
 How much did the surviving original code have to change? Not much at all, hardly any changes, and those changes that are present haven't changed the important logic or structure at all.
 
 The full diff between the original code and the updated code (not including the units that are 100% generated):
+
+Note the December 2024 comment, it was generated this month (December 2025), but the AI agent didn't know what year it was.
 
 ```diff
 2a3,4
@@ -376,7 +436,7 @@ The full diff between the original code and the updated code (not including the 
 >                exitexit := FALSE;
 ```
 
-With hardly any changes, my original code lives again. The functions that contain the main logic are completely unchanged.
+With hardly any changes, my original code lives again 😍. The functions that contain the main logic are completely unchanged.
 
 ## The full code
 
@@ -393,3 +453,9 @@ Index of interesting files:
 ### Footnotes
 
 [^1]: For the unfamiliar with the British education system, [A-Levels](https://en.wikipedia.org/wiki/A-level) are studied for two years with exams taken usually at the age of 18, before going on to university or other things. Well, I say "are", I think they've changed numerous times since then, but it's none of my concern these days. I believe, and correct me if I'm wrong, but the British system was/is unusual in that it allowed the pupil to be very concentrated in their choice of subjects, the A-Levels were not "general" education by any means.
+
+[^2]: I'm underselling my degree dissertaion here, maybe I'll tell the story in a different blog post, but probably not as it's not as interesting as this one.
+
+[^3]: OK, claiming MS-DOS as being Microsoft's "premier platform" in 1995 is contentious. Windows NT 3.1 had been released in 1993. But I justify the claim on the grounds that NT before 4.0 had a very limited market share, and until Windows 95 was released in late 1995, you couldn't run Windows without MS-DOS being installed first.
+
+[^4]: I discovered by accident how potent using more than one model from different vendors can be when we setup Copilot Coding Agent at work as a trial, after Copilot has completed a PR, our custom code-review tool (not Copilot's Code Review, one we run locally and is more thorough) kicked-off and submitted several comments, which automatically triggered the Coding Agent again, etc. Looking through the back-and-forth afterwards was a bit of an eye-opener, two models (Copilot Coding Agent uses Claude Sonnet I believe, the reviewer was one of the OpenAI GPT models - I forget which one it was at the time) produced a high-quality PR that one tool alone wouldn't have done. It hadn't been my intent to test that exact scenario, but the outcome was surprisingly effective.
