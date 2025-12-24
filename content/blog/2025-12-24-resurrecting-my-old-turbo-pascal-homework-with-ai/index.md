@@ -139,7 +139,7 @@ These were the only "external" dependencies, and two of them were written by me 
 
 The `Mouse` unit came from, I can't remember, I do remember giving credit to a third-party when submitting the project for review. But I honestly have no recollection of where it came from in the first place, but I'm fairly sure it wasn't my own work. I have vague memory of using the one computer that had a 14.4k modem to access a Turbo Pascal focused FTP server (those were the days), so that may have been it. If so it was the first time I'd used a centralised internet code repository.
 
-I've tried searching for the function signatures, to see if that code still exists in the large today, or at least in some kind of historic Turbo Pascal archive. But to no avail. Or at least not an exact fit. I did find a edition of Byte magazine from 1985 that had an article called ["Turbo Pascal Drives the Mouse" by John Figueras](https://vintageapple.org/byte/pdf/198509_Byte_Magazine_Vol_10-09_10th_Anniversary_Issue.pdf), the functions exposed by that unit match the function names in the one I used, but the parameters were slightly different. It seems most likely that the version I used was a derivation of the one in the article.
+I've tried searching for the function signatures, to see if that code still exists in the large today, or at least in some kind of historic Turbo Pascal archive. But to no avail. Or at least not an exact fit. I did find a edition of Byte magazine from 1985 that had an article called ["Turbo Pascal Drives the Mouse"](https://vintageapple.org/byte/pdf/198509_Byte_Magazine_Vol_10-09_10th_Anniversary_Issue.pdf) by John Figueras, the functions exposed by that unit match the function names in the one I used, but the parameters were slightly different. It seems most likely that the version I used was a derivation of the one in the article.
 
 {{ captioned_image(src="mpos_1985.png", alt="Implementation of Mpos from the Byte article", caption="Implementation of Mpos from the Byte article") }}
 
@@ -156,8 +156,6 @@ type
 I'm still impressed by how easy it was to do enums in Pascal. But these two tell us *a lot*. The first is simple, the calculator's trigonometric functions could work in degrees or radians, and had a config screen to switch between the two. The second, what could SX or DX mean? Yes... we're back to embarrassment again... because my homebrew UI buttons library was not very sophisticated, it had a crude delay built-in, and the length of the delay needed to be customised for the machine in question. SX meant it ran on a 486SX (as I had at home), DX meant it ran on a 486DX (as we had in the computer room). It was very difficult to navigate the UI if set to the wrong processor.
 
 Now we're seeing some of the real reasons why resurrecting this code will be difficult, it'll need many changes for it to work on a modern machine, unless it was under an emulator running at a deliberately slow speed.
-
-There are some unused functions in here too. Obviously abandoned features or unfinished features.
 
 #### Global state
 
