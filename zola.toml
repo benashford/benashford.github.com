@@ -4,13 +4,18 @@ description = "Mildly interesting technology stories."
 default_language = "en"
 theme = "tabi"
 
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
 compile_sass = true
 minify_html = true
 build_search_index = true
 
 [markdown]
-highlight_code = true
-highlight_theme = "base16-ocean-dark"
+
+[markdown.highlighting]
+style = "class"
+theme = "nord"
 
 [search]
 index_format = "elasticlunr_javascript"
@@ -25,6 +30,7 @@ feed = true
 
 [extra]
 base_canonical_url = "https://benashford.github.io"
+feed_icon = true
 stylesheets = ["custom.css"]
 github_username = "benashford"
 

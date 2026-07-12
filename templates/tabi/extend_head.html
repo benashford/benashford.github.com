@@ -1,0 +1,8 @@
+{% import "macros/feed_utils.html" as feed_utils %}
+{% if term and taxonomy and taxonomy.feed %}
+    {% set generate_feed = feed_utils::get_generate_feed() == "true" %}
+    {% set feed_url = feed_utils::get_feed_url() %}
+    {% if generate_feed and feed_url %}
+        <link rel="alternate" type="application/atom+xml" title="{{ config.title | safe }} - {{ term.name }} Feed" href="{{ get_url(path=term.path ~ feed_url, lang=lang, trailing_slash=false) | safe }}">
+    {% endif %}
+{% endif %}
